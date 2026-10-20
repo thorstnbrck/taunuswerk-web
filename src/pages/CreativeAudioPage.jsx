@@ -87,7 +87,7 @@ export default function CreativeAudioPage({ onOpenFunnel }) {
               Maßgeschneiderte Audio-Logos und Signet-Sounds
             </h3>
             <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-              Ein unverwechselbarer Klang in 2–3 Sekunden. Perfekt für Video-Intros, Podcasts, Apps und Point-of-Sale Momente.
+              Ein unverwechselbarer Klang in 2-3 Sekunden. Perfekt für Video-Intros, Podcasts, Apps und Point-of-Sale Momente.
             </p>
           </TiltGlassCard>
 

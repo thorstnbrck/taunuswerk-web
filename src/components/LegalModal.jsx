@@ -74,7 +74,7 @@ export default function LegalModal({ isOpen, onClose, type }) {
           <div style={{ color: 'var(--text-body)', fontSize: '0.92rem', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <div>
               <strong>Angaben gemäß § 5 TMG:</strong><br />
-              Taunuswerk – Studio für digitale Strategie, Content & Prototyping<br />
+              Taunuswerk - Studio für digitale Strategie, Content & Prototyping<br />
               Inhaber: Thorsten Brück<br />
               Taunus / Rhein-Main Region<br />
               Deutschland

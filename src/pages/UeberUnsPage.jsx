@@ -107,7 +107,7 @@ export default function UeberUnsPage({ onOpenFunnel }) {
               Direkter Draht
             </h3>
             <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.65 }}>
-              Du sprichst direkt mit dem Kopf, der die Fäden zieht – ohne Zwischenebenen, Junior-Account-Manager oder stille Post im Hintergrund.
+              Du sprichst direkt mit dem Kopf, der die Fäden zieht - ohne Zwischenebenen, Junior-Account-Manager oder stille Post im Hintergrund.
             </p>
           </TiltGlassCard>
 

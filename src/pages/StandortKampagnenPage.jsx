@@ -41,7 +41,7 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
           </span>
 
           <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', marginBottom: '18px', lineHeight: 1.18 }}>
-            Kampagnen, die vor Ort ankommen – digital und auf der Straße.
+            Kampagnen, die vor Ort ankommen - digital und auf der Straße.
           </h1>
 
           <p style={{ color: 'var(--text-body)', fontSize: '1.15rem', lineHeight: 1.6, marginBottom: '32px' }}>

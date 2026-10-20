@@ -25,7 +25,7 @@ export default function RequestModal({ isOpen, onClose, onSubmitted }) {
 
   const timeframes = [
     'So schnell wie möglich',
-    'Nächste 1–3 Monate',
+    'Nächste 1-3 Monate',
     'Noch offen'
   ];
 
@@ -67,7 +67,7 @@ export default function RequestModal({ isOpen, onClose, onSubmitted }) {
     const newErrors = {};
     if (!name.trim()) newErrors.name = 'Bitte gib deinen Namen oder Firma an';
     if (!email.trim() || !email.includes('@')) newErrors.email = 'Bitte gib eine gültige E-Mail-Adresse an';
-    if (!idea.trim()) newErrors.idea = 'Bitte beschreibe kurz deine Idee (2–3 Sätze)';
+    if (!idea.trim()) newErrors.idea = 'Bitte beschreibe kurz deine Idee (2-3 Sätze)';
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -180,7 +180,7 @@ export default function RequestModal({ isOpen, onClose, onSubmitted }) {
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px' }}>
               <label htmlFor="modal-idea-input" style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-headline)' }}>
-                2. Deine Idee in 2–3 Sätzen
+                2. Deine Idee in 2-3 Sätzen
               </label>
               <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Zielgruppe & Kernziel</span>
             </div>

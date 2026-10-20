@@ -23,7 +23,7 @@ export default function RequestFunnel({ onSubmitted }) {
 
   const timeframes = [
     'So schnell wie möglich',
-    'Nächste 1–3 Monate',
+    'Nächste 1-3 Monate',
     'Noch offen'
   ];
 
@@ -32,7 +32,7 @@ export default function RequestFunnel({ onSubmitted }) {
     const newErrors = {};
     if (!name.trim()) newErrors.name = 'Bitte gib deinen Namen oder Firma an';
     if (!email.trim() || !email.includes('@')) newErrors.email = 'Bitte gib eine gültige E-Mail-Adresse an';
-    if (!idea.trim()) newErrors.idea = 'Bitte beschreibe kurz deine Idee (2–3 Sätze)';
+    if (!idea.trim()) newErrors.idea = 'Bitte beschreibe kurz deine Idee (2-3 Sätze)';
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -100,7 +100,7 @@ export default function RequestFunnel({ onSubmitted }) {
           Idee einreichen. Fundament bauen.
         </h2>
         <p style={{ maxWidth: '640px', margin: '0 auto', color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-          Unverbindlich ausfüllen – ich melde mich innerhalb von 24 Stunden mit Feedback und den Terminvorschlägen für den 15-Minuten-Kickoff.
+          Unverbindlich ausfüllen - ich melde mich innerhalb von 24 Stunden mit Feedback und den Terminvorschlägen für den 15-Minuten-Kickoff.
         </p>
       </div>
 
@@ -136,7 +136,7 @@ export default function RequestFunnel({ onSubmitted }) {
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px' }}>
             <label htmlFor="idea-input" style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-headline)' }}>
-              2. Deine Idee in 2–3 Sätzen
+              2. Deine Idee in 2-3 Sätzen
             </label>
             <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Zielgruppe & Kernziel</span>
           </div>

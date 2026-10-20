@@ -207,7 +207,7 @@ export default function HomePage({ onOpenFunnel }) {
             </h2>
 
             <p style={{ color: '#334155', fontSize: '1.12rem', lineHeight: 1.65, display: 'block', opacity: 1, visibility: 'visible' }}>
-              Schluss mit losen Notizen. Der 15-minütige Fokus-Kickoff ist <strong>100% kostenlos</strong>. Erst wenn wir gemeinsam starten, gießen wir deinen Gedanken in 7 Tagen in einen glasklaren Masterplan für <strong>500 € Festpreis</strong> – inklusive Zielgruppen-Logik, Kanalstrategie, Tool-Setup und Meilensteinen.
+              Schluss mit losen Notizen. Der 15-minütige Fokus-Kickoff ist <strong>100% kostenlos</strong>. Erst wenn wir gemeinsam starten, gießen wir deinen Gedanken in 7 Tagen in einen glasklaren Masterplan für <strong>500 € Festpreis</strong> - inklusive Zielgruppen-Logik, Kanalstrategie, Tool-Setup und Meilensteinen.
             </p>
           </div>
 
@@ -245,7 +245,7 @@ export default function HomePage({ onOpenFunnel }) {
               </div>
               <h3 style={{ fontSize: '1.25rem', color: '#0F172A' }}>15 Min. Fokus-Kickoff</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
-                Ziel, Hebel, internes Team und dein Realisierungsbudget direkt unverbindlich abgestimmt – ohne Kosten oder Risiko.
+                Ziel, Hebel, internes Team und dein Realisierungsbudget direkt unverbindlich abgestimmt - ohne Kosten oder Risiko.
               </p>
             </TiltGlassCard>
 
@@ -317,7 +317,7 @@ export default function HomePage({ onOpenFunnel }) {
               </div>
               <h3 style={{ fontSize: '1.25rem', color: '#0F172A' }}>Werksabnahme</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
-                Dein schlüsselfertiger Bauplan zur sofortigen Umsetzung – für dein Inhouse-Team oder mit dem Taunuswerk-Kollektiv.
+                Dein schlüsselfertiger Bauplan zur sofortigen Umsetzung - für dein Inhouse-Team oder mit dem Taunuswerk-Kollektiv.
               </p>
             </TiltGlassCard>
           </div>
@@ -373,7 +373,7 @@ export default function HomePage({ onOpenFunnel }) {
             Vier Säulen. Ein nahtloser Werkstatt-Standard.
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
-            Von regionaler Mobilisierung über virale Videoformate bis zu schnellen Prototypen – alles aus einer Hand konzipiert.
+            Von regionaler Mobilisierung über virale Videoformate bis zu schnellen Prototypen - alles aus einer Hand konzipiert.
           </p>
         </div>
 
@@ -539,7 +539,7 @@ export default function HomePage({ onOpenFunnel }) {
                 Digital Hubs & Rapid Prototyping
               </h3>
               <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '20px' }}>
-                Smarte Plattformen, regionale Portale und Web-Apps schnell live gebracht – vom MVP bis zum Rollout.
+                Smarte Plattformen, regionale Portale und Web-Apps schnell live gebracht - vom MVP bis zum Rollout.
               </p>
             </div>
 
@@ -669,7 +669,7 @@ export default function HomePage({ onOpenFunnel }) {
             </h2>
 
             <p style={{ fontSize: '1.12rem', color: '#334155', lineHeight: 1.7, marginBottom: '36px' }}>
-              Ein fester Sparringspartner an der Werkbank für Konzeption und Steuerung: <strong>ich</strong>. Für die Produktion greift Taunuswerk auf ein eingespieltes Kollektiv zurück – Kamera & Drohne, UI-Design, Full-Stack-Code und HR-/Recruiting-Spezialisten. Maximale Kompetenz, schlanke Prozesse.
+              Ein fester Sparringspartner an der Werkbank für Konzeption und Steuerung: <strong>ich</strong>. Für die Produktion greift Taunuswerk auf ein eingespieltes Kollektiv zurück - Kamera & Drohne, UI-Design, Full-Stack-Code und HR-/Recruiting-Spezialisten. Maximale Kompetenz, schlanke Prozesse.
             </p>
 
             {/* Micro Pillars */}

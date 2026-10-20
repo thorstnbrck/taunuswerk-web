@@ -41,7 +41,7 @@ export default function DigitalHubsPage({ onOpenFunnel }) {
           </span>
 
           <h1 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', marginBottom: '18px', lineHeight: 1.18 }}>
-            Smarte digitale Werkzeuge – schnell live, ohne endlose Zyklen.
+            Smarte digitale Werkzeuge - schnell live, ohne endlose Zyklen.
           </h1>
 
           <p style={{ color: 'var(--text-body)', fontSize: '1.15rem', lineHeight: 1.6, marginBottom: '32px' }}>
@@ -99,7 +99,7 @@ export default function DigitalHubsPage({ onOpenFunnel }) {
               Schnelle Umsetzung mit modernen Web-Technologien
             </h3>
             <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-              Vite, React, Next.js oder smarte No-Code-Kombinationen – je nachdem, was am schnellsten und wirtschaftlichsten zum Ziel führt.
+              Vite, React, Next.js oder smarte No-Code-Kombinationen - je nachdem, was am schnellsten und wirtschaftlichsten zum Ziel führt.
             </p>
           </TiltGlassCard>
 
