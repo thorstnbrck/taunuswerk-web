@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ConfirmationModal from './components/ConfirmationModal';
 import LegalModal from './components/LegalModal';
+import AuroraCanvas from './components/AuroraCanvas';
 import HomePage from './pages/HomePage';
 import StandortKampagnenPage from './pages/StandortKampagnenPage';
 import ContentVideoPage from './pages/ContentVideoPage';
@@ -57,7 +58,7 @@ function AppContent() {
       case '/':
       default:
         return (
-          <HomePage 
+          <HomePage
             onOpenFunnel={handleOpenFunnel}
             onFormSubmitted={handleFormSubmitted}
           />
@@ -67,12 +68,8 @@ function AppContent() {
 
   return (
     <div className="app-container">
-      {/* Ambient background with smooth radial blur & floating orbs */}
-      <div className="ambient-backdrop" aria-hidden="true">
-        <div className="ambient-orb ambient-orb-1"></div>
-        <div className="ambient-orb ambient-orb-2"></div>
-        <div className="ambient-orb ambient-orb-3"></div>
-      </div>
+      {/* 1. Ambient Aurora Mesh (WebGL / GLSL Simplex-Noise Fragment Shader) */}
+      <AuroraCanvas />
 
       {/* Floating App Dock Navigation */}
       <Navbar onOpenFunnel={handleOpenFunnel} />

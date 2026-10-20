@@ -1,28 +1,26 @@
 import React from 'react';
-import { useRouter, Link } from '../router';
+import { motion } from 'framer-motion';
+import { Link } from '../router';
 import RequestFunnel from '../components/RequestFunnel';
-import { 
-  Sparkles, 
-  ArrowRight, 
-  CheckCircle2, 
-  Compass, 
-  Video, 
-  Music, 
-  Layers, 
-  Calendar, 
-  Hammer, 
-  FileCheck2, 
-  TrendingUp, 
-  Users2, 
+import TiltGlassCard from '../components/TiltGlassCard';
+import {
+  Sparkles,
+  ArrowRight,
+  Compass,
+  Video,
+  Music,
+  Layers,
+  Hammer,
+  FileCheck2,
+  Users2,
   ShieldCheck,
   Zap,
-  Clock,
-  Check
+  Clock
 } from 'lucide-react';
 
-export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
-  const { navigate } = useRouter();
+const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
+export default function HomePage({ onFormSubmitted }) {
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -34,7 +32,12 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '90px' }}>
       {/* 1. HERO SECTION (Layered App-Card Layout) */}
       <section style={{ paddingTop: '20px' }}>
-        <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px auto' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={SPRING_PHYSICS}
+          style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px auto', willChange: 'transform, opacity' }}
+        >
           <div style={{ display: 'inline-flex', marginBottom: '20px' }}>
             <span className="glass-pill" style={{ padding: '8px 20px', gap: '10px' }}>
               <Sparkles size={16} color="#F43F5E" />
@@ -51,35 +54,43 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={SPRING_PHYSICS}
               onClick={() => scrollToSection('anfrage')}
               className="btn-primary"
-              style={{ padding: '14px 28px', fontSize: '1rem' }}
+              style={{ padding: '14px 28px', fontSize: '1rem', willChange: 'transform' }}
             >
               <Sparkles size={18} />
               <span>Idee ins Konzept-Werk bringen (500 €)</span>
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={SPRING_PHYSICS}
               onClick={() => scrollToSection('showcase')}
               className="btn-secondary"
-              style={{ padding: '14px 26px', fontSize: '1rem' }}
+              style={{ padding: '14px 26px', fontSize: '1rem', willChange: 'transform' }}
             >
               <span>Arbeiten & Showcases</span>
               <ArrowRight size={16} />
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Hero Visual: Schwebende Frosted-Glass-Karten im 3D-Layer-Stil über weichem Lichtverlauf */}
-        <div
+        <TiltGlassCard
+          index={1}
+          maxTilt={3.5}
           style={{
             position: 'relative',
             maxWidth: '1040px',
             margin: '0 auto',
             borderRadius: '28px',
             padding: '12px',
-            background: 'rgba(255, 255, 255, 0.45)',
+            background: 'rgba(255, 255, 255, 0.48)',
             boxShadow: '0 24px 60px -15px rgba(15, 23, 42, 0.1), 0 0 20px rgba(255, 255, 255, 0.8) inset',
             border: '1px solid rgba(255, 255, 255, 0.8)'
           }}
@@ -99,7 +110,6 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'saturate(1.05)' }}
               loading="eager"
             />
-            {/* Subtle Gradient Overlay */}
             <div
               style={{
                 position: 'absolute',
@@ -109,7 +119,10 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
             />
 
             {/* Floating Glass Layer Card 1: Left Bottom */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...SPRING_PHYSICS, delay: 0.15 }}
               className="glass-panel"
               style={{
                 position: 'absolute',
@@ -145,10 +158,13 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
                 <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>7-Tage-Sprint</div>
                 <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-headline)' }}>Vom Gedanken zum Masterplan</div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Floating Glass Layer Card 2: Right Top */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: -16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...SPRING_PHYSICS, delay: 0.2 }}
               className="glass-panel"
               style={{
                 position: 'absolute',
@@ -167,21 +183,25 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-headline)' }}>
                 Werkbank geöffnet für Q4/2026
               </span>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </TiltGlassCard>
       </section>
 
-      {/* 2. DAS FLAGGSCHIFF: "DAS KONZEPT-WERK" */}
+      {/* 2. DAS FLAGGSCHIFF: "DAS KONZEPT-WERK" (mit 1px Border-Shimmer Lichtkante) */}
       <section id="konzept-werk" style={{ scrollMarginTop: '100px' }}>
-        <div
-          className="glass-panel"
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={SPRING_PHYSICS}
+          className="glass-panel border-shimmer-card"
           style={{
-            padding: ' clamp(32px, 5vw, 56px)',
+            padding: 'clamp(32px, 5vw, 56px)',
             borderRadius: '32px',
-            border: '1px solid rgba(255, 255, 255, 0.95)',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            willChange: 'transform, opacity'
           }}
         >
           {/* Subtle Ambient Backlight */}
@@ -199,7 +219,7 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
             }}
           />
 
-          <div style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center', marginBottom: '44px' }}>
+          <div style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center', marginBottom: '44px', position: 'relative', zIndex: 2 }}>
             <span
               className="glass-pill"
               style={{
@@ -221,15 +241,16 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
             </p>
           </div>
 
-          {/* Die 3 Phasen als transluzente Bento-Karten */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '22px', marginBottom: '40px' }}>
+          {/* Die 3 Phasen als transluzente Bento-Karten mit 3D-Tilt & Staggered Fade-Up (50ms Delay) */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '22px', marginBottom: '40px', position: 'relative', zIndex: 2 }}>
             {/* Phase 1 */}
-            <div
-              className="glass-panel glass-panel-hover"
+            <TiltGlassCard
+              index={0}
+              maxTilt={6}
               style={{
                 padding: '28px',
                 borderRadius: '24px',
-                background: 'rgba(255, 255, 255, 0.7)',
+                background: 'rgba(255, 255, 255, 0.72)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '14px'
@@ -256,15 +277,16 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
                 Ziel, Hebel, internes Team und dein Realisierungsbudget direkt abgestimmt – ohne Vorgeplänkel oder Zeitverlust.
               </p>
-            </div>
+            </TiltGlassCard>
 
             {/* Phase 2 */}
-            <div
-              className="glass-panel glass-panel-hover"
+            <TiltGlassCard
+              index={1}
+              maxTilt={6}
               style={{
                 padding: '28px',
                 borderRadius: '24px',
-                background: 'rgba(255, 255, 255, 0.7)',
+                background: 'rgba(255, 255, 255, 0.72)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '14px'
@@ -291,15 +313,16 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
                 Ausarbeitung von Mechanik, Content-Formaten, präzisen Meilensteinen und Tool-Empfehlungen auf der Werkbank.
               </p>
-            </div>
+            </TiltGlassCard>
 
             {/* Phase 3 */}
-            <div
-              className="glass-panel glass-panel-hover"
+            <TiltGlassCard
+              index={2}
+              maxTilt={6}
               style={{
                 padding: '28px',
                 borderRadius: '24px',
-                background: 'rgba(255, 255, 255, 0.7)',
+                background: 'rgba(255, 255, 255, 0.72)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '14px'
@@ -326,7 +349,7 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
                 Dein schlüsselfertiger Bauplan zur sofortigen Umsetzung – für dein Inhouse-Team oder mit dem Taunuswerk-Kollektiv.
               </p>
-            </div>
+            </TiltGlassCard>
           </div>
 
           {/* Bottom Bar: Festpreis & CTA */}
@@ -340,7 +363,9 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               padding: '20px 28px',
               borderRadius: '20px',
               background: 'rgba(255, 255, 255, 0.85)',
-              border: '1px solid rgba(255, 255, 255, 0.95)'
+              border: '1px solid rgba(255, 255, 255, 0.95)',
+              position: 'relative',
+              zIndex: 2
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -355,21 +380,30 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               </div>
             </div>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={SPRING_PHYSICS}
               onClick={() => scrollToSection('anfrage')}
               className="btn-primary"
-              style={{ padding: '12px 24px' }}
+              style={{ padding: '12px 24px', willChange: 'transform' }}
             >
               <span>Idee jetzt einreichen</span>
               <ArrowRight size={16} />
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* 3. LEISTUNGS-DOCK (Bento-Grid aus 4 Frosted-Glass-Cards) */}
+      {/* 3. LEISTUNGS-DOCK (Bento-Grid aus 4 Frosted-Glass-Cards mit 3D Tilt & 50ms Stagger) */}
       <section id="leistungen">
-        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 44px auto' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={SPRING_PHYSICS}
+          style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 44px auto' }}
+        >
           <span className="glass-pill" style={{ marginBottom: '14px' }}>
             <Layers size={14} color="#38BDF8" />
             <span>Disziplinen & Gewerke</span>
@@ -380,12 +414,13 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
           <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
             Von regionaler Mobilisierung über virale Videoformate bis zu schnellen Prototypen – alles aus einer Hand konzipiert.
           </p>
-        </div>
+        </motion.div>
 
         <div className="bento-grid">
           {/* Card 01: Standort- & Kampagnen-Marketing */}
-          <div
-            className="glass-panel glass-panel-hover"
+          <TiltGlassCard
+            index={0}
+            maxTilt={6}
             style={{
               gridColumn: 'span 6',
               padding: '32px',
@@ -426,11 +461,12 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               <span>Mehr erfahren</span>
               <ArrowRight size={16} />
             </Link>
-          </div>
+          </TiltGlassCard>
 
           {/* Card 02: Content & Social Media Engine */}
-          <div
-            className="glass-panel glass-panel-hover"
+          <TiltGlassCard
+            index={1}
+            maxTilt={6}
             style={{
               gridColumn: 'span 6',
               padding: '32px',
@@ -471,11 +507,12 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               <span>Mehr erfahren</span>
               <ArrowRight size={16} />
             </Link>
-          </div>
+          </TiltGlassCard>
 
           {/* Card 03: Creative Media & AI-Audio */}
-          <div
-            className="glass-panel glass-panel-hover"
+          <TiltGlassCard
+            index={2}
+            maxTilt={6}
             style={{
               gridColumn: 'span 6',
               padding: '32px',
@@ -516,11 +553,12 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               <span>Mehr erfahren</span>
               <ArrowRight size={16} />
             </Link>
-          </div>
+          </TiltGlassCard>
 
           {/* Card 04: Digital Hubs & Rapid Prototyping */}
-          <div
-            className="glass-panel glass-panel-hover"
+          <TiltGlassCard
+            index={3}
+            maxTilt={6}
             style={{
               gridColumn: 'span 6',
               padding: '32px',
@@ -561,14 +599,15 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               <span>Mehr erfahren</span>
               <ArrowRight size={16} />
             </Link>
-          </div>
+          </TiltGlassCard>
         </div>
       </section>
 
-      {/* 4. SHOWCASE CASE STUDY (Card mit Soft-Glow) */}
+      {/* 4. SHOWCASE CASE STUDY (Card mit Soft-Glow & 3D Tilt) */}
       <section id="showcase">
-        <div
-          className="glass-panel"
+        <TiltGlassCard
+          index={0}
+          maxTilt={4}
           style={{
             padding: 'clamp(32px, 5vw, 48px)',
             borderRadius: '32px',
@@ -626,14 +665,17 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               </div>
             </div>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={SPRING_PHYSICS}
               onClick={() => scrollToSection('anfrage')}
               className="btn-primary"
-              style={{ padding: '12px 24px' }}
+              style={{ padding: '12px 24px', willChange: 'transform' }}
             >
               <span>Ähnliches Projekt starten</span>
               <ArrowRight size={16} />
-            </button>
+            </motion.button>
           </div>
 
           <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px -10px rgba(15, 23, 42, 0.15)', height: '100%', minHeight: '320px' }}>
@@ -644,18 +686,23 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               loading="lazy"
             />
           </div>
-        </div>
+        </TiltGlassCard>
       </section>
 
       {/* 5. DAS KOLLEKTIV-VERSPRECHEN */}
       <section id="kollektiv" style={{ scrollMarginTop: '100px' }}>
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={SPRING_PHYSICS}
           className="glass-panel"
           style={{
             padding: 'clamp(36px, 5vw, 56px)',
             borderRadius: '32px',
             textAlign: 'center',
-            position: 'relative'
+            position: 'relative',
+            willChange: 'transform, opacity'
           }}
         >
           <div style={{ maxWidth: '820px', margin: '0 auto' }}>
@@ -672,37 +719,49 @@ export default function HomePage({ onOpenFunnel, onFormSubmitted }) {
               Ein fester Sparringspartner an der Werkbank für Konzeption und Steuerung: <strong>ich</strong>. Für die Produktion greift Taunuswerk auf ein eingespieltes Kollektiv zurück – Kamera & Drohne, UI-Design, Full-Stack-Code und HR-/Recruiting-Spezialisten. Maximale Kompetenz, schlanke Prozesse.
             </p>
 
-            {/* Micro Pillars */}
+            {/* Micro Pillars with Staggered Fade-Up & 3D Tilt */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' }}>
-              <div style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.7)', border: '1px solid rgba(255, 255, 255, 0.9)' }}>
+              <TiltGlassCard
+                index={0}
+                maxTilt={6}
+                style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.72)', border: '1px solid rgba(255, 255, 255, 0.9)' }}
+              >
                 <div style={{ fontWeight: 700, color: 'var(--text-headline)', marginBottom: '6px' }}>
                   Kamera & Drohne
                 </div>
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                   Kinoreife Bilder, Social-First Framing und schneller Vor-Ort-Dreh.
                 </div>
-              </div>
+              </TiltGlassCard>
 
-              <div style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.7)', border: '1px solid rgba(255, 255, 255, 0.9)' }}>
+              <TiltGlassCard
+                index={1}
+                maxTilt={6}
+                style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.72)', border: '1px solid rgba(255, 255, 255, 0.9)' }}
+              >
                 <div style={{ fontWeight: 700, color: 'var(--text-headline)', marginBottom: '6px' }}>
                   UI/UX & Code
                 </div>
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                   Smarte Interfaces, moderne Web-Technologien und skalierbare Architektur.
                 </div>
-              </div>
+              </TiltGlassCard>
 
-              <div style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.7)', border: '1px solid rgba(255, 255, 255, 0.9)' }}>
+              <TiltGlassCard
+                index={2}
+                maxTilt={6}
+                style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.72)', border: '1px solid rgba(255, 255, 255, 0.9)' }}
+              >
                 <div style={{ fontWeight: 700, color: 'var(--text-headline)', marginBottom: '6px' }}>
                   HR- & Recruiting
                 </div>
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                   Gezielte Arbeitgeberpositionierung und Ansprache von Fachkräften in der Region.
                 </div>
-              </div>
+              </TiltGlassCard>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 6. ANFRAGE-FORMULAR / FUNNEL */}

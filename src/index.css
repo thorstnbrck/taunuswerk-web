@@ -1,18 +1,30 @@
+@property --animation-reduced {
+  syntax: "*";
+  inherits: false;
+  initial-value: none;
+}
+
+@property --shimmer-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 :root {
   --bg-chalk: #F8FAFC;
   --bg-peach: #FCE7F3;
   --bg-lavender: #EDE9FE;
   --bg-sky: #E0F2FE;
-  
+
   --text-headline: #0F172A;
   --text-body: #334155;
   --text-muted: #64748B;
-  
+
   --glass-bg: rgba(255, 255, 255, 0.72);
   --glass-bg-hover: rgba(255, 255, 255, 0.85);
   --glass-border: rgba(255, 255, 255, 0.8);
   --glass-border-subtle: rgba(255, 255, 255, 0.45);
-  
+
   --accent-orange: #FB923C;
   --accent-pink: #F43F5E;
   --accent-sky: #38BDF8;
@@ -27,7 +39,7 @@
   --radius-md: 20px;
   --radius-lg: 26px;
   --radius-full: 9999px;
-  
+
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--text-body);
   background-color: var(--bg-chalk);
@@ -49,7 +61,7 @@ body {
   background: var(--bg-chalk);
 }
 
-/* Ambient dynamic background lighting */
+/* 1. Ambient Aurora Mesh (WebGL Canvas + Fallback Backdrop) */
 .ambient-backdrop {
   position: fixed;
   inset: 0;
@@ -63,53 +75,11 @@ body {
               var(--bg-chalk);
 }
 
-.ambient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.65;
-  animation: floatOrb 22s ease-in-out infinite alternate;
-}
-
-.ambient-orb-1 {
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(135deg, #FDE68A 0%, #F472B6 100%);
-  top: -100px;
-  left: 10%;
-  animation-duration: 25s;
-}
-
-.ambient-orb-2 {
-  width: 650px;
-  height: 650px;
-  background: linear-gradient(135deg, #BAE6FD 0%, #DDD6FE 100%);
-  top: 30%;
-  right: -100px;
-  animation-duration: 30s;
-  animation-delay: -5s;
-}
-
-.ambient-orb-3 {
-  width: 550px;
-  height: 550px;
-  background: linear-gradient(135deg, #FED7AA 0%, #FECDD3 100%);
-  bottom: 5%;
-  left: 20%;
-  animation-duration: 28s;
-  animation-delay: -10s;
-}
-
-@keyframes floatOrb {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  50% {
-    transform: translate(60px, 40px) scale(1.08);
-  }
-  100% {
-    transform: translate(-40px, 80px) scale(0.95);
-  }
+.aurora-webgl-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* Layout Container */
@@ -148,23 +118,88 @@ p, li, blockquote {
   text-wrap: pretty;
 }
 
-/* Glassmorphism primitives */
+/* Glassmorphism primitives (Compositor-only transitions: transform & opacity) */
 .glass-panel {
+  position: relative;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-glass);
   border-radius: var(--radius-lg);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 .glass-panel-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-glass-lg);
-  border-color: rgba(255, 255, 255, 0.95);
+  transform: translate3d(0, -3px, 0);
+}
+
+/* 2. Dynamic Specular Glare for 3D Tilt Cards (Compositor-only) */
+.tilt-specular-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.12) 45%,
+    transparent 70%
+  );
+  mix-blend-mode: overlay;
+  will-change: transform, opacity;
+}
+
+/* 3. Lichtkanten-Animation: 1px Orbiting Border-Shimmer (60 FPS GPU Transform) */
+.border-shimmer-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.border-shimmer-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.25px; /* Exact 1px light edge */
+  background: conic-gradient(
+    from var(--shimmer-angle),
+    rgba(255, 255, 255, 0.25) 0deg,
+    rgba(255, 255, 255, 0.98) 55deg,
+    rgba(251, 146, 60, 0.9) 110deg,
+    rgba(244, 63, 94, 0.9) 170deg,
+    rgba(56, 189, 248, 0.85) 235deg,
+    rgba(255, 255, 255, 0.98) 300deg,
+    rgba(255, 255, 255, 0.25) 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.92;
+  animation: shimmerOrbit 8s linear infinite;
+  --animation-reduced: none;
+  will-change: opacity, transform;
+}
+
+@keyframes shimmerOrbit {
+  0% {
+    --shimmer-angle: 0deg;
+    opacity: 0.82;
+  }
+  50% {
+    --shimmer-angle: 180deg;
+    opacity: 1;
+  }
+  100% {
+    --shimmer-angle: 360deg;
+    opacity: 0.82;
+  }
 }
 
 .glass-pill {
@@ -172,7 +207,7 @@ p, li, blockquote {
   align-items: center;
   gap: 8px;
   padding: 6px 16px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.74);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.85);
@@ -183,7 +218,7 @@ p, li, blockquote {
   box-shadow: 0 4px 15px -2px rgba(15, 23, 42, 0.04);
 }
 
-/* Radiant buttons */
+/* Radiant buttons (Compositor-only transitions: transform & opacity) */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -199,16 +234,17 @@ p, li, blockquote {
   background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-pink) 100%);
   color: #FFFFFF;
   box-shadow: var(--shadow-button-glow);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 14px 30px -4px rgba(244, 63, 94, 0.45);
+  transform: translate3d(0, -2px, 0) scale(1.02);
 }
 
 .btn-primary:active {
-  transform: translateY(0) scale(0.98);
+  transform: translate3d(0, 0, 0) scale(0.98);
 }
 
 .btn-secondary {
@@ -222,19 +258,19 @@ p, li, blockquote {
   font-size: 0.95rem;
   text-decoration: none;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   color: var(--text-headline);
   border: 1px solid rgba(255, 255, 255, 0.85);
   box-shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.05);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.95);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08);
+  transform: translate3d(0, -2px, 0);
 }
 
 .btn-sky {
@@ -243,16 +279,12 @@ p, li, blockquote {
   box-shadow: var(--shadow-sky-glow);
 }
 
-.btn-sky:hover {
-  box-shadow: 0 14px 30px -4px rgba(56, 189, 248, 0.45);
-}
-
 /* Floating App Dock Navbar */
 .floating-dock-nav {
   position: fixed;
   top: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
   z-index: 100;
   width: calc(100% - 40px);
   max-width: 1080px;
@@ -289,6 +321,8 @@ p, li, blockquote {
   background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
   box-shadow: 0 0 12px var(--accent-pink);
   animation: pulseGlow 2.5s infinite ease-in-out;
+  --animation-reduced: none;
+  will-change: transform, opacity;
 }
 
 @keyframes pulseGlow {
@@ -299,7 +333,6 @@ p, li, blockquote {
   50% {
     transform: scale(1.3);
     opacity: 1;
-    box-shadow: 0 0 18px var(--accent-pink);
   }
 }
 
@@ -319,7 +352,7 @@ p, li, blockquote {
   font-weight: 600;
   color: var(--text-body);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
   cursor: pointer;
 }
 
@@ -358,6 +391,7 @@ dialog.glass-dialog::backdrop {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   animation: fadeIn 0.3s ease;
+  --animation-reduced: none;
 }
 
 @keyframes fadeIn {
@@ -375,16 +409,18 @@ dialog.glass-dialog::backdrop {
   box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.18), 0 0 20px rgba(255, 255, 255, 0.9) inset;
   position: relative;
   animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --animation-reduced: none;
+  will-change: transform, opacity;
 }
 
 @keyframes modalPop {
   from {
     opacity: 0;
-    transform: scale(0.92) translateY(12px);
+    transform: scale(0.92) translate3d(0, 12px, 0);
   }
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1) translate3d(0, 0, 0);
   }
 }
 
@@ -392,14 +428,14 @@ dialog.glass-dialog::backdrop {
 .form-input, .form-textarea {
   width: 100%;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(203, 213, 225, 0.6);
   border-radius: var(--radius-md);
   font-family: inherit;
   font-size: 0.95rem;
   color: var(--text-headline);
   outline: none;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .form-input:focus, .form-textarea:focus {
@@ -417,22 +453,21 @@ dialog.glass-dialog::backdrop {
   font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.68);
   border: 1px solid rgba(255, 255, 255, 0.85);
   color: var(--text-body);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
+  will-change: transform, opacity;
 }
 
 .chip-btn:hover {
   background: rgba(255, 255, 255, 0.95);
   color: var(--text-headline);
-  transform: translateY(-1px);
 }
 
 .chip-btn.selected {
-  background: linear-gradient(135deg, rgba(251, 146, 60, 0.15), rgba(244, 63, 94, 0.18));
-  border-color: rgba(244, 63, 94, 0.6);
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.16), rgba(244, 63, 94, 0.2));
+  border-color: rgba(244, 63, 94, 0.65);
   color: #BE185D;
   box-shadow: 0 4px 12px rgba(244, 63, 94, 0.12);
 }
@@ -448,5 +483,12 @@ dialog.glass-dialog::backdrop {
   .bento-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+}
+
+/* Reduced Motion Accessibility (Modern Web Guidance) */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: var(--animation-reduced) !important;
   }
 }

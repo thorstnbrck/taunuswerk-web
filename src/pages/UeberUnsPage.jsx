@@ -1,6 +1,10 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useRouter, Link } from '../router';
+import TiltGlassCard from '../components/TiltGlassCard';
 import { UserCheck, Sparkles, ArrowRight, MessageSquare, PhoneCall, Network, Award } from 'lucide-react';
+
+const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function UeberUnsPage({ onOpenFunnel }) {
   const { navigate } = useRouter();
@@ -27,8 +31,10 @@ export default function UeberUnsPage({ onOpenFunnel }) {
       </div>
 
       {/* Hero Card */}
-      <div
-        className="glass-panel"
+      <TiltGlassCard
+        index={0}
+        maxTilt={3.5}
+        shimmerBorder
         style={{
           padding: 'clamp(32px, 5vw, 56px)',
           borderRadius: '32px',
@@ -52,14 +58,17 @@ export default function UeberUnsPage({ onOpenFunnel }) {
             Warum ein erfahrener Generalist mit Spezialisten-Netzwerk jede träge Agentur schlägt.
           </p>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={SPRING_PHYSICS}
             onClick={handleStart}
             className="btn-primary"
-            style={{ padding: '14px 28px', fontSize: '1rem' }}
+            style={{ padding: '14px 28px', fontSize: '1rem', willChange: 'transform' }}
           >
             <Sparkles size={18} />
             <span>Lass uns dein nächstes Projekt zimmern</span>
-          </button>
+          </motion.button>
         </div>
 
         <div style={{ borderRadius: '24px', overflow: 'hidden', height: '100%', minHeight: '340px', boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.12)' }}>
@@ -69,7 +78,7 @@ export default function UeberUnsPage({ onOpenFunnel }) {
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
         </div>
-      </div>
+      </TiltGlassCard>
 
       {/* Die 3 Säulen */}
       <div>
@@ -84,7 +93,7 @@ export default function UeberUnsPage({ onOpenFunnel }) {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
           {/* Säule 1 */}
-          <div className="glass-panel glass-panel-hover" style={{ padding: '34px', borderRadius: '26px' }}>
+          <TiltGlassCard index={0} maxTilt={6} style={{ padding: '34px', borderRadius: '26px' }}>
             <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(251, 146, 60, 0.15)', color: '#EA580C', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
               <MessageSquare size={24} />
             </div>
@@ -97,10 +106,10 @@ export default function UeberUnsPage({ onOpenFunnel }) {
             <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.65 }}>
               Ehrliche Deadlines, verbindliche Budgets, machbare Pläne. Bei uns gibt es keine aufgeblasenen Pitch-Folien, sondern glasklare Zusagen.
             </p>
-          </div>
+          </TiltGlassCard>
 
           {/* Säule 2 */}
-          <div className="glass-panel glass-panel-hover" style={{ padding: '34px', borderRadius: '26px' }}>
+          <TiltGlassCard index={1} maxTilt={6} style={{ padding: '34px', borderRadius: '26px' }}>
             <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(244, 63, 94, 0.15)', color: '#F43F5E', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
               <PhoneCall size={24} />
             </div>
@@ -113,10 +122,10 @@ export default function UeberUnsPage({ onOpenFunnel }) {
             <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.65 }}>
               Du sprichst direkt mit dem Kopf, der die Fäden zieht – ohne Zwischenebenen, Junior-Account-Manager oder stille Post im Hintergrund.
             </p>
-          </div>
+          </TiltGlassCard>
 
           {/* Säule 3 */}
-          <div className="glass-panel glass-panel-hover" style={{ padding: '34px', borderRadius: '26px' }}>
+          <TiltGlassCard index={2} maxTilt={6} style={{ padding: '34px', borderRadius: '26px' }}>
             <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(56, 189, 248, 0.15)', color: '#0284C7', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
               <Network size={24} />
             </div>
@@ -129,13 +138,14 @@ export default function UeberUnsPage({ onOpenFunnel }) {
             <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.65 }}>
               So wendig wie ein Freelancer, so schlagkräftig wie eine Agentur. Für jedes Gewerk ziehen wir exakt die Spezialisten hinzu, die dein Projekt braucht.
             </p>
-          </div>
+          </TiltGlassCard>
         </div>
       </div>
 
       {/* Bottom CTA Banner */}
-      <div
-        className="glass-panel"
+      <TiltGlassCard
+        index={1}
+        maxTilt={3}
         style={{
           padding: '48px',
           borderRadius: '32px',
@@ -153,11 +163,18 @@ export default function UeberUnsPage({ onOpenFunnel }) {
         <p style={{ color: 'var(--text-muted)', marginBottom: '28px', maxWidth: '640px', margin: '0 auto 28px auto', fontSize: '1.05rem' }}>
           Egal ob du eine vage Idee im Kopf hast oder ein akutes Problem lösen willst: Der erste Schritt ist ein unverbindlicher 15-Minuten-Fokus-Call.
         </p>
-        <button onClick={handleStart} className="btn-primary" style={{ padding: '15px 32px', fontSize: '1.05rem' }}>
+        <motion.button
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          transition={SPRING_PHYSICS}
+          onClick={handleStart}
+          className="btn-primary"
+          style={{ padding: '15px 32px', fontSize: '1.05rem', willChange: 'transform' }}
+        >
           <span>Idee einreichen & Kickoff buchen</span>
           <ArrowRight size={18} />
-        </button>
-      </div>
+        </motion.button>
+      </TiltGlassCard>
     </div>
   );
 }

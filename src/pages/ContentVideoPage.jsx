@@ -1,6 +1,10 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useRouter, Link } from '../router';
+import TiltGlassCard from '../components/TiltGlassCard';
 import { Video, Sparkles, ArrowRight, Film, Clapperboard, Eye, Users } from 'lucide-react';
+
+const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function ContentVideoPage({ onOpenFunnel }) {
   const { navigate } = useRouter();
@@ -27,8 +31,10 @@ export default function ContentVideoPage({ onOpenFunnel }) {
       </div>
 
       {/* Hero Card */}
-      <div
-        className="glass-panel"
+      <TiltGlassCard
+        index={0}
+        maxTilt={3.5}
+        shimmerBorder
         style={{
           padding: 'clamp(32px, 5vw, 56px)',
           borderRadius: '32px',
@@ -52,14 +58,17 @@ export default function ContentVideoPage({ onOpenFunnel }) {
             Reels, Reportagen und Social-First-Serien mit Authentizität statt künstlicher Hochglanz-Langeweile.
           </p>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={SPRING_PHYSICS}
             onClick={handleStart}
             className="btn-primary"
-            style={{ padding: '14px 28px', fontSize: '1rem' }}
+            style={{ padding: '14px 28px', fontSize: '1rem', willChange: 'transform' }}
           >
             <Sparkles size={18} />
             <span>Format-Idee im Kopf? Lass uns das Drehbuch schreiben</span>
-          </button>
+          </motion.button>
         </div>
 
         <div style={{ borderRadius: '24px', overflow: 'hidden', height: '100%', minHeight: '340px', boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.12)' }}>
@@ -69,7 +78,7 @@ export default function ContentVideoPage({ onOpenFunnel }) {
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
         </div>
-      </div>
+      </TiltGlassCard>
 
       {/* Leistungs-Module */}
       <div>
@@ -83,7 +92,7 @@ export default function ContentVideoPage({ onOpenFunnel }) {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-          <div className="glass-panel glass-panel-hover" style={{ padding: '32px', borderRadius: '24px' }}>
+          <TiltGlassCard index={0} maxTilt={6} style={{ padding: '32px', borderRadius: '24px' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(244, 63, 94, 0.15)', color: '#F43F5E', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
               <Clapperboard size={22} />
             </div>
@@ -93,9 +102,9 @@ export default function ContentVideoPage({ onOpenFunnel }) {
             <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
               Wiederkehrende Serienformate statt Zufallsvideos. Wir entwickeln die Erzähllogik, hooksichere Skripte und visuelle Storyboards.
             </p>
-          </div>
+          </TiltGlassCard>
 
-          <div className="glass-panel glass-panel-hover" style={{ padding: '32px', borderRadius: '24px' }}>
+          <TiltGlassCard index={1} maxTilt={6} style={{ padding: '32px', borderRadius: '24px' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(251, 146, 60, 0.15)', color: '#EA580C', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
               <Film size={22} />
             </div>
@@ -105,9 +114,9 @@ export default function ContentVideoPage({ onOpenFunnel }) {
             <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
               Kamera, Licht, Ton und Drohne. Wir rücken mit leichtem, hocheffizientem Besteck an – nah an Menschen und echter Arbeitswirklichkeit.
             </p>
-          </div>
+          </TiltGlassCard>
 
-          <div className="glass-panel glass-panel-hover" style={{ padding: '32px', borderRadius: '24px' }}>
+          <TiltGlassCard index={2} maxTilt={6} style={{ padding: '32px', borderRadius: '24px' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(129, 140, 248, 0.15)', color: '#6366F1', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
               <Eye size={22} />
             </div>
@@ -117,13 +126,14 @@ export default function ContentVideoPage({ onOpenFunnel }) {
             <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
               Plattformgerechter Schnitt für maximale Watchtime, ansprechende Farblooks und dynamische Untertitel für den Sound-Off Konsum.
             </p>
-          </div>
+          </TiltGlassCard>
         </div>
       </div>
 
       {/* Kollektiv-Fokus */}
-      <div
-        className="glass-panel"
+      <TiltGlassCard
+        index={0}
+        maxTilt={3}
         style={{
           padding: '36px',
           borderRadius: '26px',
@@ -145,11 +155,12 @@ export default function ContentVideoPage({ onOpenFunnel }) {
             "Erfahrene Kamera- und Schnitt-Partner für professionelle Produktionen, strategisch geführt von Taunuswerk."
           </p>
         </div>
-      </div>
+      </TiltGlassCard>
 
       {/* Bottom CTA Banner */}
-      <div
-        className="glass-panel"
+      <TiltGlassCard
+        index={1}
+        maxTilt={3}
         style={{
           padding: '40px',
           borderRadius: '28px',
@@ -163,11 +174,18 @@ export default function ContentVideoPage({ onOpenFunnel }) {
         <p style={{ color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px auto' }}>
           In 7 Tagen hast du dein komplettes Storyboard, Produktionsplan und Kalkulation auf dem Tisch.
         </p>
-        <button onClick={handleStart} className="btn-primary" style={{ padding: '14px 28px' }}>
+        <motion.button
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          transition={SPRING_PHYSICS}
+          onClick={handleStart}
+          className="btn-primary"
+          style={{ padding: '14px 28px', willChange: 'transform' }}
+        >
           <span>Idee im Konzept-Werk einreichen</span>
           <ArrowRight size={16} />
-        </button>
-      </div>
+        </motion.button>
+      </TiltGlassCard>
     </div>
   );
 }

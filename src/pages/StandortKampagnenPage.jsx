@@ -1,6 +1,10 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useRouter, Link } from '../router';
-import { Compass, Sparkles, ArrowRight, CheckCircle2, Users, Target, Share2, ShieldCheck } from 'lucide-react';
+import TiltGlassCard from '../components/TiltGlassCard';
+import { Compass, Sparkles, ArrowRight, Users, Target, Share2 } from 'lucide-react';
+
+const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function StandortKampagnenPage({ onOpenFunnel }) {
   const { navigate } = useRouter();
@@ -27,8 +31,10 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
       </div>
 
       {/* Hero Card */}
-      <div
-        className="glass-panel"
+      <TiltGlassCard
+        index={0}
+        maxTilt={3.5}
+        shimmerBorder
         style={{
           padding: 'clamp(32px, 5vw, 56px)',
           borderRadius: '32px',
@@ -52,14 +58,17 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
             Von Bürgerbeteiligung bis Employer Branding: Wir mobilisieren Menschen mit Haltung und System.
           </p>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={SPRING_PHYSICS}
             onClick={handleStart}
             className="btn-primary"
-            style={{ padding: '14px 28px', fontSize: '1rem' }}
+            style={{ padding: '14px 28px', fontSize: '1rem', willChange: 'transform' }}
           >
             <Sparkles size={18} />
             <span>Aktion in Planung? Wir starten im 500 € Konzept-Werk</span>
-          </button>
+          </motion.button>
         </div>
 
         <div style={{ borderRadius: '24px', overflow: 'hidden', height: '100%', minHeight: '340px', boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.12)' }}>
@@ -69,7 +78,7 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
         </div>
-      </div>
+      </TiltGlassCard>
 
       {/* Leistungs-Module */}
       <div>
@@ -83,7 +92,7 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-          <div className="glass-panel glass-panel-hover" style={{ padding: '32px', borderRadius: '24px' }}>
+          <TiltGlassCard index={0} maxTilt={6} style={{ padding: '32px', borderRadius: '24px' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(251, 146, 60, 0.15)', color: '#EA580C', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
               <Target size={22} />
             </div>
@@ -93,9 +102,9 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
             <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
               Keine Floskeln, sondern Botschaften, die verfangen. Wir definieren das zentrale Motto, die Hebel für Aufmerksamkeit und den genauen Zeitplan.
             </p>
-          </div>
+          </TiltGlassCard>
 
-          <div className="glass-panel glass-panel-hover" style={{ padding: '32px', borderRadius: '24px' }}>
+          <TiltGlassCard index={1} maxTilt={6} style={{ padding: '32px', borderRadius: '24px' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(244, 63, 94, 0.15)', color: '#F43F5E', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
               <Share2 size={22} />
             </div>
@@ -105,9 +114,9 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
             <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
               Die Straße befeuern und digital verlängern: Wir sorgen dafür, dass Events, Infostände und Aktionen organisch in Instagram, LinkedIn & TikTok zünden.
             </p>
-          </div>
+          </TiltGlassCard>
 
-          <div className="glass-panel glass-panel-hover" style={{ padding: '32px', borderRadius: '24px' }}>
+          <TiltGlassCard index={2} maxTilt={6} style={{ padding: '32px', borderRadius: '24px' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(56, 189, 248, 0.15)', color: '#0284C7', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
               <Users size={22} />
             </div>
@@ -117,13 +126,14 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
             <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
               Fachkräfte und Bürger dort ansprechen, wo sie leben. In Kooperation mit HR-Spezialisten positionieren wir deine Region oder Firma als attraktive Heimat.
             </p>
-          </div>
+          </TiltGlassCard>
         </div>
       </div>
 
       {/* Kollektiv-Fokus */}
-      <div
-        className="glass-panel"
+      <TiltGlassCard
+        index={0}
+        maxTilt={3}
         style={{
           padding: '36px',
           borderRadius: '26px',
@@ -145,11 +155,12 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
             "Gezielter Einsatz von HR- und Kommunikations-Experten aus dem Netzwerk für maximale Glaubwürdigkeit vor Ort."
           </p>
         </div>
-      </div>
+      </TiltGlassCard>
 
       {/* Bottom CTA Banner */}
-      <div
-        className="glass-panel"
+      <TiltGlassCard
+        index={1}
+        maxTilt={3}
         style={{
           padding: '40px',
           borderRadius: '28px',
@@ -163,11 +174,18 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
         <p style={{ color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px auto' }}>
           In 7 Tagen steht deine fertige Kampagnenmechanik inklusive Timeline und Budgetallokation.
         </p>
-        <button onClick={handleStart} className="btn-primary" style={{ padding: '14px 28px' }}>
+        <motion.button
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          transition={SPRING_PHYSICS}
+          onClick={handleStart}
+          className="btn-primary"
+          style={{ padding: '14px 28px', willChange: 'transform' }}
+        >
           <span>Konzept-Werk anfragen</span>
           <ArrowRight size={16} />
-        </button>
-      </div>
+        </motion.button>
+      </TiltGlassCard>
     </div>
   );
 }

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Send, Sparkles, Check, Clock, Phone, Mail, User, Layers, HelpCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Send, Sparkles, Check, User, Mail, Phone } from 'lucide-react';
+
+const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function RequestFunnel({ onSubmitted }) {
   const [category, setCategory] = useState('Kampagne / Event');
@@ -55,9 +58,24 @@ export default function RequestFunnel({ onSubmitted }) {
   };
 
   return (
-    <div id="anfrage" className="glass-panel" style={{ padding: '40px', maxWidth: '860px', margin: '0 auto', position: 'relative', overflow: 'hidden' }}>
+    <motion.div
+      id="anfrage"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={SPRING_PHYSICS}
+      className="glass-panel border-shimmer-card"
+      style={{
+        padding: 'clamp(28px, 4vw, 44px)',
+        maxWidth: '860px',
+        margin: '0 auto',
+        position: 'relative',
+        overflow: 'hidden',
+        willChange: 'transform, opacity'
+      }}
+    >
       {/* Decorative ambient corner glow */}
-      <div 
+      <div
         style={{
           position: 'absolute',
           top: '-80px',
@@ -65,13 +83,13 @@ export default function RequestFunnel({ onSubmitted }) {
           width: '240px',
           height: '240px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(251, 146, 60, 0.25) 0%, rgba(244, 63, 94, 0.15) 50%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(251, 146, 60, 0.22) 0%, rgba(244, 63, 94, 0.14) 50%, transparent 70%)',
           pointerEvents: 'none',
           filter: 'blur(30px)'
         }}
       />
 
-      <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '36px', position: 'relative', zIndex: 2 }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
           <span className="glass-pill">
             <Sparkles size={14} color="#F43F5E" />
@@ -86,24 +104,41 @@ export default function RequestFunnel({ onSubmitted }) {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
-        {/* Step 1: Category Chips */}
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '28px', position: 'relative', zIndex: 2 }}>
+        {/* Step 1: Category Chips with Spring Micro-Feedback (0.98 -> 1.02) */}
         <div>
           <label style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-headline)', marginBottom: '12px' }}>
             1. In welchem Themenfeld liegt dein Vorhaben?
           </label>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-            {categories.map((cat) => (
-              <button
-                type="button"
-                key={cat}
-                className={`chip-btn ${category === cat ? 'selected' : ''}`}
-                onClick={() => setCategory(cat)}
-              >
-                {category === cat && <Check size={14} />}
-                <span>{cat}</span>
-              </button>
-            ))}
+            {categories.map((cat) => {
+              const isSelected = category === cat;
+              return (
+                <motion.button
+                  type="button"
+                  key={cat}
+                  className={`chip-btn ${isSelected ? 'selected' : ''}`}
+                  onClick={() => setCategory(cat)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  animate={{ scale: isSelected ? 1.02 : 1 }}
+                  transition={SPRING_PHYSICS}
+                  style={{ willChange: 'transform' }}
+                >
+                  {isSelected && (
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={SPRING_PHYSICS}
+                      style={{ display: 'inline-flex' }}
+                    >
+                      <Check size={14} />
+                    </motion.span>
+                  )}
+                  <span>{cat}</span>
+                </motion.button>
+              );
+            })}
           </div>
         </div>
 
@@ -134,23 +169,40 @@ export default function RequestFunnel({ onSubmitted }) {
           )}
         </div>
 
-        {/* Step 3: Timeframe Chips */}
+        {/* Step 3: Timeframe Chips with Spring Micro-Feedback (0.98 -> 1.02) */}
         <div>
           <label style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-headline)', marginBottom: '12px' }}>
             3. Geplanter Zeitrahmen
           </label>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-            {timeframes.map((time) => (
-              <button
-                type="button"
-                key={time}
-                className={`chip-btn ${timeframe === time ? 'selected' : ''}`}
-                onClick={() => setTimeframe(time)}
-              >
-                {timeframe === time && <Check size={14} />}
-                <span>{time}</span>
-              </button>
-            ))}
+            {timeframes.map((time) => {
+              const isSelected = timeframe === time;
+              return (
+                <motion.button
+                  type="button"
+                  key={time}
+                  className={`chip-btn ${isSelected ? 'selected' : ''}`}
+                  onClick={() => setTimeframe(time)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  animate={{ scale: isSelected ? 1.02 : 1 }}
+                  transition={SPRING_PHYSICS}
+                  style={{ willChange: 'transform' }}
+                >
+                  {isSelected && (
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={SPRING_PHYSICS}
+                      style={{ display: 'inline-flex' }}
+                    >
+                      <Check size={14} />
+                    </motion.span>
+                  )}
+                  <span>{time}</span>
+                </motion.button>
+              );
+            })}
           </div>
         </div>
 
@@ -218,16 +270,20 @@ export default function RequestFunnel({ onSubmitted }) {
 
         {/* Submit Button & Assurance */}
         <div style={{ paddingTop: '8px' }}>
-          <button
+          <motion.button
             type="submit"
             disabled={isSubmitting}
             className="btn-primary"
+            whileHover={{ scale: 1.015 }}
+            whileTap={{ scale: 0.985 }}
+            transition={SPRING_PHYSICS}
             style={{
               width: '100%',
               padding: '16px 24px',
               fontSize: '1.05rem',
               cursor: isSubmitting ? 'wait' : 'pointer',
-              opacity: isSubmitting ? 0.8 : 1
+              opacity: isSubmitting ? 0.8 : 1,
+              willChange: 'transform'
             }}
           >
             {isSubmitting ? (
@@ -238,7 +294,7 @@ export default function RequestFunnel({ onSubmitted }) {
                 <Send size={18} />
               </>
             )}
-          </button>
+          </motion.button>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '16px', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
             <span>🔒 Daten bleiben 100% vertraulich</span>
@@ -247,6 +303,6 @@ export default function RequestFunnel({ onSubmitted }) {
           </div>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 }
