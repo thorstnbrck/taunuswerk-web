@@ -677,7 +677,8 @@ export default function HomePage({ onOpenFunnel }) {
               <TiltGlassCard
                 index={0}
                 maxTilt={6}
-                style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.72)', border: '1px solid rgba(255, 255, 255, 0.9)' }}
+                shimmerBorder={true}
+                style={{ padding: '20px 22px', borderRadius: '20px', background: 'rgba(255, 255, 255, 0.76)' }}
               >
                 <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '6px' }}>
                   Kamera & Drohne
@@ -690,7 +691,8 @@ export default function HomePage({ onOpenFunnel }) {
               <TiltGlassCard
                 index={1}
                 maxTilt={6}
-                style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.72)', border: '1px solid rgba(255, 255, 255, 0.9)' }}
+                shimmerBorder={true}
+                style={{ padding: '20px 22px', borderRadius: '20px', background: 'rgba(255, 255, 255, 0.76)' }}
               >
                 <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '6px' }}>
                   UI/UX & Code
@@ -703,7 +705,8 @@ export default function HomePage({ onOpenFunnel }) {
               <TiltGlassCard
                 index={2}
                 maxTilt={6}
-                style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.72)', border: '1px solid rgba(255, 255, 255, 0.9)' }}
+                shimmerBorder={true}
+                style={{ padding: '20px 22px', borderRadius: '20px', background: 'rgba(255, 255, 255, 0.76)' }}
               >
                 <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '6px' }}>
                   HR- & Recruiting
