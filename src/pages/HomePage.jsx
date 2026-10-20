@@ -31,12 +31,7 @@ export default function HomePage({ onOpenFunnel }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '90px' }}>
       {/* 1. HERO SECTION (Layered App-Card Layout) */}
       <section style={{ paddingTop: '20px' }}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={SPRING_PHYSICS}
-          style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px auto' }}
-        >
+        <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px auto' }}>
           <div style={{ display: 'inline-flex', marginBottom: '20px' }}>
             <span className="glass-pill" style={{ padding: '8px 20px', gap: '10px' }}>
               <Sparkles size={16} color="#F43F5E" />
@@ -77,7 +72,7 @@ export default function HomePage({ onOpenFunnel }) {
               <ArrowRight size={16} />
             </motion.button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Hero Visual: Schwebende Frosted-Glass-Karten im 3D-Layer-Stil über weichem Lichtverlauf */}
         <TiltGlassCard
@@ -118,10 +113,7 @@ export default function HomePage({ onOpenFunnel }) {
             />
 
             {/* Floating Glass Layer Card 1: Left Bottom */}
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ...SPRING_PHYSICS, delay: 0.15 }}
+            <div
               className="glass-panel"
               style={{
                 position: 'absolute',
@@ -157,13 +149,10 @@ export default function HomePage({ onOpenFunnel }) {
                 <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>7-Tage-Sprint</div>
                 <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-headline)' }}>Vom Gedanken zum Masterplan</div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Floating Glass Layer Card 2: Right Top */}
-            <motion.div
-              initial={{ opacity: 0, y: -16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ...SPRING_PHYSICS, delay: 0.2 }}
+            <div
               className="glass-panel"
               style={{
                 position: 'absolute',
@@ -182,18 +171,14 @@ export default function HomePage({ onOpenFunnel }) {
               <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-headline)' }}>
                 Werkbank geöffnet für Q4/2026
               </span>
-            </motion.div>
+            </div>
           </div>
         </TiltGlassCard>
       </section>
 
       {/* 2. DAS FLAGGSCHIFF: "DAS KONZEPT-WERK" (mit 1px Border-Shimmer) */}
       <section id="konzept-werk" style={{ scrollMarginTop: '100px' }}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={SPRING_PHYSICS}
+        <div
           className="glass-panel border-shimmer-card"
           style={{
             padding: 'clamp(32px, 5vw, 56px)',
@@ -390,18 +375,12 @@ export default function HomePage({ onOpenFunnel }) {
               <ArrowRight size={16} />
             </motion.button>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* 3. LEISTUNGS-DOCK */}
       <section id="leistungen">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={SPRING_PHYSICS}
-          style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 44px auto' }}
-        >
+        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 44px auto' }}>
           <span className="glass-pill" style={{ marginBottom: '14px' }}>
             <Layers size={14} color="#38BDF8" />
             <span>Disziplinen & Gewerke</span>
@@ -412,7 +391,7 @@ export default function HomePage({ onOpenFunnel }) {
           <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
             Von regionaler Mobilisierung über virale Videoformate bis zu schnellen Prototypen – alles aus einer Hand konzipiert.
           </p>
-        </motion.div>
+        </div>
 
         <div className="bento-grid">
           {/* Card 01 */}
@@ -689,11 +668,7 @@ export default function HomePage({ onOpenFunnel }) {
 
       {/* 5. DAS KOLLEKTIV-VERSPRECHEN */}
       <section id="kollektiv" style={{ scrollMarginTop: '100px' }}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={SPRING_PHYSICS}
+        <div
           className="glass-panel"
           style={{
             padding: 'clamp(36px, 5vw, 56px)',
@@ -758,16 +733,12 @@ export default function HomePage({ onOpenFunnel }) {
               </TiltGlassCard>
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* 6. BOTTOM CALL-TO-ACTION (Ersetzt die in-page Form durch Overlay-Trigger) */}
+      {/* 6. BOTTOM CALL-TO-ACTION */}
       <section>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={SPRING_PHYSICS}
+        <div
           className="glass-panel border-shimmer-card"
           style={{
             padding: 'clamp(36px, 5vw, 56px)',
@@ -808,7 +779,7 @@ export default function HomePage({ onOpenFunnel }) {
             <span>⚡️ 24h Reaktionsgarantie</span>
             <span>🎯 Kickoff kostenlos · Konzept-Werk 500 € Festpreis</span>
           </div>
-        </motion.div>
+        </div>
       </section>
     </div>
   );

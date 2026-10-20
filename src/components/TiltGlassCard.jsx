@@ -61,26 +61,18 @@ export default function TiltGlassCard({
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{
-        type: 'spring',
-        stiffness: 260,
-        damping: 24,
-        delay: index * 0.05,
-      }}
       onPointerEnter={handlePointerEnter}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       className={`glass-panel ${shimmerBorder ? 'border-shimmer-card' : ''} ${className}`.trim()}
       style={{
-        ...style,
+        opacity: 1, // Always 100% visible - never disappears on scroll
         transformPerspective: 1000,
         rotateX: enableTilt && isHovered ? rotateX : 0,
         rotateY: enableTilt && isHovered ? rotateY : 0,
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
+        ...style,
       }}
       {...props}
     >
