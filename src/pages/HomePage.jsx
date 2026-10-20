@@ -38,7 +38,7 @@ export default function HomePage({ onOpenFunnel }) {
           </div>
 
           <p style={{ fontSize: 'clamp(1.05rem, 2vw, 1.25rem)', color: '#334155', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto 32px auto', display: 'block', opacity: 1, visibility: 'visible' }}>
-            Ganzheitliche Kampagnen, scharfer Multimedia-Content und smarte digitale Tools. Für Regionen, Macher und Unternehmen – vom ersten Bauplan bis zum Rollout.
+            Starke Konzepte, moderner Content und innovative Web-Tools. Für alle, die lieber echte Ergebnisse sehen als lange PowerPoints.
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
