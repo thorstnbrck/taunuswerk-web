@@ -27,7 +27,6 @@ export default function Navbar({ onOpenFunnel }) {
         <nav className="dock-content" aria-label="Hauptnavigation">
           {/* Logo */}
           <Link to="/" className="brand-logo" onClick={() => setMobileMenuOpen(false)}>
-            <span className="glow-dot" aria-hidden="true"></span>
             <span>TAUNUSWERK</span>
           </Link>
 
@@ -229,7 +228,6 @@ export default function Navbar({ onOpenFunnel }) {
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <div className="brand-logo">
-                <span className="glow-dot"></span>
                 <span>TAUNUSWERK</span>
               </div>
               <button

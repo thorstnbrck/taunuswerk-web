@@ -105,13 +105,20 @@ body {
   }
 }
 
-/* Typographic rules from Modern Web Guidance */
+/* Typographic rules */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-headline);
   font-weight: 700;
   line-height: 1.25;
-  text-wrap: balance;
   letter-spacing: -0.02em;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+h1 {
+  display: block;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 p, li, blockquote {

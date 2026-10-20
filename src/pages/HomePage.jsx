@@ -39,7 +39,18 @@ export default function HomePage({ onOpenFunnel }) {
             </span>
           </div>
 
-          <h1 style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.2rem)', fontWeight: 800, marginBottom: '20px', lineHeight: 1.15 }}>
+          <h1 
+            style={{ 
+              fontSize: 'clamp(2.4rem, 5.5vw, 4.2rem)', 
+              fontWeight: 800, 
+              marginBottom: '20px', 
+              lineHeight: 1.18,
+              color: '#0F172A',
+              display: 'block',
+              visibility: 'visible',
+              opacity: 1
+            }}
+          >
             Wo Ideen Substanz bekommen.
           </h1>
 

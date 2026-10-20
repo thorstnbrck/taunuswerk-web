@@ -24,7 +24,6 @@ export default function Footer({ onOpenLegal }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
           <div>
             <div className="brand-logo" style={{ marginBottom: '6px' }}>
-              <span className="glow-dot"></span>
               <span>TAUNUSWERK</span>
             </div>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
