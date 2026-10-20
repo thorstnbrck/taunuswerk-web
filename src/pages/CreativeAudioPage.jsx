@@ -1,22 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useRouter, Link } from '../router';
+import { Link } from '../router';
 import TiltGlassCard from '../components/TiltGlassCard';
 import { Music, Sparkles, ArrowRight, Volume2, Headphones, Radio } from 'lucide-react';
 
 const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function CreativeAudioPage({ onOpenFunnel }) {
-  const { navigate } = useRouter();
-
-  const handleStart = () => {
-    if (onOpenFunnel) {
-      onOpenFunnel();
-    } else {
-      navigate('/#anfrage');
-    }
-  };
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
       {/* Breadcrumb */}
@@ -62,12 +52,12 @@ export default function CreativeAudioPage({ onOpenFunnel }) {
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={SPRING_PHYSICS}
-            onClick={handleStart}
+            onClick={onOpenFunnel}
             className="btn-primary"
-            style={{ padding: '14px 28px', fontSize: '1rem', background: 'linear-gradient(135deg, #818CF8 0%, #F43F5E 100%)', willChange: 'transform' }}
+            style={{ padding: '14px 28px', fontSize: '1rem', background: 'linear-gradient(135deg, #818CF8 0%, #F43F5E 100%)' }}
           >
             <Sparkles size={18} />
-            <span>Audio-Konzept für deine Kampagne anfragen</span>
+            <span>Kostenloses Kickoff vereinbaren</span>
           </motion.button>
         </div>
 
@@ -145,17 +135,17 @@ export default function CreativeAudioPage({ onOpenFunnel }) {
           Bereit für deinen eigenen Markensound?
         </h3>
         <p style={{ color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px auto' }}>
-          Im 500 € Konzept-Werk definieren wir die Tonalität, Einsatzorte und die Produktionspipeline.
+          Im kostenlosen 15-Minuten-Kickoff sprechen wir über deine Marken-Tonalität. Das schlüsselfertige Konzept gibt es für 500 € Festpreis.
         </p>
         <motion.button
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
           transition={SPRING_PHYSICS}
-          onClick={handleStart}
+          onClick={onOpenFunnel}
           className="btn-primary"
-          style={{ padding: '14px 28px', willChange: 'transform' }}
+          style={{ padding: '14px 28px' }}
         >
-          <span>Audio-Konzept anfragen</span>
+          <span>Kostenloses Erstgespräch anfragen</span>
           <ArrowRight size={16} />
         </motion.button>
       </TiltGlassCard>

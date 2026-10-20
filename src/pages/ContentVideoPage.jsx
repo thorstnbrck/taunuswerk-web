@@ -1,22 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useRouter, Link } from '../router';
+import { Link } from '../router';
 import TiltGlassCard from '../components/TiltGlassCard';
 import { Video, Sparkles, ArrowRight, Film, Clapperboard, Eye, Users } from 'lucide-react';
 
 const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function ContentVideoPage({ onOpenFunnel }) {
-  const { navigate } = useRouter();
-
-  const handleStart = () => {
-    if (onOpenFunnel) {
-      onOpenFunnel();
-    } else {
-      navigate('/#anfrage');
-    }
-  };
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
       {/* Breadcrumb */}
@@ -62,12 +52,12 @@ export default function ContentVideoPage({ onOpenFunnel }) {
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={SPRING_PHYSICS}
-            onClick={handleStart}
+            onClick={onOpenFunnel}
             className="btn-primary"
-            style={{ padding: '14px 28px', fontSize: '1rem', willChange: 'transform' }}
+            style={{ padding: '14px 28px', fontSize: '1rem' }}
           >
             <Sparkles size={18} />
-            <span>Format-Idee im Kopf? Lass uns das Drehbuch schreiben</span>
+            <span>Kostenloses Kickoff vereinbaren</span>
           </motion.button>
         </div>
 
@@ -169,20 +159,20 @@ export default function ContentVideoPage({ onOpenFunnel }) {
         }}
       >
         <h3 style={{ fontSize: '1.7rem', marginBottom: '12px' }}>
-          Format-Idee im Kopf? Lass uns das Drehbuch im Konzept-Werk schreiben.
+          Format-Idee im Kopf? Lass uns das Drehbuch schreiben.
         </h3>
         <p style={{ color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px auto' }}>
-          In 7 Tagen hast du dein komplettes Storyboard, Produktionsplan und Kalkulation auf dem Tisch.
+          Im kostenlosen 15-Minuten-Kickoff sprechen wir über deine Idee. Anschließend erhältst du dein komplettes Storyboard im 500 € Konzept-Werk.
         </p>
         <motion.button
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
           transition={SPRING_PHYSICS}
-          onClick={handleStart}
+          onClick={onOpenFunnel}
           className="btn-primary"
-          style={{ padding: '14px 28px', willChange: 'transform' }}
+          style={{ padding: '14px 28px' }}
         >
-          <span>Idee im Konzept-Werk einreichen</span>
+          <span>Idee einreichen & Kickoff buchen</span>
           <ArrowRight size={16} />
         </motion.button>
       </TiltGlassCard>

@@ -129,7 +129,8 @@ p, li, blockquote {
   border-radius: var(--radius-lg);
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .glass-panel-hover:hover {
@@ -150,7 +151,6 @@ p, li, blockquote {
     transparent 70%
   );
   mix-blend-mode: overlay;
-  will-change: transform, opacity;
 }
 
 /* 3. Lichtkanten-Animation: 1px Orbiting Border-Shimmer (60 FPS GPU Transform) */
@@ -236,7 +236,12 @@ p, li, blockquote {
   box-shadow: var(--shadow-button-glow);
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .btn-primary:hover {
@@ -266,7 +271,12 @@ p, li, blockquote {
   box-shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.05);
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .btn-secondary:hover {
@@ -410,7 +420,6 @@ dialog.glass-dialog::backdrop {
   position: relative;
   animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   --animation-reduced: none;
-  will-change: transform, opacity;
 }
 
 @keyframes modalPop {
@@ -436,6 +445,8 @@ dialog.glass-dialog::backdrop {
   color: var(--text-headline);
   outline: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .form-input:focus, .form-textarea:focus {
@@ -457,7 +468,9 @@ dialog.glass-dialog::backdrop {
   border: 1px solid rgba(255, 255, 255, 0.85);
   color: var(--text-body);
   user-select: none;
-  will-change: transform, opacity;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0);
 }
 
 .chip-btn:hover {

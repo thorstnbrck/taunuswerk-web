@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const SPRING_CONFIG = { stiffness: 260, damping: 24 };
@@ -15,6 +15,7 @@ export default function TiltGlassCard({
 }) {
   const cardRef = useRef(null);
   const boundsRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Normalized cursor coordinates (-0.5 to 0.5)
   const mouseX = useMotionValue(0);
@@ -34,9 +35,9 @@ export default function TiltGlassCard({
   const handlePointerEnter = (e) => {
     if (!enableTilt || e.pointerType === 'touch') return;
     if (cardRef.current) {
-      // Cache bounds once on enter to avoid layout thrashing during pointermove
       boundsRef.current = cardRef.current.getBoundingClientRect();
       glareOpacity.set(1);
+      setIsHovered(true);
     }
   };
 
@@ -54,6 +55,7 @@ export default function TiltGlassCard({
     mouseX.set(0);
     mouseY.set(0);
     glareOpacity.set(0);
+    setIsHovered(false);
   };
 
   return (
@@ -66,7 +68,7 @@ export default function TiltGlassCard({
         type: 'spring',
         stiffness: 260,
         damping: 24,
-        delay: index * 0.05, // 50ms staggered fade-up delay per card
+        delay: index * 0.05,
       }}
       onPointerEnter={handlePointerEnter}
       onPointerMove={handlePointerMove}
@@ -75,13 +77,14 @@ export default function TiltGlassCard({
       style={{
         ...style,
         transformPerspective: 1000,
-        rotateX: enableTilt ? rotateX : 0,
-        rotateY: enableTilt ? rotateY : 0,
-        willChange: 'transform, opacity',
+        rotateX: enableTilt && isHovered ? rotateX : 0,
+        rotateY: enableTilt && isHovered ? rotateY : 0,
+        WebkitFontSmoothing: 'antialiased',
+        MozOsxFontSmoothing: 'grayscale',
       }}
       {...props}
     >
-      {/* Dynamic specular glass glare layer (compositor-only transform & opacity) */}
+      {/* Specular glare layer */}
       {enableTilt && (
         <motion.div
           aria-hidden="true"

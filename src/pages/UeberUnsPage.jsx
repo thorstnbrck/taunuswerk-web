@@ -1,22 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useRouter, Link } from '../router';
+import { Link } from '../router';
 import TiltGlassCard from '../components/TiltGlassCard';
 import { UserCheck, Sparkles, ArrowRight, MessageSquare, PhoneCall, Network, Award } from 'lucide-react';
 
 const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function UeberUnsPage({ onOpenFunnel }) {
-  const { navigate } = useRouter();
-
-  const handleStart = () => {
-    if (onOpenFunnel) {
-      onOpenFunnel();
-    } else {
-      navigate('/#anfrage');
-    }
-  };
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
       {/* Breadcrumb */}
@@ -62,12 +52,12 @@ export default function UeberUnsPage({ onOpenFunnel }) {
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={SPRING_PHYSICS}
-            onClick={handleStart}
+            onClick={onOpenFunnel}
             className="btn-primary"
-            style={{ padding: '14px 28px', fontSize: '1rem', willChange: 'transform' }}
+            style={{ padding: '14px 28px', fontSize: '1rem' }}
           >
             <Sparkles size={18} />
-            <span>Lass uns dein nächstes Projekt zimmern</span>
+            <span>Kostenloses Kickoff vereinbaren</span>
           </motion.button>
         </div>
 
@@ -161,15 +151,15 @@ export default function UeberUnsPage({ onOpenFunnel }) {
           Lass uns dein nächstes Projekt zimmern.
         </h2>
         <p style={{ color: 'var(--text-muted)', marginBottom: '28px', maxWidth: '640px', margin: '0 auto 28px auto', fontSize: '1.05rem' }}>
-          Egal ob du eine vage Idee im Kopf hast oder ein akutes Problem lösen willst: Der erste Schritt ist ein unverbindlicher 15-Minuten-Fokus-Call.
+          Egal ob du eine vage Idee im Kopf hast oder ein akutes Problem lösen willst: Der erste Schritt ist ein unverbindlicher, kostenloser 15-Minuten-Fokus-Call.
         </p>
         <motion.button
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
           transition={SPRING_PHYSICS}
-          onClick={handleStart}
+          onClick={onOpenFunnel}
           className="btn-primary"
-          style={{ padding: '15px 32px', fontSize: '1.05rem', willChange: 'transform' }}
+          style={{ padding: '15px 32px', fontSize: '1.05rem' }}
         >
           <span>Idee einreichen & Kickoff buchen</span>
           <ArrowRight size={18} />

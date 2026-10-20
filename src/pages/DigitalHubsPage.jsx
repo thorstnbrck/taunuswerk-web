@@ -1,22 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useRouter, Link } from '../router';
+import { Link } from '../router';
 import TiltGlassCard from '../components/TiltGlassCard';
 import { Layers, Sparkles, ArrowRight, LayoutTemplate, Cpu, Database, Users } from 'lucide-react';
 
 const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function DigitalHubsPage({ onOpenFunnel }) {
-  const { navigate } = useRouter();
-
-  const handleStart = () => {
-    if (onOpenFunnel) {
-      onOpenFunnel();
-    } else {
-      navigate('/#anfrage');
-    }
-  };
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
       {/* Breadcrumb */}
@@ -62,12 +52,12 @@ export default function DigitalHubsPage({ onOpenFunnel }) {
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={SPRING_PHYSICS}
-            onClick={handleStart}
+            onClick={onOpenFunnel}
             className="btn-primary"
-            style={{ padding: '14px 28px', fontSize: '1rem', background: 'linear-gradient(135deg, #0284C7 0%, #38BDF8 100%)', willChange: 'transform' }}
+            style={{ padding: '14px 28px', fontSize: '1rem', background: 'linear-gradient(135deg, #0284C7 0%, #38BDF8 100%)' }}
           >
             <Sparkles size={18} />
-            <span>Plattform-Idee prüfen: Ab ins Konzept-Werk für 500 €</span>
+            <span>Kostenloses Kickoff vereinbaren</span>
           </motion.button>
         </div>
 
@@ -169,20 +159,20 @@ export default function DigitalHubsPage({ onOpenFunnel }) {
         }}
       >
         <h3 style={{ fontSize: '1.7rem', marginBottom: '12px' }}>
-          Plattform-Idee prüfen: Ab ins Konzept-Werk für 500 €.
+          Plattform-Idee prüfen: Start im kostenlosen Kickoff.
         </h3>
         <p style={{ color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px auto' }}>
-          Wir erarbeiten die Spezifikation, den Tech-Stack und eine realistische MVP-Roadmap in 7 Tagen.
+          Im kostenlosen Erstgespräch evaluieren wir das Konzept. Den fertigen Bauplan gibt es für 500 € Festpreis.
         </p>
         <motion.button
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
           transition={SPRING_PHYSICS}
-          onClick={handleStart}
+          onClick={onOpenFunnel}
           className="btn-primary"
-          style={{ padding: '14px 28px', willChange: 'transform' }}
+          style={{ padding: '14px 28px' }}
         >
-          <span>Konzept-Werk starten</span>
+          <span>Kostenloses Erstgespräch buchen</span>
           <ArrowRight size={16} />
         </motion.button>
       </TiltGlassCard>

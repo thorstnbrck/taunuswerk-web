@@ -1,22 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useRouter, Link } from '../router';
+import { Link } from '../router';
 import TiltGlassCard from '../components/TiltGlassCard';
 import { Compass, Sparkles, ArrowRight, Users, Target, Share2 } from 'lucide-react';
 
 const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function StandortKampagnenPage({ onOpenFunnel }) {
-  const { navigate } = useRouter();
-
-  const handleStart = () => {
-    if (onOpenFunnel) {
-      onOpenFunnel();
-    } else {
-      navigate('/#anfrage');
-    }
-  };
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
       {/* Breadcrumb / Category Tag */}
@@ -62,12 +52,12 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
             transition={SPRING_PHYSICS}
-            onClick={handleStart}
+            onClick={onOpenFunnel}
             className="btn-primary"
-            style={{ padding: '14px 28px', fontSize: '1rem', willChange: 'transform' }}
+            style={{ padding: '14px 28px', fontSize: '1rem' }}
           >
             <Sparkles size={18} />
-            <span>Aktion in Planung? Wir starten im 500 € Konzept-Werk</span>
+            <span>Kostenloses Kickoff vereinbaren</span>
           </motion.button>
         </div>
 
@@ -169,20 +159,20 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
         }}
       >
         <h3 style={{ fontSize: '1.7rem', marginBottom: '12px' }}>
-          Aktion in Planung? Wir starten im 500 € Konzept-Werk.
+          Aktion in Planung? Lass uns im kostenlosen Kickoff starten.
         </h3>
         <p style={{ color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px auto' }}>
-          In 7 Tagen steht deine fertige Kampagnenmechanik inklusive Timeline und Budgetallokation.
+          In 15 Minuten klären wir kostenlos deine Ziele. Bei Beauftragung steht in 7 Tagen deine fertige Kampagnenmechanik im 500 € Konzept-Werk.
         </p>
         <motion.button
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
           transition={SPRING_PHYSICS}
-          onClick={handleStart}
+          onClick={onOpenFunnel}
           className="btn-primary"
-          style={{ padding: '14px 28px', willChange: 'transform' }}
+          style={{ padding: '14px 28px' }}
         >
-          <span>Konzept-Werk anfragen</span>
+          <span>Kostenloses Erstgespräch buchen</span>
           <ArrowRight size={16} />
         </motion.button>
       </TiltGlassCard>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter, Link } from '../router';
-import { Sparkles, ChevronDown, Menu, X, ArrowUpRight, Compass, Video, Music, Layers, Users } from 'lucide-react';
+import { Sparkles, ChevronDown, Menu, X, Compass, Video, Music, Layers } from 'lucide-react';
 
 export default function Navbar({ onOpenFunnel }) {
   const { currentPath, navigate } = useRouter();
@@ -17,8 +17,6 @@ export default function Navbar({ onOpenFunnel }) {
   const handleActionClick = () => {
     if (onOpenFunnel) {
       onOpenFunnel();
-    } else {
-      navigate('/#anfrage');
     }
     setMobileMenuOpen(false);
   };
@@ -52,7 +50,7 @@ export default function Navbar({ onOpenFunnel }) {
               </Link>
             </li>
 
-            {/* Services Dropdown */}
+            {/* Services Dropdown with seamless hover bridge */}
             <li 
               style={{ position: 'relative' }}
               onMouseEnter={() => setServicesOpen(true)}
@@ -69,65 +67,74 @@ export default function Navbar({ onOpenFunnel }) {
                 <ChevronDown size={14} style={{ transform: servicesOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }} />
               </button>
 
+              {/* Seamless wrapper bridging the hover area */}
               {servicesOpen && (
                 <div 
-                  className="glass-panel"
                   style={{
                     position: 'absolute',
-                    top: 'calc(100% + 10px)',
+                    top: '100%',
                     left: '50%',
                     transform: 'translateX(-50%)',
+                    paddingTop: '8px',
                     width: '320px',
-                    padding: '12px',
-                    borderRadius: '20px',
-                    zIndex: 200,
-                    boxShadow: '0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 16px rgba(255, 255, 255, 0.9) inset',
-                    animation: 'fadeIn 0.2s ease'
+                    zIndex: 200
                   }}
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
                 >
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                    {services.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <Link
-                          key={item.path}
-                          to={item.path}
-                          onClick={() => setServicesOpen(false)}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '12px',
-                            padding: '10px 12px',
-                            borderRadius: '14px',
-                            textDecoration: 'none',
-                            color: 'var(--text-headline)',
-                            transition: 'all 0.15s ease',
-                            background: currentPath === item.path ? 'rgba(255, 255, 255, 0.95)' : 'transparent'
-                          }}
-                          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)'}
-                          onMouseLeave={(e) => {
-                            if (currentPath !== item.path) e.currentTarget.style.background = 'transparent';
-                          }}
-                        >
-                          <div style={{
-                            width: '34px',
-                            height: '34px',
-                            borderRadius: '10px',
-                            background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.15), rgba(244, 63, 94, 0.15))',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: '#F43F5E'
-                          }}>
-                            <Icon size={18} />
-                          </div>
-                          <div>
-                            <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{item.title}</div>
-                            <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{item.desc}</div>
-                          </div>
-                        </Link>
-                      );
-                    })}
+                  <div 
+                    className="glass-panel"
+                    style={{
+                      padding: '12px',
+                      borderRadius: '20px',
+                      boxShadow: '0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 16px rgba(255, 255, 255, 0.9) inset',
+                      animation: 'fadeIn 0.2s ease'
+                    }}
+                  >
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                      {services.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            onClick={() => setServicesOpen(false)}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '12px',
+                              padding: '10px 12px',
+                              borderRadius: '14px',
+                              textDecoration: 'none',
+                              color: 'var(--text-headline)',
+                              transition: 'all 0.15s ease',
+                              background: currentPath === item.path ? 'rgba(255, 255, 255, 0.95)' : 'transparent'
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)'}
+                            onMouseLeave={(e) => {
+                              if (currentPath !== item.path) e.currentTarget.style.background = 'transparent';
+                            }}
+                          >
+                            <div style={{
+                              width: '34px',
+                              height: '34px',
+                              borderRadius: '10px',
+                              background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.15), rgba(244, 63, 94, 0.15))',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: '#F43F5E'
+                            }}>
+                              <Icon size={18} />
+                            </div>
+                            <div>
+                              <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{item.title}</div>
+                              <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{item.desc}</div>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               )}
@@ -162,10 +169,10 @@ export default function Navbar({ onOpenFunnel }) {
             <button
               onClick={handleActionClick}
               className="btn-primary"
-              style={{ padding: '9px 18px', fontSize: '0.88rem' }}
+              style={{ padding: '9px 20px', fontSize: '0.88rem' }}
             >
               <Sparkles size={15} />
-              <span>Idee einreichen (500 €)</span>
+              <span>Idee einreichen</span>
             </button>
 
             {/* Mobile Hamburger Button */}
@@ -252,7 +259,7 @@ export default function Navbar({ onOpenFunnel }) {
               }}
               style={{ fontSize: '1.05rem', padding: '12px' }}
             >
-              Das Konzept-Werk (500 €)
+              Das Konzept-Werk
             </Link>
 
             <div style={{ borderTop: '1px solid rgba(203, 213, 225, 0.4)', paddingTop: '12px' }}>
@@ -306,7 +313,7 @@ export default function Navbar({ onOpenFunnel }) {
                 style={{ width: '100%', padding: '14px', fontSize: '1rem' }}
               >
                 <Sparkles size={18} />
-                <span>Idee einreichen (500 €)</span>
+                <span>Idee einreichen</span>
               </button>
             </div>
           </div>

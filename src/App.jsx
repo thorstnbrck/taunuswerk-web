@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { RouterProvider, useRouter } from './router';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import RequestModal from './components/RequestModal';
 import ConfirmationModal from './components/ConfirmationModal';
 import LegalModal from './components/LegalModal';
 import AuroraCanvas from './components/AuroraCanvas';
@@ -13,23 +14,22 @@ import DigitalHubsPage from './pages/DigitalHubsPage';
 import UeberUnsPage from './pages/UeberUnsPage';
 
 function AppContent() {
-  const { currentPath, navigate } = useRouter();
+  const { currentPath } = useRouter();
+  const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
   const [confirmationData, setConfirmationData] = useState(null);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [legalModalState, setLegalModalState] = useState({ isOpen: false, type: 'impressum' });
 
   const handleOpenFunnel = () => {
-    if (currentPath !== '/') {
-      navigate('/#anfrage');
-    } else {
-      const el = document.getElementById('anfrage');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+    setIsRequestModalOpen(true);
+  };
+
+  const handleCloseFunnel = () => {
+    setIsRequestModalOpen(false);
   };
 
   const handleFormSubmitted = (data) => {
+    setIsRequestModalOpen(false);
     setConfirmationData(data);
     setIsConfirmationOpen(true);
   };
@@ -60,7 +60,6 @@ function AppContent() {
         return (
           <HomePage
             onOpenFunnel={handleOpenFunnel}
-            onFormSubmitted={handleFormSubmitted}
           />
         );
     }
@@ -82,13 +81,21 @@ function AppContent() {
       {/* Footer */}
       <Footer onOpenLegal={handleOpenLegal} />
 
-      {/* Modals */}
+      {/* Request Modal Overlay (Geht per Klick auf die Buttons auf) */}
+      <RequestModal
+        isOpen={isRequestModalOpen}
+        onClose={handleCloseFunnel}
+        onSubmitted={handleFormSubmitted}
+      />
+
+      {/* Confirmation Modal */}
       <ConfirmationModal
         isOpen={isConfirmationOpen}
         onClose={() => setIsConfirmationOpen(false)}
         formData={confirmationData}
       />
 
+      {/* Legal Modals */}
       <LegalModal
         isOpen={legalModalState.isOpen}
         onClose={handleCloseLegal}

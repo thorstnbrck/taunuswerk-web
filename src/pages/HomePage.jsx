@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '../router';
-import RequestFunnel from '../components/RequestFunnel';
 import TiltGlassCard from '../components/TiltGlassCard';
 import {
   Sparkles,
@@ -20,7 +19,7 @@ import {
 
 const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
-export default function HomePage({ onFormSubmitted }) {
+export default function HomePage({ onOpenFunnel }) {
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -36,7 +35,7 @@ export default function HomePage({ onFormSubmitted }) {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={SPRING_PHYSICS}
-          style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px auto', willChange: 'transform, opacity' }}
+          style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px auto' }}
         >
           <div style={{ display: 'inline-flex', marginBottom: '20px' }}>
             <span className="glass-pill" style={{ padding: '8px 20px', gap: '10px' }}>
@@ -58,12 +57,12 @@ export default function HomePage({ onFormSubmitted }) {
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={SPRING_PHYSICS}
-              onClick={() => scrollToSection('anfrage')}
+              onClick={onOpenFunnel}
               className="btn-primary"
-              style={{ padding: '14px 28px', fontSize: '1rem', willChange: 'transform' }}
+              style={{ padding: '14px 28px', fontSize: '1rem' }}
             >
               <Sparkles size={18} />
-              <span>Idee ins Konzept-Werk bringen (500 €)</span>
+              <span>Idee einreichen</span>
             </motion.button>
 
             <motion.button
@@ -72,7 +71,7 @@ export default function HomePage({ onFormSubmitted }) {
               transition={SPRING_PHYSICS}
               onClick={() => scrollToSection('showcase')}
               className="btn-secondary"
-              style={{ padding: '14px 26px', fontSize: '1rem', willChange: 'transform' }}
+              style={{ padding: '14px 26px', fontSize: '1rem' }}
             >
               <span>Arbeiten & Showcases</span>
               <ArrowRight size={16} />
@@ -188,7 +187,7 @@ export default function HomePage({ onFormSubmitted }) {
         </TiltGlassCard>
       </section>
 
-      {/* 2. DAS FLAGGSCHIFF: "DAS KONZEPT-WERK" (mit 1px Border-Shimmer Lichtkante) */}
+      {/* 2. DAS FLAGGSCHIFF: "DAS KONZEPT-WERK" (mit 1px Border-Shimmer) */}
       <section id="konzept-werk" style={{ scrollMarginTop: '100px' }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -200,8 +199,7 @@ export default function HomePage({ onFormSubmitted }) {
             padding: 'clamp(32px, 5vw, 56px)',
             borderRadius: '32px',
             position: 'relative',
-            overflow: 'hidden',
-            willChange: 'transform, opacity'
+            overflow: 'hidden'
           }}
         >
           {/* Subtle Ambient Backlight */}
@@ -229,7 +227,7 @@ export default function HomePage({ onFormSubmitted }) {
                 borderColor: 'rgba(244, 63, 94, 0.3)'
               }}
             >
-              ⚡️ Schlüsselfertiger Einstieg · 500 € Festpreis
+              ⚡️ Schlüsselfertiger Einstieg · 500 € Festpreis (Kickoff kostenlos)
             </span>
 
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '18px' }}>
@@ -237,11 +235,11 @@ export default function HomePage({ onFormSubmitted }) {
             </h2>
 
             <p style={{ color: 'var(--text-body)', fontSize: '1.12rem', lineHeight: 1.65 }}>
-              Schluss mit losen Notizen. Im Konzept-Werk gießen wir deinen Gedanken in 7 Tagen in einen glasklaren, realistischen Masterplan – inklusive Zielgruppen-Logik, Kanalstrategie, Tool-Setup und Meilensteinen.
+              Schluss mit losen Notizen. Der 15-minütige Fokus-Kickoff ist <strong>100% kostenlos</strong>. Erst wenn wir gemeinsam starten, gießen wir deinen Gedanken in 7 Tagen in einen glasklaren Masterplan für <strong>500 € Festpreis</strong> – inklusive Zielgruppen-Logik, Kanalstrategie, Tool-Setup und Meilensteinen.
             </p>
           </div>
 
-          {/* Die 3 Phasen als transluzente Bento-Karten mit 3D-Tilt & Staggered Fade-Up (50ms Delay) */}
+          {/* Die 3 Phasen als transluzente Bento-Karten */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '22px', marginBottom: '40px', position: 'relative', zIndex: 2 }}>
             {/* Phase 1 */}
             <TiltGlassCard
@@ -261,8 +259,8 @@ export default function HomePage({ onFormSubmitted }) {
                   width: '42px',
                   height: '42px',
                   borderRadius: '12px',
-                  background: 'rgba(251, 146, 60, 0.15)',
-                  color: '#FB923C',
+                  background: 'rgba(16, 185, 129, 0.15)',
+                  color: '#059669',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
@@ -270,12 +268,12 @@ export default function HomePage({ onFormSubmitted }) {
               >
                 <Clock size={22} />
               </div>
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#FB923C', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                Phase 01
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#059669', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                Phase 01 · 100% Kostenlos
               </div>
               <h3 style={{ fontSize: '1.25rem' }}>15 Min. Fokus-Kickoff</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
-                Ziel, Hebel, internes Team und dein Realisierungsbudget direkt abgestimmt – ohne Vorgeplänkel oder Zeitverlust.
+                Ziel, Hebel, internes Team und dein Realisierungsbudget direkt unverbindlich abgestimmt – ohne Kosten oder Risiko.
               </p>
             </TiltGlassCard>
 
@@ -307,7 +305,7 @@ export default function HomePage({ onFormSubmitted }) {
                 <Hammer size={22} />
               </div>
               <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#F43F5E', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                Phase 02
+                Phase 02 · 7 Tage Sprint
               </div>
               <h3 style={{ fontSize: '1.25rem' }}>7 Tage Konstruktion</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
@@ -343,7 +341,7 @@ export default function HomePage({ onFormSubmitted }) {
                 <FileCheck2 size={22} />
               </div>
               <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#0284C7', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                Phase 03
+                Phase 03 · Schlüsselfertig
               </div>
               <h3 style={{ fontSize: '1.25rem' }}>Werksabnahme</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
@@ -369,13 +367,13 @@ export default function HomePage({ onFormSubmitted }) {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <ShieldCheck size={24} color="#F43F5E" />
+              <ShieldCheck size={24} color="#059669" />
               <div>
                 <div style={{ fontWeight: 800, color: 'var(--text-headline)', fontSize: '1.05rem' }}>
-                  500 € netto Festpreis
+                  500 € netto Festpreis für das Konzept
                 </div>
                 <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
-                  Transparent, kalkulierbar & ohne Folgeverpflichtung
+                  Kickoff 100% kostenlos · Transparenter Festpreis erst bei Beauftragung
                 </div>
               </div>
             </div>
@@ -384,18 +382,18 @@ export default function HomePage({ onFormSubmitted }) {
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={SPRING_PHYSICS}
-              onClick={() => scrollToSection('anfrage')}
+              onClick={onOpenFunnel}
               className="btn-primary"
-              style={{ padding: '12px 24px', willChange: 'transform' }}
+              style={{ padding: '12px 24px' }}
             >
-              <span>Idee jetzt einreichen</span>
+              <span>Kostenloses Kickoff buchen</span>
               <ArrowRight size={16} />
             </motion.button>
           </div>
         </motion.div>
       </section>
 
-      {/* 3. LEISTUNGS-DOCK (Bento-Grid aus 4 Frosted-Glass-Cards mit 3D Tilt & 50ms Stagger) */}
+      {/* 3. LEISTUNGS-DOCK */}
       <section id="leistungen">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -417,7 +415,7 @@ export default function HomePage({ onFormSubmitted }) {
         </motion.div>
 
         <div className="bento-grid">
-          {/* Card 01: Standort- & Kampagnen-Marketing */}
+          {/* Card 01 */}
           <TiltGlassCard
             index={0}
             maxTilt={6}
@@ -463,7 +461,7 @@ export default function HomePage({ onFormSubmitted }) {
             </Link>
           </TiltGlassCard>
 
-          {/* Card 02: Content & Social Media Engine */}
+          {/* Card 02 */}
           <TiltGlassCard
             index={1}
             maxTilt={6}
@@ -509,7 +507,7 @@ export default function HomePage({ onFormSubmitted }) {
             </Link>
           </TiltGlassCard>
 
-          {/* Card 03: Creative Media & AI-Audio */}
+          {/* Card 03 */}
           <TiltGlassCard
             index={2}
             maxTilt={6}
@@ -555,7 +553,7 @@ export default function HomePage({ onFormSubmitted }) {
             </Link>
           </TiltGlassCard>
 
-          {/* Card 04: Digital Hubs & Rapid Prototyping */}
+          {/* Card 04 */}
           <TiltGlassCard
             index={3}
             maxTilt={6}
@@ -603,7 +601,7 @@ export default function HomePage({ onFormSubmitted }) {
         </div>
       </section>
 
-      {/* 4. SHOWCASE CASE STUDY (Card mit Soft-Glow & 3D Tilt) */}
+      {/* 4. SHOWCASE CASE STUDY */}
       <section id="showcase">
         <TiltGlassCard
           index={0}
@@ -642,7 +640,7 @@ export default function HomePage({ onFormSubmitted }) {
                 marginBottom: '20px'
               }}
             >
-              <span>15 Min. Call → 7 Tage Ausarbeitung → 500 € Festpreis</span>
+              <span>Kostenloser Call → 7 Tage Ausarbeitung → 500 € Konzept-Festpreis</span>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '24px' }}>
@@ -669,11 +667,11 @@ export default function HomePage({ onFormSubmitted }) {
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={SPRING_PHYSICS}
-              onClick={() => scrollToSection('anfrage')}
+              onClick={onOpenFunnel}
               className="btn-primary"
-              style={{ padding: '12px 24px', willChange: 'transform' }}
+              style={{ padding: '12px 24px' }}
             >
-              <span>Ähnliches Projekt starten</span>
+              <span>Ähnliches Projekt anfragen</span>
               <ArrowRight size={16} />
             </motion.button>
           </div>
@@ -701,8 +699,7 @@ export default function HomePage({ onFormSubmitted }) {
             padding: 'clamp(36px, 5vw, 56px)',
             borderRadius: '32px',
             textAlign: 'center',
-            position: 'relative',
-            willChange: 'transform, opacity'
+            position: 'relative'
           }}
         >
           <div style={{ maxWidth: '820px', margin: '0 auto' }}>
@@ -719,7 +716,7 @@ export default function HomePage({ onFormSubmitted }) {
               Ein fester Sparringspartner an der Werkbank für Konzeption und Steuerung: <strong>ich</strong>. Für die Produktion greift Taunuswerk auf ein eingespieltes Kollektiv zurück – Kamera & Drohne, UI-Design, Full-Stack-Code und HR-/Recruiting-Spezialisten. Maximale Kompetenz, schlanke Prozesse.
             </p>
 
-            {/* Micro Pillars with Staggered Fade-Up & 3D Tilt */}
+            {/* Micro Pillars */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' }}>
               <TiltGlassCard
                 index={0}
@@ -764,9 +761,54 @@ export default function HomePage({ onFormSubmitted }) {
         </motion.div>
       </section>
 
-      {/* 6. ANFRAGE-FORMULAR / FUNNEL */}
+      {/* 6. BOTTOM CALL-TO-ACTION (Ersetzt die in-page Form durch Overlay-Trigger) */}
       <section>
-        <RequestFunnel onSubmitted={onFormSubmitted} />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={SPRING_PHYSICS}
+          className="glass-panel border-shimmer-card"
+          style={{
+            padding: 'clamp(36px, 5vw, 56px)',
+            borderRadius: '32px',
+            textAlign: 'center',
+            maxWidth: '860px',
+            margin: '0 auto',
+            position: 'relative'
+          }}
+        >
+          <span className="glass-pill" style={{ marginBottom: '18px', color: '#047857', borderColor: 'rgba(16, 185, 129, 0.3)' }}>
+            <Sparkles size={14} color="#10B981" />
+            <span>Kostenloses 15-Minuten-Kickoff</span>
+          </span>
+
+          <h2 style={{ fontSize: 'clamp(1.9rem, 3.8vw, 2.6rem)', marginBottom: '16px' }}>
+            Bereit für den ersten Bauplan?
+          </h2>
+
+          <p style={{ color: 'var(--text-body)', fontSize: '1.08rem', lineHeight: 1.6, maxWidth: '620px', margin: '0 auto 32px auto' }}>
+            Reiche deine Idee unverbindlich ein. Im kostenlosen 15-Minuten-Kickoff prüfen wir Hebel, Machbarkeit und den nächsten Schritt.
+          </p>
+
+          <motion.button
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={SPRING_PHYSICS}
+            onClick={onOpenFunnel}
+            className="btn-primary"
+            style={{ padding: '16px 36px', fontSize: '1.05rem' }}
+          >
+            <Sparkles size={18} />
+            <span>Jetzt Idee einreichen & Kickoff sichern</span>
+          </motion.button>
+
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '20px', fontSize: '0.84rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
+            <span>🔒 100% vertraulich</span>
+            <span>⚡️ 24h Reaktionsgarantie</span>
+            <span>🎯 Kickoff kostenlos · Konzept-Werk 500 € Festpreis</span>
+          </div>
+        </motion.div>
       </section>
     </div>
   );

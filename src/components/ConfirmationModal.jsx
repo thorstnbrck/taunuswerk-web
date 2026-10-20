@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { CheckCircle2, X, Calendar, ArrowRight, Clock, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, X, ArrowRight, Clock, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function ConfirmationModal({ isOpen, onClose, formData }) {
   const dialogRef = useRef(null);
@@ -11,12 +11,18 @@ export default function ConfirmationModal({ isOpen, onClose, formData }) {
     if (isOpen) {
       if (!dialog.open) {
         dialog.showModal();
+        document.body.style.overflow = 'hidden';
       }
     } else {
       if (dialog.open) {
         dialog.close();
       }
+      document.body.style.overflow = '';
     }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -67,26 +73,26 @@ export default function ConfirmationModal({ isOpen, onClose, formData }) {
               height: '64px',
               borderRadius: '50%',
               margin: '0 auto 16px auto',
-              background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.2), rgba(244, 63, 94, 0.2))',
+              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(56, 189, 248, 0.2))',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#F43F5E',
-              boxShadow: '0 8px 24px -4px rgba(244, 63, 94, 0.25)'
+              color: '#059669',
+              boxShadow: '0 8px 24px -4px rgba(16, 185, 129, 0.25)'
             }}
           >
             <CheckCircle2 size={36} />
           </div>
 
-          <span className="glass-pill" style={{ marginBottom: '12px' }}>
-            ⚡️ Ticket erfolgreich erstellt
+          <span className="glass-pill" style={{ marginBottom: '12px', color: '#047857', borderColor: 'rgba(16, 185, 129, 0.3)' }}>
+            ✨ Kickoff-Anfrage eingegangen · 100% kostenlos
           </span>
 
           <h3 id="confirmation-modal-title" style={{ fontSize: '1.6rem', marginBottom: '10px' }}>
             Eingegangen auf der Werkbank.
           </h3>
           <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.6 }}>
-            Ich prüfe deine Angaben und melde mich innerhalb von <strong>24 Stunden</strong> für unseren <strong>15-Minuten-Fokus-Call</strong>.
+            Ich prüfe deine Angaben und melde mich innerhalb von <strong>24 Stunden</strong> mit Terminvorschlägen für unser <strong>kostenloses 15-Minuten-Erstgespräch</strong>.
           </p>
         </div>
 
@@ -118,9 +124,9 @@ export default function ConfirmationModal({ isOpen, onClose, formData }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
             <Clock size={16} color="#FB923C" />
-            <span>24h Reaktionsgarantie werktags</span>
-            <ShieldCheck size={16} color="#38BDF8" style={{ marginLeft: 'auto' }} />
-            <span>Unverbindliche Ersteinschätzung</span>
+            <span>24h Reaktionszeit werktags</span>
+            <ShieldCheck size={16} color="#059669" style={{ marginLeft: 'auto' }} />
+            <span>Erstgespräch garantiert kostenlos</span>
           </div>
 
           <button
