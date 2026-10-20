@@ -48,17 +48,14 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
             Von Bürgerbeteiligung bis Employer Branding: Wir mobilisieren Menschen mit Haltung und System.
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={SPRING_PHYSICS}
+          <button
             onClick={onOpenFunnel}
             className="btn-primary"
             style={{ padding: '14px 28px', fontSize: '1rem' }}
           >
             <Sparkles size={18} />
             <span>Kostenloses Kickoff vereinbaren</span>
-          </motion.button>
+          </button>
         </div>
 
         <div style={{ borderRadius: '24px', overflow: 'hidden', height: '100%', minHeight: '340px', boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.12)' }}>
@@ -164,17 +161,14 @@ export default function StandortKampagnenPage({ onOpenFunnel }) {
         <p style={{ color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px auto' }}>
           In 15 Minuten klären wir kostenlos deine Ziele. Bei Beauftragung steht in 7 Tagen deine fertige Kampagnenmechanik im 500 € Konzept-Werk.
         </p>
-        <motion.button
-          whileHover={{ scale: 1.02, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          transition={SPRING_PHYSICS}
+        <button
           onClick={onOpenFunnel}
           className="btn-primary"
           style={{ padding: '14px 28px' }}
         >
           <span>Kostenloses Erstgespräch buchen</span>
           <ArrowRight size={16} />
-        </motion.button>
+        </button>
       </TiltGlassCard>
     </div>
   );

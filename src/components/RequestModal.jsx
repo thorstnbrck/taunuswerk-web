@@ -158,15 +158,11 @@ export default function RequestModal({ isOpen, onClose, onSubmitted }) {
               {categories.map((cat) => {
                 const isSelected = category === cat;
                 return (
-                  <motion.button
+                  <button
                     type="button"
                     key={cat}
                     className={`chip-btn ${isSelected ? 'selected' : ''}`}
                     onClick={() => setCategory(cat)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    animate={{ scale: isSelected ? 1.02 : 1 }}
-                    transition={SPRING_PHYSICS}
                   >
                     {isSelected && (
                       <span style={{ display: 'inline-flex' }}>
@@ -174,7 +170,7 @@ export default function RequestModal({ isOpen, onClose, onSubmitted }) {
                       </span>
                     )}
                     <span>{cat}</span>
-                  </motion.button>
+                  </button>
                 );
               })}
             </div>
@@ -216,15 +212,11 @@ export default function RequestModal({ isOpen, onClose, onSubmitted }) {
               {timeframes.map((time) => {
                 const isSelected = timeframe === time;
                 return (
-                  <motion.button
+                  <button
                     type="button"
                     key={time}
                     className={`chip-btn ${isSelected ? 'selected' : ''}`}
                     onClick={() => setTimeframe(time)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    animate={{ scale: isSelected ? 1.02 : 1 }}
-                    transition={SPRING_PHYSICS}
                   >
                     {isSelected && (
                       <span style={{ display: 'inline-flex' }}>
@@ -232,7 +224,7 @@ export default function RequestModal({ isOpen, onClose, onSubmitted }) {
                       </span>
                     )}
                     <span>{time}</span>
-                  </motion.button>
+                  </button>
                 );
               })}
             </div>
@@ -302,13 +294,10 @@ export default function RequestModal({ isOpen, onClose, onSubmitted }) {
 
           {/* Submit */}
           <div>
-            <motion.button
+            <button
               type="submit"
               disabled={isSubmitting}
               className="btn-primary"
-              whileHover={{ scale: 1.015 }}
-              whileTap={{ scale: 0.985 }}
-              transition={SPRING_PHYSICS}
               style={{
                 width: '100%',
                 padding: '16px 24px',
@@ -324,7 +313,7 @@ export default function RequestModal({ isOpen, onClose, onSubmitted }) {
                   <Send size={17} />
                 </>
               )}
-            </motion.button>
+            </button>
 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', marginTop: '14px', fontSize: '0.8rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
               <span>✓ 100% kostenlos & unverbindlich</span>

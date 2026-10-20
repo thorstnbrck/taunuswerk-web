@@ -114,29 +114,19 @@ export default function RequestFunnel({ onSubmitted }) {
             {categories.map((cat) => {
               const isSelected = category === cat;
               return (
-                <motion.button
+                <button
                   type="button"
                   key={cat}
                   className={`chip-btn ${isSelected ? 'selected' : ''}`}
                   onClick={() => setCategory(cat)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  animate={{ scale: isSelected ? 1.02 : 1 }}
-                  transition={SPRING_PHYSICS}
-                  style={{ willChange: 'transform' }}
                 >
                   {isSelected && (
-                    <motion.span
-                      initial={{ opacity: 0, scale: 0.6 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={SPRING_PHYSICS}
-                      style={{ display: 'inline-flex' }}
-                    >
+                    <span style={{ display: 'inline-flex' }}>
                       <Check size={14} />
-                    </motion.span>
+                    </span>
                   )}
                   <span>{cat}</span>
-                </motion.button>
+                </button>
               );
             })}
           </div>
@@ -178,29 +168,19 @@ export default function RequestFunnel({ onSubmitted }) {
             {timeframes.map((time) => {
               const isSelected = timeframe === time;
               return (
-                <motion.button
+                <button
                   type="button"
                   key={time}
                   className={`chip-btn ${isSelected ? 'selected' : ''}`}
                   onClick={() => setTimeframe(time)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  animate={{ scale: isSelected ? 1.02 : 1 }}
-                  transition={SPRING_PHYSICS}
-                  style={{ willChange: 'transform' }}
                 >
                   {isSelected && (
-                    <motion.span
-                      initial={{ opacity: 0, scale: 0.6 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={SPRING_PHYSICS}
-                      style={{ display: 'inline-flex' }}
-                    >
+                    <span style={{ display: 'inline-flex' }}>
                       <Check size={14} />
-                    </motion.span>
+                    </span>
                   )}
                   <span>{time}</span>
-                </motion.button>
+                </button>
               );
             })}
           </div>
@@ -270,20 +250,15 @@ export default function RequestFunnel({ onSubmitted }) {
 
         {/* Submit Button & Assurance */}
         <div style={{ paddingTop: '8px' }}>
-          <motion.button
+          <button
             type="submit"
             disabled={isSubmitting}
             className="btn-primary"
-            whileHover={{ scale: 1.015 }}
-            whileTap={{ scale: 0.985 }}
-            transition={SPRING_PHYSICS}
             style={{
               width: '100%',
               padding: '16px 24px',
               fontSize: '1.05rem',
-              cursor: isSubmitting ? 'wait' : 'pointer',
-              opacity: isSubmitting ? 0.8 : 1,
-              willChange: 'transform'
+              cursor: isSubmitting ? 'wait' : 'pointer'
             }}
           >
             {isSubmitting ? (
@@ -294,7 +269,7 @@ export default function RequestFunnel({ onSubmitted }) {
                 <Send size={18} />
               </>
             )}
-          </motion.button>
+          </button>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '16px', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
             <span>🔒 Daten bleiben 100% vertraulich</span>

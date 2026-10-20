@@ -66,7 +66,7 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -10;
   overflow: hidden;
   background: radial-gradient(circle at 10% 15%, var(--bg-peach) 0%, transparent 45%),
               radial-gradient(circle at 85% 20%, var(--bg-sky) 0%, transparent 45%),
@@ -95,19 +95,21 @@ body {
   flex: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 24px 60px 24px;
+  padding: 130px 24px 60px 24px;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 @media (max-width: 768px) {
   .content-wrapper {
-    padding: 85px 16px 80px 16px;
+    padding: 105px 16px 80px 16px;
   }
 }
 
 /* Typographic rules */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-headline);
+  color: #0F172A !important;
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -119,6 +121,38 @@ h1 {
   display: block;
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+.hero-title-black {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: clamp(2.3rem, 5.5vw, 4rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+  margin-bottom: 14px !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.hero-subtitle {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem) !important;
+  font-weight: 600 !important;
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+  line-height: 1.4 !important;
+  margin-bottom: 22px !important;
+  letter-spacing: -0.01em !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 2 !important;
 }
 
 p, li, blockquote {
@@ -225,13 +259,13 @@ p, li, blockquote {
   box-shadow: 0 4px 15px -2px rgba(15, 23, 42, 0.04);
 }
 
-/* Radiant buttons (Compositor-only transitions: transform & opacity) */
+/* Radiant buttons */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 26px;
+  padding: 13px 28px;
   border-radius: var(--radius-full);
   font-weight: 700;
   font-size: 0.95rem;
@@ -239,24 +273,24 @@ p, li, blockquote {
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.6);
   background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-pink) 100%);
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   box-shadow: var(--shadow-button-glow);
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  transform: translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .btn-primary:hover {
-  transform: translate3d(0, -2px, 0) scale(1.02);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -4px rgba(244, 63, 94, 0.45);
 }
 
 .btn-primary:active {
-  transform: translate3d(0, 0, 0) scale(0.98);
+  transform: translateY(0);
 }
 
 .btn-secondary {
@@ -264,7 +298,7 @@ p, li, blockquote {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 24px;
+  padding: 13px 26px;
   border-radius: var(--radius-full);
   font-weight: 600;
   font-size: 0.95rem;
@@ -273,21 +307,26 @@ p, li, blockquote {
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: var(--text-headline);
+  color: var(--text-headline) !important;
   border: 1px solid rgba(255, 255, 255, 0.85);
   box-shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.05);
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background 0.2s ease;
+  transform: translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .btn-secondary:hover {
-  transform: translate3d(0, -2px, 0);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 .btn-sky {

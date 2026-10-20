@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Link } from '../router';
 import TiltGlassCard from '../components/TiltGlassCard';
 import {
@@ -17,8 +16,6 @@ import {
   Clock
 } from 'lucide-react';
 
-const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
-
 export default function HomePage({ onOpenFunnel }) {
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -30,58 +27,38 @@ export default function HomePage({ onOpenFunnel }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '90px' }}>
       {/* 1. HERO SECTION (Layered App-Card Layout) */}
-      <section style={{ paddingTop: '20px' }}>
-        <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px auto' }}>
-          <div style={{ display: 'inline-flex', marginBottom: '20px' }}>
-            <span className="glass-pill" style={{ padding: '8px 20px', gap: '10px' }}>
-              <Sparkles size={16} color="#F43F5E" />
-              <span>Studio für digitale Strategie, Content & Prototyping</span>
-            </span>
-          </div>
-
-          <h1 
-            style={{ 
-              fontSize: 'clamp(2.4rem, 5.5vw, 4.2rem)', 
-              fontWeight: 800, 
-              marginBottom: '20px', 
-              lineHeight: 1.18,
-              color: '#0F172A',
-              display: 'block',
-              visibility: 'visible',
-              opacity: 1
-            }}
-          >
-            Wo Ideen Substanz bekommen.
+      <section style={{ paddingTop: '10px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 40px auto', position: 'relative', zIndex: 2 }}>
+          <h1 className="hero-title-black">
+            Wir machen aus guten Ideen echte Projekte.
           </h1>
 
-          <p style={{ fontSize: 'clamp(1.05rem, 2vw, 1.25rem)', color: 'var(--text-body)', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto 32px auto' }}>
+          <div className="hero-subtitle">
+            Studio für digitale Strategie, Content &amp; Prototyping
+          </div>
+
+          <p style={{ fontSize: 'clamp(1.05rem, 2vw, 1.25rem)', color: '#334155', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto 32px auto', display: 'block', opacity: 1, visibility: 'visible' }}>
             Ganzheitliche Kampagnen, scharfer Multimedia-Content und smarte digitale Tools. Für Regionen, Macher und Unternehmen – vom ersten Bauplan bis zum Rollout.
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={SPRING_PHYSICS}
+            <button
               onClick={onOpenFunnel}
               className="btn-primary"
               style={{ padding: '14px 28px', fontSize: '1rem' }}
             >
               <Sparkles size={18} />
               <span>Idee einreichen</span>
-            </motion.button>
+            </button>
 
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={SPRING_PHYSICS}
+            <button
               onClick={() => scrollToSection('showcase')}
               className="btn-secondary"
               style={{ padding: '14px 26px', fontSize: '1rem' }}
             >
               <span>Arbeiten & Showcases</span>
               <ArrowRight size={16} />
-            </motion.button>
+            </button>
           </div>
         </div>
 
@@ -178,7 +155,6 @@ export default function HomePage({ onOpenFunnel }) {
                 gap: '10px'
               }}
             >
-              <div className="glow-dot"></div>
               <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-headline)' }}>
                 Werkbank geöffnet für Q4/2026
               </span>
@@ -226,11 +202,11 @@ export default function HomePage({ onOpenFunnel }) {
               ⚡️ Schlüsselfertiger Einstieg · 500 € Festpreis (Kickoff kostenlos)
             </span>
 
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '18px' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '18px', color: '#0F172A', display: 'block', opacity: 1, visibility: 'visible' }}>
               Du hast den Gedanken im Kopf. Wir bauen das Fundament.
             </h2>
 
-            <p style={{ color: 'var(--text-body)', fontSize: '1.12rem', lineHeight: 1.65 }}>
+            <p style={{ color: '#334155', fontSize: '1.12rem', lineHeight: 1.65, display: 'block', opacity: 1, visibility: 'visible' }}>
               Schluss mit losen Notizen. Der 15-minütige Fokus-Kickoff ist <strong>100% kostenlos</strong>. Erst wenn wir gemeinsam starten, gießen wir deinen Gedanken in 7 Tagen in einen glasklaren Masterplan für <strong>500 € Festpreis</strong> – inklusive Zielgruppen-Logik, Kanalstrategie, Tool-Setup und Meilensteinen.
             </p>
           </div>
@@ -267,7 +243,7 @@ export default function HomePage({ onOpenFunnel }) {
               <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#059669', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                 Phase 01 · 100% Kostenlos
               </div>
-              <h3 style={{ fontSize: '1.25rem' }}>15 Min. Fokus-Kickoff</h3>
+              <h3 style={{ fontSize: '1.25rem', color: '#0F172A' }}>15 Min. Fokus-Kickoff</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
                 Ziel, Hebel, internes Team und dein Realisierungsbudget direkt unverbindlich abgestimmt – ohne Kosten oder Risiko.
               </p>
@@ -303,7 +279,7 @@ export default function HomePage({ onOpenFunnel }) {
               <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#F43F5E', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                 Phase 02 · 7 Tage Sprint
               </div>
-              <h3 style={{ fontSize: '1.25rem' }}>7 Tage Konstruktion</h3>
+              <h3 style={{ fontSize: '1.25rem', color: '#0F172A' }}>7 Tage Konstruktion</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
                 Ausarbeitung von Mechanik, Content-Formaten, präzisen Meilensteinen und Tool-Empfehlungen auf der Werkbank.
               </p>
@@ -339,7 +315,7 @@ export default function HomePage({ onOpenFunnel }) {
               <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#0284C7', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                 Phase 03 · Schlüsselfertig
               </div>
-              <h3 style={{ fontSize: '1.25rem' }}>Werksabnahme</h3>
+              <h3 style={{ fontSize: '1.25rem', color: '#0F172A' }}>Werksabnahme</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
                 Dein schlüsselfertiger Bauplan zur sofortigen Umsetzung – für dein Inhouse-Team oder mit dem Taunuswerk-Kollektiv.
               </p>
@@ -374,17 +350,14 @@ export default function HomePage({ onOpenFunnel }) {
               </div>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={SPRING_PHYSICS}
+            <button
               onClick={onOpenFunnel}
               className="btn-primary"
               style={{ padding: '12px 24px' }}
             >
               <span>Kostenloses Kickoff buchen</span>
               <ArrowRight size={16} />
-            </motion.button>
+            </button>
           </div>
         </div>
       </section>
@@ -396,7 +369,7 @@ export default function HomePage({ onOpenFunnel }) {
             <Layers size={14} color="#38BDF8" />
             <span>Disziplinen & Gewerke</span>
           </span>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '14px' }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '14px', color: '#0F172A' }}>
             Vier Säulen. Ein nahtloser Werkstatt-Standard.
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem' }}>
@@ -424,7 +397,7 @@ export default function HomePage({ onOpenFunnel }) {
                 <span className="glass-pill" style={{ fontSize: '0.8rem', padding: '4px 12px' }}>01 · Kampagnen</span>
                 <Compass size={22} color="#FB923C" />
               </div>
-              <h3 style={{ fontSize: '1.45rem', marginBottom: '10px' }}>
+              <h3 style={{ fontSize: '1.45rem', marginBottom: '10px', color: '#0F172A' }}>
                 Standort- & Kampagnen-Marketing
               </h3>
               <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '20px' }}>
@@ -470,7 +443,7 @@ export default function HomePage({ onOpenFunnel }) {
                 <span className="glass-pill" style={{ fontSize: '0.8rem', padding: '4px 12px' }}>02 · Video</span>
                 <Video size={22} color="#F43F5E" />
               </div>
-              <h3 style={{ fontSize: '1.45rem', marginBottom: '10px' }}>
+              <h3 style={{ fontSize: '1.45rem', marginBottom: '10px', color: '#0F172A' }}>
                 Content & Social Media Engine
               </h3>
               <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '20px' }}>
@@ -516,7 +489,7 @@ export default function HomePage({ onOpenFunnel }) {
                 <span className="glass-pill" style={{ fontSize: '0.8rem', padding: '4px 12px' }}>03 · Audio</span>
                 <Music size={22} color="#818CF8" />
               </div>
-              <h3 style={{ fontSize: '1.45rem', marginBottom: '10px' }}>
+              <h3 style={{ fontSize: '1.45rem', marginBottom: '10px', color: '#0F172A' }}>
                 Creative Media & AI-Audio
               </h3>
               <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '20px' }}>
@@ -562,7 +535,7 @@ export default function HomePage({ onOpenFunnel }) {
                 <span className="glass-pill" style={{ fontSize: '0.8rem', padding: '4px 12px' }}>04 · Digital</span>
                 <Layers size={22} color="#0284C7" />
               </div>
-              <h3 style={{ fontSize: '1.45rem', marginBottom: '10px' }}>
+              <h3 style={{ fontSize: '1.45rem', marginBottom: '10px', color: '#0F172A' }}>
                 Digital Hubs & Rapid Prototyping
               </h3>
               <p style={{ color: 'var(--text-body)', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '20px' }}>
@@ -611,7 +584,7 @@ export default function HomePage({ onOpenFunnel }) {
               Case Study · Das Konzept-Werk
             </span>
 
-            <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.4rem)', marginBottom: '14px' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.4rem)', marginBottom: '14px', color: '#0F172A' }}>
               Vom vagen Event-Plan zum schlüsselfertigen Besucher-Magneten.
             </h2>
 
@@ -635,7 +608,7 @@ export default function HomePage({ onOpenFunnel }) {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '24px' }}>
               <div>
-                <strong style={{ color: 'var(--text-headline)', display: 'block', marginBottom: '4px' }}>
+                <strong style={{ color: '#0F172A', display: 'block', marginBottom: '4px' }}>
                   Der Output:
                 </strong>
                 <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
@@ -644,7 +617,7 @@ export default function HomePage({ onOpenFunnel }) {
               </div>
 
               <div>
-                <strong style={{ color: 'var(--text-headline)', display: 'block', marginBottom: '4px' }}>
+                <strong style={{ color: '#0F172A', display: 'block', marginBottom: '4px' }}>
                   Das Resultat:
                 </strong>
                 <p style={{ color: 'var(--text-body)', fontSize: '0.95rem', lineHeight: 1.6 }}>
@@ -653,17 +626,14 @@ export default function HomePage({ onOpenFunnel }) {
               </div>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={SPRING_PHYSICS}
+            <button
               onClick={onOpenFunnel}
               className="btn-primary"
               style={{ padding: '12px 24px' }}
             >
               <span>Ähnliches Projekt anfragen</span>
               <ArrowRight size={16} />
-            </motion.button>
+            </button>
           </div>
 
           <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px -10px rgba(15, 23, 42, 0.15)', height: '100%', minHeight: '320px' }}>
@@ -694,11 +664,11 @@ export default function HomePage({ onOpenFunnel }) {
               <span>Die Werkstatt-Architektur</span>
             </span>
 
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '20px' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '20px', color: '#0F172A' }}>
               Ein Kopf. Ein Netzwerk. Keine Reibungsverluste.
             </h2>
 
-            <p style={{ fontSize: '1.12rem', color: 'var(--text-body)', lineHeight: 1.7, marginBottom: '36px' }}>
+            <p style={{ fontSize: '1.12rem', color: '#334155', lineHeight: 1.7, marginBottom: '36px' }}>
               Ein fester Sparringspartner an der Werkbank für Konzeption und Steuerung: <strong>ich</strong>. Für die Produktion greift Taunuswerk auf ein eingespieltes Kollektiv zurück – Kamera & Drohne, UI-Design, Full-Stack-Code und HR-/Recruiting-Spezialisten. Maximale Kompetenz, schlanke Prozesse.
             </p>
 
@@ -709,7 +679,7 @@ export default function HomePage({ onOpenFunnel }) {
                 maxTilt={6}
                 style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.72)', border: '1px solid rgba(255, 255, 255, 0.9)' }}
               >
-                <div style={{ fontWeight: 700, color: 'var(--text-headline)', marginBottom: '6px' }}>
+                <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '6px' }}>
                   Kamera & Drohne
                 </div>
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
@@ -722,7 +692,7 @@ export default function HomePage({ onOpenFunnel }) {
                 maxTilt={6}
                 style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.72)', border: '1px solid rgba(255, 255, 255, 0.9)' }}
               >
-                <div style={{ fontWeight: 700, color: 'var(--text-headline)', marginBottom: '6px' }}>
+                <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '6px' }}>
                   UI/UX & Code
                 </div>
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
@@ -735,7 +705,7 @@ export default function HomePage({ onOpenFunnel }) {
                 maxTilt={6}
                 style={{ padding: '18px 20px', borderRadius: '18px', background: 'rgba(255, 255, 255, 0.72)', border: '1px solid rgba(255, 255, 255, 0.9)' }}
               >
-                <div style={{ fontWeight: 700, color: 'var(--text-headline)', marginBottom: '6px' }}>
+                <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '6px' }}>
                   HR- & Recruiting
                 </div>
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
@@ -765,25 +735,22 @@ export default function HomePage({ onOpenFunnel }) {
             <span>Kostenloses 15-Minuten-Kickoff</span>
           </span>
 
-          <h2 style={{ fontSize: 'clamp(1.9rem, 3.8vw, 2.6rem)', marginBottom: '16px' }}>
+          <h2 style={{ fontSize: 'clamp(1.9rem, 3.8vw, 2.6rem)', marginBottom: '16px', color: '#0F172A' }}>
             Bereit für den ersten Bauplan?
           </h2>
 
-          <p style={{ color: 'var(--text-body)', fontSize: '1.08rem', lineHeight: 1.6, maxWidth: '620px', margin: '0 auto 32px auto' }}>
+          <p style={{ color: '#334155', fontSize: '1.08rem', lineHeight: 1.6, maxWidth: '620px', margin: '0 auto 32px auto' }}>
             Reiche deine Idee unverbindlich ein. Im kostenlosen 15-Minuten-Kickoff prüfen wir Hebel, Machbarkeit und den nächsten Schritt.
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={SPRING_PHYSICS}
+          <button
             onClick={onOpenFunnel}
             className="btn-primary"
             style={{ padding: '16px 36px', fontSize: '1.05rem' }}
           >
             <Sparkles size={18} />
             <span>Jetzt Idee einreichen & Kickoff sichern</span>
-          </motion.button>
+          </button>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '20px', fontSize: '0.84rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
             <span>🔒 100% vertraulich</span>

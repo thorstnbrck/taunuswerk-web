@@ -48,17 +48,14 @@ export default function CreativeAudioPage({ onOpenFunnel }) {
             Wiedererkennbare Audio-Hooks, Soundscapes und moderne KI-gestützte Musikproduktion.
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={SPRING_PHYSICS}
+          <button
             onClick={onOpenFunnel}
             className="btn-primary"
             style={{ padding: '14px 28px', fontSize: '1rem', background: 'linear-gradient(135deg, #818CF8 0%, #F43F5E 100%)' }}
           >
             <Sparkles size={18} />
             <span>Kostenloses Kickoff vereinbaren</span>
-          </motion.button>
+          </button>
         </div>
 
         <div style={{ borderRadius: '24px', overflow: 'hidden', height: '100%', minHeight: '340px', boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.12)' }}>
@@ -137,17 +134,14 @@ export default function CreativeAudioPage({ onOpenFunnel }) {
         <p style={{ color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px auto' }}>
           Im kostenlosen 15-Minuten-Kickoff sprechen wir über deine Marken-Tonalität. Das schlüsselfertige Konzept gibt es für 500 € Festpreis.
         </p>
-        <motion.button
-          whileHover={{ scale: 1.02, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          transition={SPRING_PHYSICS}
+        <button
           onClick={onOpenFunnel}
           className="btn-primary"
           style={{ padding: '14px 28px' }}
         >
           <span>Kostenloses Erstgespräch anfragen</span>
           <ArrowRight size={16} />
-        </motion.button>
+        </button>
       </TiltGlassCard>
     </div>
   );

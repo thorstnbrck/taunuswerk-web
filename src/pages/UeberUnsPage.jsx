@@ -48,17 +48,14 @@ export default function UeberUnsPage({ onOpenFunnel }) {
             Warum ein erfahrener Generalist mit Spezialisten-Netzwerk jede träge Agentur schlägt.
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={SPRING_PHYSICS}
+          <button
             onClick={onOpenFunnel}
             className="btn-primary"
             style={{ padding: '14px 28px', fontSize: '1rem' }}
           >
             <Sparkles size={18} />
             <span>Kostenloses Kickoff vereinbaren</span>
-          </motion.button>
+          </button>
         </div>
 
         <div style={{ borderRadius: '24px', overflow: 'hidden', height: '100%', minHeight: '340px', boxShadow: '0 20px 45px -10px rgba(15, 23, 42, 0.12)' }}>
@@ -153,17 +150,14 @@ export default function UeberUnsPage({ onOpenFunnel }) {
         <p style={{ color: 'var(--text-muted)', marginBottom: '28px', maxWidth: '640px', margin: '0 auto 28px auto', fontSize: '1.05rem' }}>
           Egal ob du eine vage Idee im Kopf hast oder ein akutes Problem lösen willst: Der erste Schritt ist ein unverbindlicher, kostenloser 15-Minuten-Fokus-Call.
         </p>
-        <motion.button
-          whileHover={{ scale: 1.02, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          transition={SPRING_PHYSICS}
+        <button
           onClick={onOpenFunnel}
           className="btn-primary"
           style={{ padding: '15px 32px', fontSize: '1.05rem' }}
         >
           <span>Idee einreichen & Kickoff buchen</span>
           <ArrowRight size={18} />
-        </motion.button>
+        </button>
       </TiltGlassCard>
     </div>
   );

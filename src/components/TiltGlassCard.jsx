@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const SPRING_CONFIG = { stiffness: 260, damping: 24 };
@@ -6,7 +6,7 @@ const SPRING_CONFIG = { stiffness: 260, damping: 24 };
 export default function TiltGlassCard({
   children,
   index = 0,
-  maxTilt = 6,
+  maxTilt = 5,
   shimmerBorder = false,
   enableTilt = true,
   className = '',
@@ -15,14 +15,13 @@ export default function TiltGlassCard({
 }) {
   const cardRef = useRef(null);
   const boundsRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
 
   // Normalized cursor coordinates (-0.5 to 0.5)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const glareOpacity = useMotionValue(0);
 
-  // Physical spring inertia (Stiffness: 260, Damping: 24)
+  // Physical spring inertia (Stiffness: 260, Damping: 24) - smoothly returns to 0 on leave
   const springX = useSpring(mouseX, SPRING_CONFIG);
   const springY = useSpring(mouseY, SPRING_CONFIG);
   const springGlare = useSpring(glareOpacity, SPRING_CONFIG);
@@ -36,13 +35,16 @@ export default function TiltGlassCard({
     if (!enableTilt || e.pointerType === 'touch') return;
     if (cardRef.current) {
       boundsRef.current = cardRef.current.getBoundingClientRect();
-      glareOpacity.set(1);
-      setIsHovered(true);
+      glareOpacity.set(0.8);
     }
   };
 
   const handlePointerMove = (e) => {
-    if (!enableTilt || e.pointerType === 'touch' || !boundsRef.current) return;
+    if (!enableTilt || e.pointerType === 'touch') return;
+    if (!boundsRef.current && cardRef.current) {
+      boundsRef.current = cardRef.current.getBoundingClientRect();
+    }
+    if (!boundsRef.current) return;
     const rect = boundsRef.current;
     const nx = (e.clientX - rect.left) / Math.max(rect.width, 1) - 0.5;
     const ny = (e.clientY - rect.top) / Math.max(rect.height, 1) - 0.5;
@@ -52,10 +54,10 @@ export default function TiltGlassCard({
 
   const handlePointerLeave = () => {
     boundsRef.current = null;
+    // Spring physics smoothly animates back to 0 without abrupt style resets
     mouseX.set(0);
     mouseY.set(0);
     glareOpacity.set(0);
-    setIsHovered(false);
   };
 
   return (
@@ -66,10 +68,11 @@ export default function TiltGlassCard({
       onPointerLeave={handlePointerLeave}
       className={`glass-panel ${shimmerBorder ? 'border-shimmer-card' : ''} ${className}`.trim()}
       style={{
-        opacity: 1, // Always 100% visible - never disappears on scroll
+        opacity: 1,
+        visibility: 'visible',
         transformPerspective: 1000,
-        rotateX: enableTilt && isHovered ? rotateX : 0,
-        rotateY: enableTilt && isHovered ? rotateY : 0,
+        rotateX: enableTilt ? rotateX : 0,
+        rotateY: enableTilt ? rotateY : 0,
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
         ...style,
