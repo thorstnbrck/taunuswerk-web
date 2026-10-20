@@ -58,7 +58,17 @@ export default function Navbar({ onOpenFunnel }) {
               <button 
                 type="button"
                 className={`nav-link-item ${currentPath.startsWith('/standort') || currentPath.startsWith('/content') || currentPath.startsWith('/creative') || currentPath.startsWith('/digital') ? 'active' : ''}`}
-                style={{ background: 'transparent', border: 'none', font: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  fontFamily: 'inherit',
+                  fontSize: '0.92rem',
+                  fontWeight: 600,
+                  letterSpacing: 'inherit',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
                 onClick={() => setServicesOpen(!servicesOpen)}
                 aria-expanded={servicesOpen}
               >
@@ -82,11 +92,14 @@ export default function Navbar({ onOpenFunnel }) {
                   onMouseLeave={() => setServicesOpen(false)}
                 >
                   <div 
-                    className="glass-panel"
                     style={{
+                      background: 'rgba(255, 255, 255, 0.97)',
+                      backdropFilter: 'blur(32px)',
+                      WebkitBackdropFilter: 'blur(32px)',
+                      border: '1px solid rgba(255, 255, 255, 0.95)',
                       padding: '12px',
                       borderRadius: '20px',
-                      boxShadow: '0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 16px rgba(255, 255, 255, 0.9) inset',
+                      boxShadow: '0 24px 50px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.7), 0 0 16px rgba(255, 255, 255, 0.9) inset',
                       animation: 'fadeIn 0.2s ease'
                     }}
                   >

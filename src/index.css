@@ -404,12 +404,15 @@ p, li, blockquote {
   align-items: center;
   padding: 8px 16px;
   border-radius: var(--radius-full);
+  font-family: inherit;
   font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-body);
   text-decoration: none;
   transition: transform 0.2s ease, opacity 0.2s ease;
   cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .nav-link-item:hover, .nav-link-item.active {
