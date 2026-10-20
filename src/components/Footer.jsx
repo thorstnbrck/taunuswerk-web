@@ -75,20 +75,6 @@ export default function Footer({ onOpenLegal }) {
             <Link to="/standort-kampagnen" style={{ color: 'var(--text-body)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>
               Leistungen
             </Link>
-            <Link 
-              to="/#kollektiv" 
-              onClick={() => {
-                if (currentPath !== '/') {
-                  navigate('/#kollektiv');
-                } else {
-                  const el = document.getElementById('kollektiv');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              style={{ color: 'var(--text-body)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}
-            >
-              Kollektiv
-            </Link>
             <Link to="/ueber-uns" style={{ color: 'var(--text-body)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>
               Über uns
             </Link>

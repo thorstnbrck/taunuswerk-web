@@ -140,23 +140,6 @@ export default function Navbar({ onOpenFunnel }) {
             </li>
 
             <li>
-              <Link 
-                to="/#kollektiv" 
-                className="nav-link-item"
-                onClick={() => {
-                  if (currentPath !== '/') {
-                    navigate('/#kollektiv');
-                  } else {
-                    const el = document.getElementById('kollektiv');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              >
-                Kollektiv
-              </Link>
-            </li>
-
-            <li>
               <Link to="/ueber-uns" className="nav-link-item">
                 Über uns
               </Link>
@@ -282,18 +265,6 @@ export default function Navbar({ onOpenFunnel }) {
                 </Link>
               ))}
             </div>
-
-            <Link 
-              to="/#kollektiv" 
-              className="nav-link-item" 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                navigate('/#kollektiv');
-              }}
-              style={{ fontSize: '1.05rem', padding: '12px' }}
-            >
-              Das Kollektiv-Versprechen
-            </Link>
 
             <Link 
               to="/ueber-uns" 
