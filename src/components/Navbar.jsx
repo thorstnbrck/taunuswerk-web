@@ -153,7 +153,13 @@ export default function Navbar({ onOpenFunnel }) {
             </li>
 
             <li>
-              <Link to="/ueber-uns" className="nav-link-item">
+              <Link to="/ventures" className={`nav-link-item ${currentPath === '/ventures' ? 'active' : ''}`}>
+                Ventures
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/ueber-uns" className={`nav-link-item ${currentPath === '/ueber-uns' ? 'active' : ''}`}>
                 Über uns
               </Link>
             </li>
@@ -278,6 +284,15 @@ export default function Navbar({ onOpenFunnel }) {
                 </Link>
               ))}
             </div>
+
+            <Link 
+              to="/ventures" 
+              className={`nav-link-item ${currentPath === '/ventures' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+              style={{ fontSize: '1.05rem', padding: '12px' }}
+            >
+              Taunuswerk Ventures
+            </Link>
 
             <Link 
               to="/ueber-uns" 

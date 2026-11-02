@@ -12,6 +12,7 @@ import ContentVideoPage from './pages/ContentVideoPage';
 import CreativeAudioPage from './pages/CreativeAudioPage';
 import DigitalHubsPage from './pages/DigitalHubsPage';
 import UeberUnsPage from './pages/UeberUnsPage';
+import VenturesPage from './pages/VenturesPage';
 
 function AppContent() {
   const { currentPath } = useRouter();
@@ -55,6 +56,8 @@ function AppContent() {
         return <DigitalHubsPage onOpenFunnel={handleOpenFunnel} />;
       case '/ueber-uns':
         return <UeberUnsPage onOpenFunnel={handleOpenFunnel} />;
+      case '/ventures':
+        return <VenturesPage onOpenFunnel={handleOpenFunnel} />;
       case '/':
       default:
         return (
