@@ -33,6 +33,7 @@ export default function VenturesPage({ onOpenFunnel }) {
   const [founderName, setFounderName] = useState('');
   const [email, setEmail] = useState('');
   const [deckLink, setDeckLink] = useState('');
+  const [isNeurodivergent, setIsNeurodivergent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
@@ -586,7 +587,131 @@ export default function VenturesPage({ onOpenFunnel }) {
         </div>
       </section>
 
-      {/* 5. ALLE FOKUS-SEKTOREN (Interaktive Filter / Grid) */}
+      {/* 5. HIGHLIGHT-SEKTION: ADHS & NEURODIVERSITÄT ("Hyperfocus Hub") */}
+      <section>
+        <div
+          className="glass-panel"
+          style={{
+            padding: 'clamp(36px, 5vw, 60px)',
+            borderRadius: '32px',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 232, 255, 0.65) 45%, rgba(224, 231, 255, 0.55) 100%)',
+            border: '1px solid rgba(167, 139, 250, 0.55)',
+            boxShadow: '0 24px 60px -15px rgba(139, 92, 246, 0.2), 0 0 24px rgba(255, 255, 255, 0.9) inset'
+          }}
+        >
+          <div style={{ maxWidth: '860px', margin: '0 auto', textAlign: 'center', marginBottom: '40px' }}>
+            <span
+              className="glass-pill"
+              style={{
+                marginBottom: '18px',
+                background: 'rgba(255, 255, 255, 0.92)',
+                color: '#7C3AED',
+                borderColor: 'rgba(139, 92, 246, 0.4)'
+              }}
+            >
+              <Brain size={16} color="#7C3AED" />
+              <span>Neurodivergent Founders & ADHS-Support</span>
+            </span>
+
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '18px', color: '#0F172A' }}>
+              Gebaut für Macher mit Hyperfokus. Nicht für starre Schubladen.
+            </h2>
+
+            <p style={{ color: '#334155', fontSize: '1.12rem', lineHeight: 1.7, marginBottom: '14px' }}>
+              Klassische VCs wollen aalglatte Lebensläufe, 40-seitige PowerPoint-Decks und lineare Excel-Tabellen. Wir wissen: Die radikalsten Ideen entstehen selten in starren Schablonen.
+            </p>
+
+            <p style={{ color: '#334155', fontSize: '1.12rem', lineHeight: 1.7 }}>
+              Unternehmer mit ADHS bringen oft Eigenschaften mit, von denen andere nur träumen: kompromisslosen Hyperfokus, unkonventionelle Problemlösungen, Mut zum Risiko und ein extremes Gespür für Trends. Was oft fehlt, ist nicht das Talent - sondern das passende Fundament:
+            </p>
+          </div>
+
+          {/* 3 Support-Pfeiler */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginBottom: '32px' }}>
+            <TiltGlassCard
+              index={0}
+              maxTilt={4}
+              style={{
+                padding: '28px 24px',
+                borderRadius: '22px',
+                background: 'rgba(255, 255, 255, 0.9)',
+                border: '1px solid rgba(221, 214, 254, 0.8)'
+              }}
+            >
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '8px' }}>
+                Fokus 01
+              </div>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '10px', color: '#0F172A' }}>
+                Kein Verzetteln mehr
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
+                Wir bauen die operative Leitplanke, damit dein Hyperfokus auf das Produkt gerichtet bleibt, während wir die lästige Routine und Prozessstrukturen abfangen.
+              </p>
+            </TiltGlassCard>
+
+            <TiltGlassCard
+              index={1}
+              maxTilt={4}
+              style={{
+                padding: '28px 24px',
+                borderRadius: '22px',
+                background: 'rgba(255, 255, 255, 0.9)',
+                border: '1px solid rgba(221, 214, 254, 0.8)'
+              }}
+            >
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#8B5CF6', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '8px' }}>
+                Fokus 02
+              </div>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '10px', color: '#0F172A' }}>
+                Struktur ohne Einengung
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
+                Smarte No-Code-Tools, automatisierte Workflows und klare Dashboards, die zu deinem Kopf passen - nicht umgekehrt.
+              </p>
+            </TiltGlassCard>
+
+            <TiltGlassCard
+              index={2}
+              maxTilt={4}
+              style={{
+                padding: '28px 24px',
+                borderRadius: '22px',
+                background: 'rgba(255, 255, 255, 0.9)',
+                border: '1px solid rgba(221, 214, 254, 0.8)'
+              }}
+            >
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#6366F1', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '8px' }}>
+                Fokus 03
+              </div>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '10px', color: '#0F172A' }}>
+                Sparring auf Augenhöhe
+              </h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
+                Kein verständnisloses Kopfschütteln über Gedankensprünge, sondern ehrliches, taktisches Feedback aus 15 Jahren Macher-Praxis.
+              </p>
+            </TiltGlassCard>
+          </div>
+
+          {/* Abschlusszeile (Fett) */}
+          <div
+            style={{
+              textAlign: 'center',
+              padding: '18px 24px',
+              borderRadius: '20px',
+              background: 'rgba(255, 255, 255, 0.85)',
+              border: '1px solid rgba(196, 181, 253, 0.6)',
+              maxWidth: '780px',
+              margin: '0 auto'
+            }}
+          >
+            <p style={{ fontSize: '1.08rem', fontWeight: 800, color: '#4C1D95', lineHeight: 1.5, margin: 0 }}>
+              Du bringst das Feuer und die Vision. Wir bauen das Fundament, das deine Energie auf die Straße bringt.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. ALLE FOKUS-SEKTOREN (Interaktive Filter / Grid) */}
       <section id="investment-fokus" style={{ scrollMarginTop: '110px' }}>
         <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 36px auto' }}>
           <span className="glass-pill" style={{ marginBottom: '14px' }}>
@@ -769,6 +894,11 @@ export default function VenturesPage({ onOpenFunnel }) {
                 <div><strong>Phase:</strong> {phase}</div>
                 <div><strong>Gründer:</strong> {founderName} ({email})</div>
                 <div><strong>Bedarf:</strong> {needs.join(', ')}</div>
+                {isNeurodivergent && (
+                  <div style={{ color: '#7C3AED', fontWeight: 700, paddingTop: '4px', borderTop: '1px dashed rgba(167, 139, 250, 0.5)' }}>
+                    🧠 Neurodiverses Gründerteam / ADHS (Fokus auf Struktur &amp; Sparring aktiviert)
+                  </div>
+                )}
               </div>
 
               <button
@@ -780,6 +910,7 @@ export default function VenturesPage({ onOpenFunnel }) {
                   setFounderName('');
                   setEmail('');
                   setDeckLink('');
+                  setIsNeurodivergent(false);
                 }}
                 className="btn-secondary"
                 style={{ padding: '12px 24px' }}
@@ -916,10 +1047,52 @@ export default function VenturesPage({ onOpenFunnel }) {
                   </div>
                 </div>
 
-                {/* 6. Kontaktdaten & Deck */}
+                {/* 6. Special Support Tag: Neurodiverses Gründerteam / ADHS */}
+                <div>
+                  <div
+                    style={{
+                      padding: '16px 20px',
+                      borderRadius: '18px',
+                      background: isNeurodivergent ? 'rgba(237, 233, 254, 0.7)' : 'rgba(255, 255, 255, 0.75)',
+                      border: isNeurodivergent ? '1.5px solid #8B5CF6' : '1px solid rgba(226, 232, 240, 0.85)',
+                      transition: 'all 0.2s ease',
+                      boxShadow: isNeurodivergent ? '0 4px 16px rgba(139, 92, 246, 0.15)' : 'none'
+                    }}
+                  >
+                    <label
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        cursor: 'pointer',
+                        fontSize: '0.92rem',
+                        fontWeight: 600,
+                        color: isNeurodivergent ? '#4C1D95' : 'var(--text-headline)',
+                        userSelect: 'none'
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={isNeurodivergent}
+                        onChange={(e) => setIsNeurodivergent(e.target.checked)}
+                        style={{
+                          width: '18px',
+                          height: '18px',
+                          accentColor: '#8B5CF6',
+                          cursor: 'pointer'
+                        }}
+                      />
+                      <span>
+                        🧠 <strong>Neurodiverses Gründerteam / ADHS</strong> (Fokus auf Struktur &amp; Sparring)
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+                {/* 7. Kontaktdaten & Unterlagen */}
                 <div>
                   <label style={{ display: 'block', fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-headline)', marginBottom: '10px' }}>
-                    6. Kontaktdaten & Unterlagen
+                    7. Kontaktdaten & Unterlagen
                   </label>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px' }}>
                     <div>
