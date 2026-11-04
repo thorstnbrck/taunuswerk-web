@@ -716,6 +716,144 @@ export default function HomePage({ onOpenFunnel }) {
                 </div>
               </TiltGlassCard>
             </div>
+
+            {/* NEUES MODUL: Kognitive Vielfalt · Das Kollektiv-Prinzip */}
+            <div
+              className="glass-panel"
+              style={{
+                marginTop: '40px',
+                padding: 'clamp(28px, 4vw, 42px)',
+                borderRadius: '26px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(245, 243, 255, 0.78) 50%, rgba(238, 242, 255, 0.72) 100%)',
+                border: '1px solid rgba(167, 139, 250, 0.45)',
+                boxShadow: '0 16px 40px -10px rgba(124, 58, 237, 0.12)',
+                textAlign: 'left'
+              }}
+            >
+              <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 28px auto' }}>
+                <span
+                  className="glass-pill"
+                  style={{
+                    marginBottom: '14px',
+                    background: 'rgba(255, 255, 255, 0.95)',
+                    color: '#7C3AED',
+                    borderColor: 'rgba(139, 92, 246, 0.35)'
+                  }}
+                >
+                  <Zap size={14} color="#7C3AED" />
+                  <span>⚡️ Kognitive Vielfalt · Das Kollektiv-Prinzip</span>
+                </span>
+
+                <h3 style={{ fontSize: 'clamp(1.5rem, 3.2vw, 2.2rem)', color: '#0F172A', marginBottom: '12px' }}>
+                  Zwei Denkweisen. Ein Ergebnis: Echte Wirkung.
+                </h3>
+
+                <p style={{ fontSize: '1.04rem', color: '#334155', lineHeight: 1.6 }}>
+                  Große Ideen entstehen selten in linearen Schablonen - und stabile Unternehmen nicht im Chaos. Wir vereinen das Beste aus zwei Welten.
+                </p>
+              </div>
+
+              {/* Dual-Card Grid (2 Spalten nebeneinander, auf Mobile untereinander) */}
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                  gap: '20px',
+                  marginBottom: '24px'
+                }}
+              >
+                {/* Karte Links (Kreativer Hyperfokus) */}
+                <TiltGlassCard
+                  index={0}
+                  maxTilt={5}
+                  style={{
+                    padding: '24px 22px',
+                    borderRadius: '20px',
+                    background: 'rgba(255, 255, 255, 0.92)',
+                    border: '1px solid rgba(196, 181, 253, 0.75)',
+                    boxShadow: '0 10px 25px -5px rgba(139, 92, 246, 0.1)'
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontSize: '0.8rem',
+                      fontWeight: 800,
+                      color: '#7C3AED',
+                      background: 'rgba(124, 58, 237, 0.1)',
+                      padding: '4px 10px',
+                      borderRadius: '100px',
+                      marginBottom: '14px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em'
+                    }}
+                  >
+                    <span>Kreativer Ausbruch &amp; Tempo</span>
+                  </div>
+                  <h4 style={{ fontSize: '1.18rem', color: '#0F172A', marginBottom: '10px', fontWeight: 700 }}>
+                    Kreativer Hyperfokus
+                  </h4>
+                  <p style={{ color: '#334155', fontSize: '0.94rem', lineHeight: 1.6, margin: 0 }}>
+                    Unkonventionelle Problemlösung, blitzschnelles Erkennen von Mustern und funktionierende Prototypen, die über Nacht mit generativer KI entstehen.
+                  </p>
+                </TiltGlassCard>
+
+                {/* Karte Rechts (Operative Leitplanken) */}
+                <TiltGlassCard
+                  index={1}
+                  maxTilt={5}
+                  style={{
+                    padding: '24px 22px',
+                    borderRadius: '20px',
+                    background: 'rgba(255, 255, 255, 0.92)',
+                    border: '1px solid rgba(147, 197, 253, 0.75)',
+                    boxShadow: '0 10px 25px -5px rgba(59, 130, 246, 0.1)'
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontSize: '0.8rem',
+                      fontWeight: 800,
+                      color: '#2563EB',
+                      background: 'rgba(37, 99, 235, 0.1)',
+                      padding: '4px 10px',
+                      borderRadius: '100px',
+                      marginBottom: '14px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em'
+                    }}
+                  >
+                    <span>Struktur &amp; Skalierung</span>
+                  </div>
+                  <h4 style={{ fontSize: '1.18rem', color: '#0F172A', marginBottom: '10px', fontWeight: 700 }}>
+                    Operative Leitplanken
+                  </h4>
+                  <p style={{ color: '#334155', fontSize: '0.94rem', lineHeight: 1.6, margin: 0 }}>
+                    Strukturierte Go-to-Market-Pläne, verlässliche Prozesse, Vertriebsaufbau und die Geduld für nachhaltige, lineare Skalierung.
+                  </p>
+                </TiltGlassCard>
+              </div>
+
+              {/* Statement-Box darunter */}
+              <div
+                style={{
+                  padding: '18px 22px',
+                  borderRadius: '18px',
+                  background: 'rgba(255, 255, 255, 0.88)',
+                  border: '1px solid rgba(196, 181, 253, 0.65)',
+                  textAlign: 'center'
+                }}
+              >
+                <p style={{ fontSize: '0.98rem', color: '#4C1D95', fontWeight: 600, lineHeight: 1.6, margin: 0 }}>
+                  In unserem Netzwerk arbeiten Macher mit und ohne ADHS Hand in Hand. Wir verbiegen niemanden, sondern lassen jedes Gehirn genau dort anpacken, wo seine größte Stärke liegt.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

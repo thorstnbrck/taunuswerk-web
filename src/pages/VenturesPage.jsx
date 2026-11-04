@@ -25,6 +25,8 @@ import {
 
 export default function VenturesPage({ onOpenFunnel }) {
   // Pitch funnel form state
+  const [submissionType, setSubmissionType] = useState('prototype'); // 'prototype' or 'classic'
+  const [prototypeLink, setPrototypeLink] = useState('');
   const [startupName, setStartupName] = useState('');
   const [sector, setSector] = useState('Handwerk / Vor-Ort');
   const [phase, setPhase] = useState('Idee / Pre-Seed');
@@ -144,6 +146,9 @@ export default function VenturesPage({ onOpenFunnel }) {
 
     if (!startupName.trim()) {
       newErrors.startupName = 'Bitte Namen deines Vorhabens / Betriebs angeben';
+    }
+    if (submissionType === 'prototype' && !prototypeLink.trim()) {
+      newErrors.prototypeLink = 'Bitte Link zum Prototyp, Repo oder Demo angeben';
     }
     if (!problemSolution.trim()) {
       newErrors.problemSolution = 'Bitte beschreibe kurz, was ihr baut (2-3 Sätze)';
@@ -587,16 +592,16 @@ export default function VenturesPage({ onOpenFunnel }) {
         </div>
       </section>
 
-      {/* 5. HIGHLIGHT-SEKTION: ADHS & NEURODIVERSITÄT ("Hyperfocus Hub") */}
+      {/* 5. MODUL: PROTOTYP-SPARRING ("Hyperfocus Hub · Von Prototyp zu Business") */}
       <section>
         <div
-          className="glass-panel"
+          className="glass-panel pulse-glow-violet-blue"
           style={{
             padding: 'clamp(36px, 5vw, 60px)',
             borderRadius: '32px',
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 232, 255, 0.65) 45%, rgba(224, 231, 255, 0.55) 100%)',
-            border: '1px solid rgba(167, 139, 250, 0.55)',
-            boxShadow: '0 24px 60px -15px rgba(139, 92, 246, 0.2), 0 0 24px rgba(255, 255, 255, 0.9) inset'
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(243, 232, 255, 0.72) 45%, rgba(224, 242, 254, 0.65) 100%)',
+            border: '1.5px solid rgba(167, 139, 250, 0.65)',
+            transition: 'box-shadow 0.3s ease, border-color 0.3s ease'
           }}
         >
           <div style={{ maxWidth: '860px', margin: '0 auto', textAlign: 'center', marginBottom: '40px' }}>
@@ -604,109 +609,189 @@ export default function VenturesPage({ onOpenFunnel }) {
               className="glass-pill"
               style={{
                 marginBottom: '18px',
-                background: 'rgba(255, 255, 255, 0.92)',
+                background: 'rgba(255, 255, 255, 0.95)',
                 color: '#7C3AED',
-                borderColor: 'rgba(139, 92, 246, 0.4)'
+                borderColor: 'rgba(139, 92, 246, 0.45)',
+                boxShadow: '0 4px 14px rgba(124, 58, 237, 0.12)'
               }}
             >
               <Brain size={16} color="#7C3AED" />
-              <span>Neurodivergent Founders & ADHS-Support</span>
+              <span>🧠 Hyperfocus Hub · Von Prototyp zu Business</span>
             </span>
 
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '18px', color: '#0F172A' }}>
-              Gebaut für Macher mit Hyperfokus. Nicht für starre Schubladen.
+              Nachtschicht mit KI eskaliert? Wir geben Feedback in Stunden statt Wochen.
             </h2>
 
-            <p style={{ color: '#334155', fontSize: '1.12rem', lineHeight: 1.7, marginBottom: '14px' }}>
-              Klassische VCs wollen aalglatte Lebensläufe, 40-seitige PowerPoint-Decks und lineare Excel-Tabellen. Wir wissen: Die radikalsten Ideen entstehen selten in starren Schablonen.
-            </p>
-
-            <p style={{ color: '#334155', fontSize: '1.12rem', lineHeight: 1.7 }}>
-              Unternehmer mit ADHS bringen oft Eigenschaften mit, von denen andere nur träumen: kompromisslosen Hyperfokus, unkonventionelle Problemlösungen, Mut zum Risiko und ein extremes Gespür für Trends. Was oft fehlt, ist nicht das Talent - sondern das passende Fundament:
+            <p style={{ color: '#334155', fontSize: '1.14rem', lineHeight: 1.75, maxWidth: '800px', margin: '0 auto' }}>
+              Es ist die beste Zeit für Macher: Dank generativer KI stampfen kreative Köpfe heute in wenigen Nächten funktionierende Web-Apps, Tools und Plattformen aus dem Boden. Doch oft folgt auf das gebaute Tool die Wand: Go-to-Market, Vertrieb, Bürokratie. Bevor das Momentum verfliegt und der Prototyp in der Schublade landet - wir fangen es auf.
             </p>
           </div>
 
-          {/* 3 Support-Pfeiler */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginBottom: '32px' }}>
+          {/* 3 Schritte als Step-Progress-Cards (Horizontaler Flow) */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '20px',
+              marginBottom: '36px'
+            }}
+          >
+            {/* Schritt 1 */}
             <TiltGlassCard
               index={0}
               maxTilt={4}
               style={{
                 padding: '28px 24px',
                 borderRadius: '22px',
-                background: 'rgba(255, 255, 255, 0.9)',
-                border: '1px solid rgba(221, 214, 254, 0.8)'
+                background: 'rgba(255, 255, 255, 0.92)',
+                border: '1px solid rgba(196, 181, 253, 0.85)',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                boxShadow: '0 12px 28px -8px rgba(124, 58, 237, 0.1)'
               }}
             >
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '8px' }}>
-                Fokus 01
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                <span
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '12px',
+                    background: 'linear-gradient(135deg, #7C3AED, #6366F1)',
+                    color: '#FFFFFF',
+                    fontWeight: 800,
+                    fontSize: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 6px 14px rgba(124, 58, 237, 0.3)'
+                  }}
+                >
+                  01
+                </span>
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                  Schritt 1
+                </span>
               </div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '10px', color: '#0F172A' }}>
-                Kein Verzetteln mehr
+              <h3 style={{ fontSize: '1.22rem', marginBottom: '10px', color: '#0F172A', fontWeight: 700 }}>
+                1. Link rüberwerfen
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
-                Wir bauen die operative Leitplanke, damit dein Hyperfokus auf das Produkt gerichtet bleibt, während wir die lästige Routine und Prozessstrukturen abfangen.
+              <p style={{ color: '#334155', fontSize: '0.94rem', lineHeight: 1.65, margin: 0 }}>
+                Kein 40-seitiges Pitchdeck. Schick uns deinen Klick-Dummy, deine Live-Demo oder dein Repo.
               </p>
             </TiltGlassCard>
 
+            {/* Schritt 2 */}
             <TiltGlassCard
               index={1}
               maxTilt={4}
               style={{
                 padding: '28px 24px',
                 borderRadius: '22px',
-                background: 'rgba(255, 255, 255, 0.9)',
-                border: '1px solid rgba(221, 214, 254, 0.8)'
+                background: 'rgba(255, 255, 255, 0.92)',
+                border: '1px solid rgba(167, 139, 250, 0.85)',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                boxShadow: '0 12px 28px -8px rgba(99, 102, 241, 0.1)'
               }}
             >
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#8B5CF6', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '8px' }}>
-                Fokus 02
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                <span
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '12px',
+                    background: 'linear-gradient(135deg, #6366F1, #38BDF8)',
+                    color: '#FFFFFF',
+                    fontWeight: 800,
+                    fontSize: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 6px 14px rgba(99, 102, 241, 0.3)'
+                  }}
+                >
+                  02
+                </span>
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#6366F1', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                  Schritt 2
+                </span>
               </div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '10px', color: '#0F172A' }}>
-                Struktur ohne Einengung
+              <h3 style={{ fontSize: '1.22rem', marginBottom: '10px', color: '#0F172A', fontWeight: 700 }}>
+                2. Ehrlicher Realitäts-Check
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
-                Smarte No-Code-Tools, automatisierte Workflows und klare Dashboards, die zu deinem Kopf passen - nicht umgekehrt.
+              <p style={{ color: '#334155', fontSize: '0.94rem', lineHeight: 1.65, margin: 0 }}>
+                20 Minuten kostenloses Macher-Sparring. Gibt es einen Markt? Wer zahlt dafür? Wo hakt es?
               </p>
             </TiltGlassCard>
 
+            {/* Schritt 3 */}
             <TiltGlassCard
               index={2}
               maxTilt={4}
               style={{
                 padding: '28px 24px',
                 borderRadius: '22px',
-                background: 'rgba(255, 255, 255, 0.9)',
-                border: '1px solid rgba(221, 214, 254, 0.8)'
+                background: 'rgba(255, 255, 255, 0.92)',
+                border: '1px solid rgba(125, 211, 252, 0.85)',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                boxShadow: '0 12px 28px -8px rgba(56, 189, 248, 0.12)'
               }}
             >
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#6366F1', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '8px' }}>
-                Fokus 03
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                <span
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '12px',
+                    background: 'linear-gradient(135deg, #38BDF8, #10B981)',
+                    color: '#FFFFFF',
+                    fontWeight: 800,
+                    fontSize: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 6px 14px rgba(56, 189, 248, 0.3)'
+                  }}
+                >
+                  03
+                </span>
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#0284C7', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                  Schritt 3
+                </span>
               </div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '10px', color: '#0F172A' }}>
-                Sparring auf Augenhöhe
+              <h3 style={{ fontSize: '1.22rem', marginBottom: '10px', color: '#0F172A', fontWeight: 700 }}>
+                3. Klare Optionen
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.94rem', lineHeight: 1.6 }}>
-                Kein verständnisloses Kopfschütteln über Gedankensprünge, sondern ehrliches, taktisches Feedback aus 15 Jahren Macher-Praxis.
+              <p style={{ color: '#334155', fontSize: '0.94rem', lineHeight: 1.65, margin: 0 }}>
+                Wenn das Ding trägt, steigen wir operativ ein (Sweat Equity/Kapital) oder docken dich an spezialisierte Partner aus unserem Kollektiv an.
               </p>
             </TiltGlassCard>
           </div>
 
-          {/* Abschlusszeile (Fett) */}
-          <div
-            style={{
-              textAlign: 'center',
-              padding: '18px 24px',
-              borderRadius: '20px',
-              background: 'rgba(255, 255, 255, 0.85)',
-              border: '1px solid rgba(196, 181, 253, 0.6)',
-              maxWidth: '780px',
-              margin: '0 auto'
-            }}
-          >
-            <p style={{ fontSize: '1.08rem', fontWeight: 800, color: '#4C1D95', lineHeight: 1.5, margin: 0 }}>
-              Du bringst das Feuer und die Vision. Wir bauen das Fundament, das deine Energie auf die Straße bringt.
-            </p>
+          {/* Quick-Jump Action Button */}
+          <div style={{ textAlign: 'center' }}>
+            <button
+              type="button"
+              onClick={() => {
+                setSubmissionType('prototype');
+                scrollToPitch();
+              }}
+              className="btn-primary"
+              style={{
+                background: 'linear-gradient(135deg, #7C3AED, #4F46E5)',
+                boxShadow: '0 10px 24px -4px rgba(124, 58, 237, 0.4)',
+                padding: '14px 28px',
+                fontSize: '1rem'
+              }}
+            >
+              <span>Prototyp jetzt zum Sparring einreichen</span>
+              <ArrowRight size={16} />
+            </button>
           </div>
         </div>
       </section>
@@ -880,7 +965,7 @@ export default function VenturesPage({ onOpenFunnel }) {
                   borderRadius: '18px',
                   background: 'rgba(248, 250, 252, 0.85)',
                   border: '1px solid rgba(226, 232, 240, 0.8)',
-                  maxWidth: '520px',
+                  maxWidth: '540px',
                   margin: '0 auto 30px auto',
                   textAlign: 'left',
                   fontSize: '0.9rem',
@@ -889,7 +974,16 @@ export default function VenturesPage({ onOpenFunnel }) {
                   gap: '8px'
                 }}
               >
+                <div><strong>Art des Vorhabens:</strong> {submissionType === 'prototype' ? '⚡️ KI-Prototyp & Schnelles Sparring' : '🏛 Klassisches Venture-Kapital / Nachfolge'}</div>
                 <div><strong>Vorhaben:</strong> {startupName}</div>
+                {submissionType === 'prototype' && prototypeLink && (
+                  <div style={{ wordBreak: 'break-all' }}>
+                    <strong>Prototyp-Link:</strong>{' '}
+                    <a href={prototypeLink.startsWith('http') ? prototypeLink : `https://${prototypeLink}`} target="_blank" rel="noopener noreferrer" style={{ color: '#7C3AED', textDecoration: 'underline', fontWeight: 600 }}>
+                      {prototypeLink}
+                    </a>
+                  </div>
+                )}
                 <div><strong>Branche:</strong> {sector}</div>
                 <div><strong>Phase:</strong> {phase}</div>
                 <div><strong>Gründer:</strong> {founderName} ({email})</div>
@@ -905,6 +999,8 @@ export default function VenturesPage({ onOpenFunnel }) {
                 type="button"
                 onClick={() => {
                   setIsSubmitted(false);
+                  setSubmissionType('prototype');
+                  setPrototypeLink('');
                   setStartupName('');
                   setProblemSolution('');
                   setFounderName('');
@@ -932,11 +1028,151 @@ export default function VenturesPage({ onOpenFunnel }) {
                 </h2>
 
                 <p style={{ color: '#475569', fontSize: '1.05rem', maxWidth: '640px', margin: '0 auto' }}>
-                  Kein 40-seitiges Deck nötig. Gib uns die Kernfakten - wir melden uns innerhalb von 48 Stunden mit ehrlichem Feedback.
+                  Kein 40-seitiges Deck nötig. Gib uns die Kernfakten - wir melden uns mit ehrlichem Macher-Feedback.
                 </p>
               </div>
 
               <form onSubmit={handlePitchSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '26px' }}>
+                {/* 0. Art des Vorhabens (Radio-Filter / Schnell-Wahlschalter) */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.94rem', fontWeight: 700, color: 'var(--text-headline)', marginBottom: '10px' }}>
+                    Art des Vorhabens *
+                  </label>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+                    {/* Option 1: KI-Prototyp */}
+                    <button
+                      type="button"
+                      onClick={() => setSubmissionType('prototype')}
+                      style={{
+                        padding: '16px 18px',
+                        borderRadius: '20px',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        border: submissionType === 'prototype'
+                          ? '2px solid #7C3AED'
+                          : '1px solid rgba(203, 213, 225, 0.7)',
+                        background: submissionType === 'prototype'
+                          ? 'linear-gradient(135deg, rgba(245, 243, 255, 0.98) 0%, rgba(238, 242, 255, 0.92) 100%)'
+                          : 'rgba(255, 255, 255, 0.72)',
+                        boxShadow: submissionType === 'prototype'
+                          ? '0 8px 24px -4px rgba(124, 58, 237, 0.2)'
+                          : 'none',
+                        transition: 'all 0.2s ease',
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '12px'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '20px',
+                          height: '20px',
+                          borderRadius: '50%',
+                          border: submissionType === 'prototype' ? '6px solid #7C3AED' : '2px solid #94A3B8',
+                          background: '#FFFFFF',
+                          marginTop: '2px',
+                          flexShrink: 0
+                        }}
+                      />
+                      <div>
+                        <div style={{ fontWeight: 800, color: submissionType === 'prototype' ? '#4C1D95' : '#0F172A', fontSize: '0.94rem', marginBottom: '4px' }}>
+                          ⚡️ KI-Prototyp &amp; Sparring
+                        </div>
+                        <div style={{ fontSize: '0.86rem', color: '#475569', lineHeight: 1.45 }}>
+                          Ich habe einen fertigen KI-Prototyp und brauche schnelles Sparring &amp; Struktur
+                        </div>
+                      </div>
+                    </button>
+
+                    {/* Option 2: Klassisches Venture-Kapital */}
+                    <button
+                      type="button"
+                      onClick={() => setSubmissionType('classic')}
+                      style={{
+                        padding: '16px 18px',
+                        borderRadius: '20px',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        border: submissionType === 'classic'
+                          ? '2px solid #2563EB'
+                          : '1px solid rgba(203, 213, 225, 0.7)',
+                        background: submissionType === 'classic'
+                          ? 'linear-gradient(135deg, rgba(239, 246, 255, 0.98) 0%, rgba(240, 253, 250, 0.92) 100%)'
+                          : 'rgba(255, 255, 255, 0.72)',
+                        boxShadow: submissionType === 'classic'
+                          ? '0 8px 24px -4px rgba(37, 99, 235, 0.2)'
+                          : 'none',
+                        transition: 'all 0.2s ease',
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '12px'
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '20px',
+                          height: '20px',
+                          borderRadius: '50%',
+                          border: submissionType === 'classic' ? '6px solid #2563EB' : '2px solid #94A3B8',
+                          background: '#FFFFFF',
+                          marginTop: '2px',
+                          flexShrink: 0
+                        }}
+                      />
+                      <div>
+                        <div style={{ fontWeight: 800, color: submissionType === 'classic' ? '#1E40AF' : '#0F172A', fontSize: '0.94rem', marginBottom: '4px' }}>
+                          🏛 Venture &amp; Nachfolge
+                        </div>
+                        <div style={{ fontSize: '0.86rem', color: '#475569', lineHeight: 1.45 }}>
+                          Ich suche klassisches Venture-Kapital / Nachfolge-Partner
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Dynamisches Feld: Hervorgehoben bei Option 1 (Prototyp) */}
+                {submissionType === 'prototype' && (
+                  <div
+                    style={{
+                      padding: '20px 22px',
+                      borderRadius: '20px',
+                      background: 'linear-gradient(135deg, rgba(245, 243, 255, 0.95) 0%, rgba(240, 249, 255, 0.95) 100%)',
+                      border: '1.5px solid #8B5CF6',
+                      boxShadow: '0 8px 24px rgba(139, 92, 246, 0.15)'
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px' }}>
+                      <label htmlFor="prototype-link" style={{ fontSize: '0.95rem', fontWeight: 700, color: '#4C1D95' }}>
+                        Link zum Prototyp / Live-Demo (URL, Testzugang oder Repo) *
+                      </label>
+                      <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#7C3AED', background: 'rgba(124, 58, 237, 0.1)', padding: '2px 8px', borderRadius: '100px' }}>
+                        Prio-Review
+                      </span>
+                    </div>
+                    <input
+                      id="prototype-link"
+                      type="text"
+                      placeholder="https://... (Vercel-Link, GitHub, Figma, Loom oder Live-URL)"
+                      value={prototypeLink}
+                      onChange={(e) => setPrototypeLink(e.target.value)}
+                      className="form-input"
+                      style={{
+                        background: '#FFFFFF',
+                        borderColor: errors.prototypeLink ? '#F43F5E' : 'rgba(167, 139, 250, 0.6)',
+                        boxShadow: '0 2px 8px rgba(124, 58, 237, 0.08)'
+                      }}
+                    />
+                    {errors.prototypeLink ? (
+                      <p style={{ color: '#F43F5E', fontSize: '0.82rem', marginTop: '4px' }}>{errors.prototypeLink}</p>
+                    ) : (
+                      <p style={{ color: '#6D28D9', fontSize: '0.8rem', marginTop: '6px' }}>
+                        Tipp: Du kannst auch Zugangsdaten oder kurze Anmerkungen direkt im Beschreibungsfeld ergänzen.
+                      </p>
+                    )}
+                  </div>
+                )}
+
                 {/* 1. Name of Startup / Betrieb */}
                 <div>
                   <label htmlFor="startup-name" style={{ display: 'block', fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-headline)', marginBottom: '8px' }}>
@@ -1145,22 +1381,55 @@ export default function VenturesPage({ onOpenFunnel }) {
                       width: '100%',
                       padding: '16px 28px',
                       fontSize: '1.04rem',
-                      cursor: isSubmitting ? 'wait' : 'pointer'
+                      cursor: isSubmitting ? 'wait' : 'pointer',
+                      background: submissionType === 'prototype'
+                        ? 'linear-gradient(135deg, #7C3AED, #4F46E5)'
+                        : undefined,
+                      boxShadow: submissionType === 'prototype'
+                        ? '0 10px 25px -4px rgba(124, 58, 237, 0.4)'
+                        : undefined
                     }}
                   >
                     {isSubmitting ? (
                       <span>Wird an die Werkbank übertragen...</span>
                     ) : (
                       <>
-                        <span>Pitch einreichen</span>
-                        <ArrowRight size={18} />
+                        <span>{submissionType === 'prototype' ? 'Prototyp zum Sparring einreichen →' : 'Pitch einreichen →'}</span>
                       </>
                     )}
                   </button>
 
+                  {/* SLA-Badge unter dem Button */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      gap: '10px',
+                      marginTop: '16px',
+                      padding: '10px 18px',
+                      borderRadius: '100px',
+                      background: 'rgba(236, 253, 245, 0.9)',
+                      border: '1px solid rgba(16, 185, 129, 0.4)',
+                      color: '#065F46',
+                      fontSize: '0.88rem',
+                      fontWeight: 600,
+                      maxWidth: 'fit-content',
+                      margin: '16px auto 0 auto',
+                      boxShadow: '0 4px 14px rgba(16, 185, 129, 0.1)'
+                    }}
+                  >
+                    <span className="sla-pulse-dot" />
+                    <span>
+                      {submissionType === 'prototype'
+                        ? 'Blitz-Feedback: Bei Prototyp-Einreichungen melden wir uns in der Regel innerhalb weniger Stunden.'
+                        : 'Blitz-Feedback: Wir melden uns verlässlich innerhalb von 48 Stunden bei dir.'}
+                    </span>
+                  </div>
+
                   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '18px', marginTop: '16px', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
                     <span>🔒 100% vertraulich behandelt</span>
-                    <span>⚡️ Rückmeldung binnen 48 Stunden</span>
+                    <span>⚡️ Kein Agentur-Wasserkopf</span>
                     <span>🤝 Direktes Sparring mit Machern</span>
                   </div>
                 </div>
