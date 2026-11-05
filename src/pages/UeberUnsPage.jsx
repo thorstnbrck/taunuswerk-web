@@ -22,64 +22,74 @@ const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 export default function UeberUnsPage({ onOpenFunnel }) {
   const teamMembers = [
     {
-      name: 'Thorsten Bruck',
-      role: 'Gründer & Stratege an der Werkbank',
-      tag: 'Strategie & Sparring',
+      role: 'Konzeption, Plattformen & Venture Lead',
+      focus: 'Der Architekt & Übersetzer',
+      tag: 'Strategie & Prototyping',
       tagColor: '#BE185D',
       tagBg: 'rgba(244, 63, 94, 0.1)',
       desc: '15 Jahre Praxiserfahrung aus Tech, FinTech, E-Commerce und Handwerk. Dein fester Sparringspartner für Konzeption, Hebel und Gesamtsteuerung.',
       avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-      isFounder: true
+      badge: 'Werkstatt-Führung'
     },
     {
-      name: '[Name Platzhalter]',
-      role: 'Einkäuferin & Verhandlungs-Profi',
+      role: 'Strategischer Einkauf & Verhandlungsführung',
+      focus: 'Die Verhandlerin & Deal-Makerin',
       tag: 'Konditionen & Marge',
       tagColor: '#065F46',
       tagBg: 'rgba(16, 185, 129, 0.12)',
       desc: 'Harte Verhandlungskompetenz auf Konzernebene. Optimiert Lieferantenverträge, drückt Einkaufspreise und holt in B2B-Verhandlungen echte Marge raus.',
       avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
-      isFounder: false
+      badge: 'Kollektiv-Partner'
     },
     {
-      name: '[Name Platzhalter]',
-      role: 'Projektmanager & Workflow-Architekt',
+      role: 'Projektsteuerung & Prozessoptimierung',
+      focus: 'Der Taktgeber & Prozess-Architekt',
       tag: 'Struktur & Flow',
       tagColor: '#9A3412',
       tagBg: 'rgba(251, 146, 60, 0.14)',
       desc: 'Das operative Rückgrat. Verwandelt kreative Builds in getaktete, fehlerfreie Prozesse mit glasklaren Übergaben und hohem Tempo.',
       avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
-      isFounder: false
+      badge: 'Kollektiv-Partner'
     },
     {
-      name: '[Name Platzhalter]',
-      role: 'Kamera, Drohne & Visual Storytelling',
+      role: 'Foto, Video & Social Ads',
+      focus: 'Das visuelle Auge & Performance-Storyteller',
       tag: 'Content & Film',
       tagColor: '#BE185D',
       tagBg: 'rgba(244, 63, 94, 0.1)',
       desc: 'Kinoreife Bilder, Social-First Framing und schneller Vor-Ort-Dreh für Kampagnen, die Kunden emotional packen und hängen bleiben.',
       avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
-      isFounder: false
+      badge: 'Kollektiv-Partner'
     },
     {
-      name: '[Name Platzhalter]',
-      role: 'UI/UX Design & Full-Stack Code',
-      tag: 'Interfaces & Web-Tools',
-      tagColor: '#0369A1',
+      role: 'Fullstack Development & Code',
+      focus: 'Der Code-Pragmatiker',
+      tag: 'Web-Apps & APIs',
+      tagColor: '#0284C7',
       tagBg: 'rgba(56, 189, 248, 0.12)',
       desc: 'Moderne Web-Applikationen, hochkonvertierende Landingpages und digitale Werkzeuge, die sich auf der Baustelle in 10 Sekunden bedienen lassen.',
       avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
-      isFounder: false
+      badge: 'Kollektiv-Partner'
     },
     {
-      name: '[Name Platzhalter]',
-      role: 'HR- & Recruiting-Spezialist',
+      role: 'UI/UX & Brand Design',
+      focus: 'Die Gestalterin & Interface-Expertin',
+      tag: 'Interface & Identität',
+      tagColor: '#6D28D9',
+      tagBg: 'rgba(167, 139, 250, 0.14)',
+      desc: 'Hochwertige Markenauftritte und intuitive Nutzerführung. Sorgt dafür, dass komplexe Werkzeuge und Portale mühelos bedienbar sind.',
+      avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
+      badge: 'Kollektiv-Partner'
+    },
+    {
+      role: 'HR-Spezialist & People Strategy',
+      focus: 'Der Talent-Magnet & Team-Builder',
       tag: 'Fachkräfte & Region',
       tagColor: '#4338CA',
       tagBg: 'rgba(129, 140, 248, 0.12)',
       desc: 'Social-Recruiting-Funnels und gezielte Arbeitgeberpositionierung, um wechselwillige Fachkräfte direkt auf dem Smartphone abzuholen.',
       avatarUrl: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80',
-      isFounder: false
+      badge: 'Kollektiv-Partner'
     }
   ];
   return (
@@ -255,18 +265,18 @@ export default function UeberUnsPage({ onOpenFunnel }) {
                   >
                     <img
                       src={member.avatarUrl}
-                      alt={member.name}
+                      alt={member.role}
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                       loading="lazy"
                     />
                   </div>
 
                   <div>
-                    <div style={{ fontSize: '1.18rem', fontWeight: 800, color: '#0F172A', marginBottom: '3px' }}>
-                      {member.name}
-                    </div>
-                    <div style={{ fontSize: '0.86rem', fontWeight: 600, color: '#475569' }}>
+                    <div style={{ fontSize: '1.12rem', fontWeight: 800, color: '#0F172A', lineHeight: 1.3, marginBottom: '4px' }}>
                       {member.role}
+                    </div>
+                    <div style={{ fontSize: '0.84rem', fontWeight: 700, color: member.tagColor }}>
+                      {member.focus}
                     </div>
                   </div>
                 </div>
@@ -294,7 +304,7 @@ export default function UeberUnsPage({ onOpenFunnel }) {
                 </span>
 
                 <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-                  {member.isFounder ? 'Werkstatt-Führung' : 'Kollektiv-Partner'}
+                  {member.badge}
                 </span>
               </div>
             </TiltGlassCard>
