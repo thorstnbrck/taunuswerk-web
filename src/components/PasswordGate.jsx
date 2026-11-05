@@ -3,8 +3,8 @@ import { Lock, KeyRound, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react'
 import AuroraCanvas from './AuroraCanvas';
 
 // Konfiguriertes Passwort (kann auch über VITE_SITE_PASSWORD in .env überschrieben werden)
-const DEFAULT_PASSWORD = import.meta.env.VITE_SITE_PASSWORD || 'taunuswerk';
-const STORAGE_KEY = 'taunuswerk_preview_access';
+const DEFAULT_PASSWORD = import.meta.env.VITE_SITE_PASSWORD || '1337';
+const STORAGE_KEY = 'taunuswerk_preview_access_1337';
 
 export default function PasswordGate({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
