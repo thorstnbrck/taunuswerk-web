@@ -13,7 +13,9 @@ import {
   Users2,
   ShieldCheck,
   Zap,
-  Clock
+  Clock,
+  Briefcase,
+  Settings2
 } from 'lucide-react';
 
 export default function HomePage({ onOpenFunnel }) {
@@ -669,53 +671,127 @@ export default function HomePage({ onOpenFunnel }) {
               Ein Kopf. Ein Netzwerk. Keine Reibungsverluste.
             </h2>
 
-            <p style={{ fontSize: '1.12rem', color: '#334155', lineHeight: 1.7, marginBottom: '36px' }}>
-              Ein fester Sparringspartner an der Werkbank für Konzeption und Steuerung: <strong>ich</strong>. Für die Produktion greift Taunuswerk auf ein eingespieltes Kollektiv zurück - Kamera & Drohne, UI-Design, Full-Stack-Code und HR-/Recruiting-Spezialisten. Maximale Kompetenz, schlanke Prozesse.
+            <p style={{ fontSize: '1.12rem', color: '#334155', lineHeight: 1.7, marginBottom: '32px' }}>
+              Ein fester Sparringspartner an der Werkbank für Konzeption und Steuerung: <strong>ich</strong>. Für die Umsetzung greift Taunuswerk auf ein eingespieltes Kollektiv spezialisierter Macher zurück - von Kamera, UI &amp; Code über HR-Recruiting bis zu strategischem Einkauf und getakteter Projektsteuerung. Maximale Kompetenz, schlanke Prozesse.
             </p>
 
-            {/* Micro Pillars */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' }}>
-              <TiltGlassCard
-                index={0}
-                maxTilt={6}
-                shimmerBorder={true}
-                style={{ padding: '20px 22px', borderRadius: '20px', background: 'rgba(255, 255, 255, 0.76)' }}
-              >
-                <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '6px' }}>
-                  Kamera & Drohne
-                </div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                  Kinoreife Bilder, Social-First Framing und schneller Vor-Ort-Dreh.
-                </div>
-              </TiltGlassCard>
+            {/* Macher-Rollen im Kollektiv (Bento-Grid) */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {/* Obere Reihe: 3 Gewerke */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', textAlign: 'left' }}>
+                <TiltGlassCard
+                  index={0}
+                  maxTilt={6}
+                  shimmerBorder={true}
+                  style={{ padding: '22px 22px', borderRadius: '22px', background: 'rgba(255, 255, 255, 0.8)' }}
+                >
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.76rem', fontWeight: 700, color: '#BE185D', background: 'rgba(244, 63, 94, 0.1)', padding: '3px 9px', borderRadius: '100px', marginBottom: '10px' }}>
+                    <Video size={12} color="#F43F5E" />
+                    <span>Content &amp; Film</span>
+                  </div>
+                  <div style={{ fontWeight: 800, color: '#0F172A', fontSize: '1.05rem', marginBottom: '6px' }}>
+                    Kamera &amp; Drohne
+                  </div>
+                  <div style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.55 }}>
+                    Kinoreife Bilder, Social-First Framing und schneller Vor-Ort-Dreh.
+                  </div>
+                </TiltGlassCard>
 
-              <TiltGlassCard
-                index={1}
-                maxTilt={6}
-                shimmerBorder={true}
-                style={{ padding: '20px 22px', borderRadius: '20px', background: 'rgba(255, 255, 255, 0.76)' }}
-              >
-                <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '6px' }}>
-                  UI/UX & Code
-                </div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                  Smarte Interfaces, moderne Web-Technologien und skalierbare Architektur.
-                </div>
-              </TiltGlassCard>
+                <TiltGlassCard
+                  index={1}
+                  maxTilt={6}
+                  shimmerBorder={true}
+                  style={{ padding: '22px 22px', borderRadius: '22px', background: 'rgba(255, 255, 255, 0.8)' }}
+                >
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.76rem', fontWeight: 700, color: '#0369A1', background: 'rgba(56, 189, 248, 0.1)', padding: '3px 9px', borderRadius: '100px', marginBottom: '10px' }}>
+                    <Layers size={12} color="#0284C7" />
+                    <span>Interfaces &amp; Code</span>
+                  </div>
+                  <div style={{ fontWeight: 800, color: '#0F172A', fontSize: '1.05rem', marginBottom: '6px' }}>
+                    UI/UX &amp; Code
+                  </div>
+                  <div style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.55 }}>
+                    Smarte Interfaces, moderne Web-Technologien und skalierbare Architektur.
+                  </div>
+                </TiltGlassCard>
 
-              <TiltGlassCard
-                index={2}
-                maxTilt={6}
-                shimmerBorder={true}
-                style={{ padding: '20px 22px', borderRadius: '20px', background: 'rgba(255, 255, 255, 0.76)' }}
-              >
-                <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '6px' }}>
-                  HR- & Recruiting
-                </div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                  Gezielte Arbeitgeberpositionierung und Ansprache von Fachkräften in der Region.
-                </div>
-              </TiltGlassCard>
+                <TiltGlassCard
+                  index={2}
+                  maxTilt={6}
+                  shimmerBorder={true}
+                  style={{ padding: '22px 22px', borderRadius: '22px', background: 'rgba(255, 255, 255, 0.8)' }}
+                >
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.76rem', fontWeight: 700, color: '#4338CA', background: 'rgba(129, 140, 248, 0.1)', padding: '3px 9px', borderRadius: '100px', marginBottom: '10px' }}>
+                    <Users2 size={12} color="#6366F1" />
+                    <span>Talente &amp; Region</span>
+                  </div>
+                  <div style={{ fontWeight: 800, color: '#0F172A', fontSize: '1.05rem', marginBottom: '6px' }}>
+                    HR- &amp; Recruiting
+                  </div>
+                  <div style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.55 }}>
+                    Gezielte Arbeitgeberpositionierung und Ansprache von Fachkräften in der Region.
+                  </div>
+                </TiltGlassCard>
+              </div>
+
+              {/* Untere Reihe: 2 neue Kernprofile (Strategischer Einkauf & Prozessoptimierung) */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px', textAlign: 'left' }}>
+                {/* Karte 1: Strategischer Einkauf & Verhandlung */}
+                <TiltGlassCard
+                  index={3}
+                  maxTilt={5}
+                  shimmerBorder={true}
+                  style={{
+                    padding: '24px 24px',
+                    borderRadius: '22px',
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(240, 253, 244, 0.8) 100%)',
+                    border: '1px solid rgba(167, 243, 208, 0.7)',
+                    boxShadow: '0 10px 25px -5px rgba(16, 185, 129, 0.08)'
+                  }}
+                >
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', fontWeight: 700, color: '#065F46', background: 'rgba(16, 185, 129, 0.12)', padding: '4px 10px', borderRadius: '100px', marginBottom: '12px' }}>
+                    <Briefcase size={13} color="#10B981" />
+                    <span>Konditionen &amp; Marge</span>
+                  </div>
+                  <div style={{ fontWeight: 800, color: '#0F172A', fontSize: '1.14rem', marginBottom: '2px' }}>
+                    Strategischer Einkauf &amp; Verhandlung
+                  </div>
+                  <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#059669', marginBottom: '10px' }}>
+                    Einkäuferin &amp; Verhandlungs-Profi
+                  </div>
+                  <div style={{ fontSize: '0.9rem', color: '#334155', lineHeight: 1.6 }}>
+                    Harte Verhandlungskompetenz auf Konzernebene. Wir optimieren Lieferantenverträge, drücken Einkaufspreise und holen in B2B-Verhandlungen die Marge raus, die andere auf dem Tisch liegen lassen.
+                  </div>
+                </TiltGlassCard>
+
+                {/* Karte 2: Prozessoptimierung & Projektsteuerung */}
+                <TiltGlassCard
+                  index={4}
+                  maxTilt={5}
+                  shimmerBorder={true}
+                  style={{
+                    padding: '24px 24px',
+                    borderRadius: '22px',
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 247, 237, 0.8) 100%)',
+                    border: '1px solid rgba(254, 215, 170, 0.7)',
+                    boxShadow: '0 10px 25px -5px rgba(249, 115, 22, 0.08)'
+                  }}
+                >
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', fontWeight: 700, color: '#9A3412', background: 'rgba(251, 146, 60, 0.14)', padding: '4px 10px', borderRadius: '100px', marginBottom: '12px' }}>
+                    <Settings2 size={13} color="#EA580C" />
+                    <span>Struktur &amp; Flow</span>
+                  </div>
+                  <div style={{ fontWeight: 800, color: '#0F172A', fontSize: '1.14rem', marginBottom: '2px' }}>
+                    Prozessoptimierung &amp; Projektsteuerung
+                  </div>
+                  <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#EA580C', marginBottom: '10px' }}>
+                    Projektmanager &amp; Workflow-Architekt
+                  </div>
+                  <div style={{ fontSize: '0.9rem', color: '#334155', lineHeight: 1.6 }}>
+                    Das operative Rückgrat. Verwandelt kreatives Chaos und KI-Prototypen in getaktete, fehlerfreie Prozesse - ohne Zettelwirtschaft, mit glasklaren Übergaben und maximalem Projekttempo.
+                  </div>
+                </TiltGlassCard>
+              </div>
             </div>
 
             {/* NEUES MODUL: Kognitive Vielfalt · Das Kollektiv-Prinzip */}
