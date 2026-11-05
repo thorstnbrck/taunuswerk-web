@@ -2,11 +2,86 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '../router';
 import TiltGlassCard from '../components/TiltGlassCard';
-import { UserCheck, Sparkles, ArrowRight, MessageSquare, PhoneCall, Network, Award } from 'lucide-react';
+import {
+  UserCheck,
+  Sparkles,
+  ArrowRight,
+  MessageSquare,
+  PhoneCall,
+  Network,
+  Award,
+  Users2,
+  Briefcase,
+  Settings2,
+  Video,
+  Layers
+} from 'lucide-react';
 
 const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function UeberUnsPage({ onOpenFunnel }) {
+  const teamMembers = [
+    {
+      name: 'Thorsten Bruck',
+      role: 'Gründer & Stratege an der Werkbank',
+      tag: 'Strategie & Sparring',
+      tagColor: '#BE185D',
+      tagBg: 'rgba(244, 63, 94, 0.1)',
+      desc: '15 Jahre Praxiserfahrung aus Tech, FinTech, E-Commerce und Handwerk. Dein fester Sparringspartner für Konzeption, Hebel und Gesamtsteuerung.',
+      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      isFounder: true
+    },
+    {
+      name: '[Name Platzhalter]',
+      role: 'Einkäuferin & Verhandlungs-Profi',
+      tag: 'Konditionen & Marge',
+      tagColor: '#065F46',
+      tagBg: 'rgba(16, 185, 129, 0.12)',
+      desc: 'Harte Verhandlungskompetenz auf Konzernebene. Optimiert Lieferantenverträge, drückt Einkaufspreise und holt in B2B-Verhandlungen echte Marge raus.',
+      avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+      isFounder: false
+    },
+    {
+      name: '[Name Platzhalter]',
+      role: 'Projektmanager & Workflow-Architekt',
+      tag: 'Struktur & Flow',
+      tagColor: '#9A3412',
+      tagBg: 'rgba(251, 146, 60, 0.14)',
+      desc: 'Das operative Rückgrat. Verwandelt kreative Builds in getaktete, fehlerfreie Prozesse mit glasklaren Übergaben und hohem Tempo.',
+      avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+      isFounder: false
+    },
+    {
+      name: '[Name Platzhalter]',
+      role: 'Kamera, Drohne & Visual Storytelling',
+      tag: 'Content & Film',
+      tagColor: '#BE185D',
+      tagBg: 'rgba(244, 63, 94, 0.1)',
+      desc: 'Kinoreife Bilder, Social-First Framing und schneller Vor-Ort-Dreh für Kampagnen, die Kunden emotional packen und hängen bleiben.',
+      avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+      isFounder: false
+    },
+    {
+      name: '[Name Platzhalter]',
+      role: 'UI/UX Design & Full-Stack Code',
+      tag: 'Interfaces & Web-Tools',
+      tagColor: '#0369A1',
+      tagBg: 'rgba(56, 189, 248, 0.12)',
+      desc: 'Moderne Web-Applikationen, hochkonvertierende Landingpages und digitale Werkzeuge, die sich auf der Baustelle in 10 Sekunden bedienen lassen.',
+      avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+      isFounder: false
+    },
+    {
+      name: '[Name Platzhalter]',
+      role: 'HR- & Recruiting-Spezialist',
+      tag: 'Fachkräfte & Region',
+      tagColor: '#4338CA',
+      tagBg: 'rgba(129, 140, 248, 0.12)',
+      desc: 'Social-Recruiting-Funnels und gezielte Arbeitgeberpositionierung, um wechselwillige Fachkräfte direkt auf dem Smartphone abzuholen.',
+      avatarUrl: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80',
+      isFounder: false
+    }
+  ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
       {/* Breadcrumb */}
@@ -128,6 +203,104 @@ export default function UeberUnsPage({ onOpenFunnel }) {
           </TiltGlassCard>
         </div>
       </div>
+
+      {/* 3. Team & Kollektiv-Macher (Platzhalter) */}
+      <section>
+        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 36px auto' }}>
+          <span className="glass-pill" style={{ marginBottom: '14px', color: '#0F172A', borderColor: 'rgba(15, 23, 42, 0.15)' }}>
+            <Users2 size={15} color="#818CF8" />
+            <span>Köpfe &amp; Kollektiv</span>
+          </span>
+          <h2 style={{ fontSize: 'clamp(1.9rem, 3.8vw, 2.6rem)', marginBottom: '12px', color: '#0F172A' }}>
+            Die Macher an der Werkbank.
+          </h2>
+          <p style={{ color: 'var(--text-body)', fontSize: '1.05rem', lineHeight: 1.6 }}>
+            Keine anonymen Hierarchien, sondern eingespielte Spezialisten, die anpacken statt nur Folien zu präsentieren.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '22px' }}>
+          {teamMembers.map((member, idx) => (
+            <TiltGlassCard
+              key={idx}
+              index={idx}
+              maxTilt={4}
+              shimmerBorder={member.isFounder}
+              style={{
+                padding: '28px',
+                borderRadius: '26px',
+                background: member.isFounder
+                  ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(254, 242, 242, 0.8) 100%)'
+                  : 'rgba(255, 255, 255, 0.82)',
+                border: member.isFounder ? '1.5px solid rgba(244, 63, 94, 0.4)' : '1px solid rgba(255, 255, 255, 0.9)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                gap: '18px'
+              }}
+            >
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
+                  <div
+                    style={{
+                      width: '64px',
+                      height: '64px',
+                      borderRadius: '18px',
+                      overflow: 'hidden',
+                      flexShrink: 0,
+                      boxShadow: '0 8px 20px -4px rgba(15, 23, 42, 0.15)',
+                      border: '2px solid rgba(255, 255, 255, 0.95)',
+                      background: 'rgba(226, 232, 240, 0.6)'
+                    }}
+                  >
+                    <img
+                      src={member.avatarUrl}
+                      alt={member.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div>
+                    <div style={{ fontSize: '1.18rem', fontWeight: 800, color: '#0F172A', marginBottom: '3px' }}>
+                      {member.name}
+                    </div>
+                    <div style={{ fontSize: '0.86rem', fontWeight: 600, color: '#475569' }}>
+                      {member.role}
+                    </div>
+                  </div>
+                </div>
+
+                <p style={{ color: '#334155', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
+                  {member.desc}
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid rgba(226, 232, 240, 0.6)' }}>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    color: member.tagColor,
+                    background: member.tagBg,
+                    padding: '4px 10px',
+                    borderRadius: '100px'
+                  }}
+                >
+                  <span>{member.tag}</span>
+                </span>
+
+                <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+                  {member.isFounder ? 'Werkstatt-Führung' : 'Kollektiv-Partner'}
+                </span>
+              </div>
+            </TiltGlassCard>
+          ))}
+        </div>
+      </section>
 
       {/* Bottom CTA Banner */}
       <TiltGlassCard
