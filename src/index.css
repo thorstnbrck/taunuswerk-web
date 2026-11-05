@@ -601,3 +601,13 @@ dialog.glass-dialog::backdrop {
   flex-shrink: 0;
   --animation-reduced: none;
 }
+
+@keyframes shakeX {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.shake-animation {
+  animation: shakeX 0.4s ease-in-out;
+}

@@ -6,6 +6,7 @@ import RequestModal from './components/RequestModal';
 import ConfirmationModal from './components/ConfirmationModal';
 import LegalModal from './components/LegalModal';
 import AuroraCanvas from './components/AuroraCanvas';
+import PasswordGate from './components/PasswordGate';
 import HomePage from './pages/HomePage';
 import StandortKampagnenPage from './pages/StandortKampagnenPage';
 import ContentVideoPage from './pages/ContentVideoPage';
@@ -110,8 +111,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <RouterProvider>
-      <AppContent />
-    </RouterProvider>
+    <PasswordGate>
+      <RouterProvider>
+        <AppContent />
+      </RouterProvider>
+    </PasswordGate>
   );
 }
