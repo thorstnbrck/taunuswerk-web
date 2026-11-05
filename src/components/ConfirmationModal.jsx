@@ -85,7 +85,8 @@ export default function ConfirmationModal({ isOpen, onClose, formData }) {
           </div>
 
           <span className="glass-pill" style={{ marginBottom: '12px', color: '#047857', borderColor: 'rgba(16, 185, 129, 0.3)' }}>
-            ✨ Kickoff-Anfrage eingegangen · 100% kostenlos
+            <Sparkles size={13} color="#059669" />
+            <span>Kickoff-Anfrage eingegangen · 100% kostenlos</span>
           </span>
 
           <h3 id="confirmation-modal-title" style={{ fontSize: '1.6rem', marginBottom: '10px' }}>

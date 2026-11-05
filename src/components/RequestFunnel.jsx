@@ -272,9 +272,18 @@ export default function RequestFunnel({ onSubmitted }) {
           </button>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '16px', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-            <span>🔒 Daten bleiben 100% vertraulich</span>
-            <span>⚡️ 24h Reaktionsgarantie</span>
-            <span>🎯 500 € Festpreis ohne Folgezwang</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <ShieldCheck size={14} color="#10B981" />
+              <span>Daten bleiben 100% vertraulich</span>
+            </span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <Clock size={14} color="#FB923C" />
+              <span>24h Reaktionsgarantie</span>
+            </span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <Sparkles size={14} color="#38BDF8" />
+              <span>500 € Festpreis ohne Folgezwang</span>
+            </span>
           </div>
         </div>
       </form>

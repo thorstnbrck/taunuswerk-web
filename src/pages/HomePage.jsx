@@ -199,7 +199,8 @@ export default function HomePage({ onOpenFunnel }) {
                 borderColor: 'rgba(244, 63, 94, 0.3)'
               }}
             >
-              ⚡️ Schlüsselfertiger Einstieg · 500 € Festpreis (Kickoff kostenlos)
+              <Sparkles size={14} color="#F43F5E" />
+              <span>Schlüsselfertiger Einstieg · 500 € Festpreis (Kickoff kostenlos)</span>
             </span>
 
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '18px', color: '#0F172A', display: 'block', opacity: 1, visibility: 'visible' }}>
@@ -741,7 +742,7 @@ export default function HomePage({ onOpenFunnel }) {
                   }}
                 >
                   <Zap size={14} color="#7C3AED" />
-                  <span>⚡️ Kognitive Vielfalt · Das Kollektiv-Prinzip</span>
+                  <span>Kognitive Vielfalt · Das Kollektiv-Prinzip</span>
                 </span>
 
                 <h3 style={{ fontSize: 'clamp(1.5rem, 3.2vw, 2.2rem)', color: '#0F172A', marginBottom: '12px' }}>
@@ -894,9 +895,18 @@ export default function HomePage({ onOpenFunnel }) {
           </button>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '20px', fontSize: '0.84rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-            <span>🔒 100% vertraulich</span>
-            <span>⚡️ 24h Reaktionsgarantie</span>
-            <span>🎯 Kickoff kostenlos · Konzept-Werk 500 € Festpreis</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <ShieldCheck size={14} color="#10B981" />
+              <span>100% vertraulich</span>
+            </span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <Clock size={14} color="#FB923C" />
+              <span>24h Reaktionsgarantie</span>
+            </span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <Sparkles size={14} color="#38BDF8" />
+              <span>Kickoff kostenlos · Konzept-Werk 500 € Festpreis</span>
+            </span>
           </div>
         </div>
       </section>

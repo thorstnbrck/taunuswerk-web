@@ -20,7 +20,9 @@ import {
   ShieldCheck,
   MapPin,
   CheckCircle2,
-  RotateCcw
+  RotateCcw,
+  Zap,
+  Users2
 } from 'lucide-react';
 
 export default function VenturesPage({ onOpenFunnel }) {
@@ -404,7 +406,7 @@ export default function VenturesPage({ onOpenFunnel }) {
           >
             <div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '9999px', background: 'rgba(16, 185, 129, 0.12)', color: '#047857', fontWeight: 700, fontSize: '0.82rem', marginBottom: '18px' }}>
-                <span>💰</span>
+                <CreditCard size={14} />
                 <span>Kapital</span>
               </div>
               <h3 style={{ fontSize: '1.45rem', marginBottom: '12px', color: '#0F172A' }}>
@@ -437,7 +439,7 @@ export default function VenturesPage({ onOpenFunnel }) {
           >
             <div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '9999px', background: 'rgba(251, 146, 60, 0.14)', color: '#C2410C', fontWeight: 700, fontSize: '0.82rem', marginBottom: '18px' }}>
-                <span>🛠</span>
+                <Wrench size={14} />
                 <span>Werkbank-Skills</span>
               </div>
               <h3 style={{ fontSize: '1.45rem', marginBottom: '12px', color: '#0F172A' }}>
@@ -469,7 +471,7 @@ export default function VenturesPage({ onOpenFunnel }) {
           >
             <div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '9999px', background: 'rgba(129, 140, 248, 0.14)', color: '#4338CA', fontWeight: 700, fontSize: '0.82rem', marginBottom: '18px' }}>
-                <span>🧠</span>
+                <Brain size={14} />
                 <span>Sparring auf Augenhöhe</span>
               </div>
               <h3 style={{ fontSize: '1.45rem', marginBottom: '12px', color: '#0F172A' }}>
@@ -616,7 +618,7 @@ export default function VenturesPage({ onOpenFunnel }) {
               }}
             >
               <Brain size={16} color="#7C3AED" />
-              <span>🧠 Hyperfocus Hub · Von Prototyp zu Business</span>
+              <span>Hyperfocus Hub · Von Prototyp zu Business</span>
             </span>
 
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '18px', color: '#0F172A' }}>
@@ -974,7 +976,7 @@ export default function VenturesPage({ onOpenFunnel }) {
                   gap: '8px'
                 }}
               >
-                <div><strong>Art des Vorhabens:</strong> {submissionType === 'prototype' ? '⚡️ KI-Prototyp & Schnelles Sparring' : '🏛 Klassisches Venture-Kapital / Nachfolge'}</div>
+                <div><strong>Art des Vorhabens:</strong> {submissionType === 'prototype' ? 'KI-Prototyp & Schnelles Sparring' : 'Klassisches Venture-Kapital / Nachfolge'}</div>
                 <div><strong>Vorhaben:</strong> {startupName}</div>
                 {submissionType === 'prototype' && prototypeLink && (
                   <div style={{ wordBreak: 'break-all' }}>
@@ -990,7 +992,7 @@ export default function VenturesPage({ onOpenFunnel }) {
                 <div><strong>Bedarf:</strong> {needs.join(', ')}</div>
                 {isNeurodivergent && (
                   <div style={{ color: '#7C3AED', fontWeight: 700, paddingTop: '4px', borderTop: '1px dashed rgba(167, 139, 250, 0.5)' }}>
-                    🧠 Neurodiverses Gründerteam / ADHS (Fokus auf Struktur &amp; Sparring aktiviert)
+                    Neurodiverses Gründerteam / ADHS (Fokus auf Struktur &amp; Sparring aktiviert)
                   </div>
                 )}
               </div>
@@ -1076,7 +1078,7 @@ export default function VenturesPage({ onOpenFunnel }) {
                       />
                       <div>
                         <div style={{ fontWeight: 800, color: submissionType === 'prototype' ? '#4C1D95' : '#0F172A', fontSize: '0.94rem', marginBottom: '4px' }}>
-                          ⚡️ KI-Prototyp &amp; Sparring
+                          KI-Prototyp &amp; Sparring
                         </div>
                         <div style={{ fontSize: '0.86rem', color: '#475569', lineHeight: 1.45 }}>
                           Ich habe einen fertigen KI-Prototyp und brauche schnelles Sparring &amp; Struktur
@@ -1121,7 +1123,7 @@ export default function VenturesPage({ onOpenFunnel }) {
                       />
                       <div>
                         <div style={{ fontWeight: 800, color: submissionType === 'classic' ? '#1E40AF' : '#0F172A', fontSize: '0.94rem', marginBottom: '4px' }}>
-                          🏛 Venture &amp; Nachfolge
+                          Venture &amp; Nachfolge
                         </div>
                         <div style={{ fontSize: '0.86rem', color: '#475569', lineHeight: 1.45 }}>
                           Ich suche klassisches Venture-Kapital / Nachfolge-Partner
@@ -1319,7 +1321,7 @@ export default function VenturesPage({ onOpenFunnel }) {
                         }}
                       />
                       <span>
-                        🧠 <strong>Neurodiverses Gründerteam / ADHS</strong> (Fokus auf Struktur &amp; Sparring)
+                        <strong>Neurodiverses Gründerteam / ADHS</strong> (Fokus auf Struktur &amp; Sparring)
                       </span>
                     </label>
                   </div>
@@ -1428,9 +1430,18 @@ export default function VenturesPage({ onOpenFunnel }) {
                   </div>
 
                   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '18px', marginTop: '16px', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-                    <span>🔒 100% vertraulich behandelt</span>
-                    <span>⚡️ Kein Agentur-Wasserkopf</span>
-                    <span>🤝 Direktes Sparring mit Machern</span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <ShieldCheck size={14} color="#10B981" />
+                      <span>100% vertraulich behandelt</span>
+                    </span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <Zap size={14} color="#FB923C" />
+                      <span>Kein Agentur-Wasserkopf</span>
+                    </span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <Users2 size={14} color="#38BDF8" />
+                      <span>Direktes Sparring mit Machern</span>
+                    </span>
                   </div>
                 </div>
               </form>
