@@ -75,6 +75,9 @@ export default function Footer({ onOpenLegal }) {
             <Link to="/standort-kampagnen" style={{ color: 'var(--text-body)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>
               Leistungen
             </Link>
+            <Link to="/team" style={{ color: currentPath === '/team' ? '#BE185D' : 'var(--text-body)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>
+              Team
+            </Link>
             <Link to="/ventures" style={{ color: currentPath === '/ventures' ? '#BE185D' : 'var(--text-body)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>
               Ventures
             </Link>

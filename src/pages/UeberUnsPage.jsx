@@ -300,6 +300,17 @@ export default function UeberUnsPage({ onOpenFunnel }) {
             </TiltGlassCard>
           ))}
         </div>
+
+        <div style={{ textAlign: 'center', marginTop: '32px' }}>
+          <Link
+            to="/team"
+            className="btn-secondary"
+            style={{ padding: '14px 28px', fontSize: '0.96rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+          >
+            <span>Zur eigenständigen Team- &amp; Kollektiv-Übersicht (/team)</span>
+            <ArrowRight size={16} />
+          </Link>
+        </div>
       </section>
 
       {/* Bottom CTA Banner */}

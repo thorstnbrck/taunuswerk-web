@@ -153,6 +153,12 @@ export default function Navbar({ onOpenFunnel }) {
             </li>
 
             <li>
+              <Link to="/team" className={`nav-link-item ${currentPath === '/team' ? 'active' : ''}`}>
+                Team
+              </Link>
+            </li>
+
+            <li>
               <Link to="/ventures" className={`nav-link-item ${currentPath === '/ventures' ? 'active' : ''}`}>
                 Ventures
               </Link>
@@ -284,6 +290,15 @@ export default function Navbar({ onOpenFunnel }) {
                 </Link>
               ))}
             </div>
+
+            <Link 
+              to="/team" 
+              className={`nav-link-item ${currentPath === '/team' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+              style={{ fontSize: '1.05rem', padding: '12px' }}
+            >
+              Team &amp; Kollektiv
+            </Link>
 
             <Link 
               to="/ventures" 
