@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Link } from '../router';
 import TiltGlassCard from '../components/TiltGlassCard';
 import {
@@ -9,89 +8,104 @@ import {
   MessageSquare,
   PhoneCall,
   Network,
-  Award,
   Users2,
   Briefcase,
   Settings2,
   Video,
-  Layers
+  Code2,
+  Palette,
+  Compass,
+  Quote
 } from 'lucide-react';
-
-const SPRING_PHYSICS = { type: 'spring', stiffness: 260, damping: 24 };
 
 export default function UeberUnsPage({ onOpenFunnel }) {
   const teamMembers = [
     {
-      role: 'Konzeption, Plattformen & Venture Lead',
-      focus: 'Der Architekt & Übersetzer',
+      title: 'Konzeption, Plattformen & Venture Lead',
       tag: 'Strategie & Prototyping',
       tagColor: '#BE185D',
       tagBg: 'rgba(244, 63, 94, 0.1)',
-      desc: '15 Jahre Praxiserfahrung aus Tech, FinTech, E-Commerce und Handwerk. Dein fester Sparringspartner für Konzeption, Hebel und Gesamtsteuerung.',
+      icon: Compass,
+      role: 'Der Architekt & Übersetzer',
+      text: 'Schlüsselfertige 500-€-Konzepte, digitale Werkzeuge und Venture-Architektur. Übersetzt Ideen in funktionierende Produkte.',
+      quote: '„Schluss mit 40-seitigen Slides. Wir bauen das jetzt einfach.“',
       avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-      badge: 'Werkstatt-Führung'
+      isFounder: true
     },
     {
-      role: 'Strategischer Einkauf & Verhandlungsführung',
-      focus: 'Die Verhandlerin & Deal-Makerin',
+      title: 'Strategischer Einkauf & Verhandlungsführung',
       tag: 'Konditionen & Marge',
       tagColor: '#065F46',
       tagBg: 'rgba(16, 185, 129, 0.12)',
-      desc: 'Harte Verhandlungskompetenz auf Konzernebene. Optimiert Lieferantenverträge, drückt Einkaufspreise und holt in B2B-Verhandlungen echte Marge raus.',
+      icon: Briefcase,
+      role: 'Die Verhandlerin & Deal-Makerin',
+      text: 'Verhandlungskompetenz auf Konzernebene. Sichert bessere Einkaufspreise, optimiert Lieferantenverträge und hebt versteckte Marge.',
+      quote: '„Wer beim Einkauf schläft, verschenkt seinen Gewinn am ersten Tag.“',
       avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
-      badge: 'Kollektiv-Partner'
+      isFounder: false
     },
     {
-      role: 'Projektsteuerung & Prozessoptimierung',
-      focus: 'Der Taktgeber & Prozess-Architekt',
+      title: 'Projektsteuerung & Prozessoptimierung',
       tag: 'Struktur & Flow',
       tagColor: '#9A3412',
       tagBg: 'rgba(251, 146, 60, 0.14)',
-      desc: 'Das operative Rückgrat. Verwandelt kreative Builds in getaktete, fehlerfreie Prozesse mit glasklaren Übergaben und hohem Tempo.',
+      icon: Settings2,
+      role: 'Der Taktgeber & Prozess-Architekt',
+      text: 'Das operative Rückgrat. Verwandelt kreative Prototypen in getaktete, fehlerfreie Workflows und beseitigt Zettelwirtschaft.',
+      quote: '„Kreativität ohne Prozess ist Chaos. Wir bauen Leitplanken, die skalieren.“',
       avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
-      badge: 'Kollektiv-Partner'
+      isFounder: false
     },
     {
-      role: 'Foto, Video & Social Ads',
-      focus: 'Das visuelle Auge & Performance-Storyteller',
-      tag: 'Content & Film',
+      title: 'HR-Spezialist & People Strategy',
+      tag: 'Recruiting & Kultur',
+      tagColor: '#4338CA',
+      tagBg: 'rgba(129, 140, 248, 0.12)',
+      icon: Users2,
+      role: 'Der Talent-Magnet & Team-Builder',
+      text: 'Modernes Social Recruiting und Employer Branding für Handwerk und Startups. Holt Gesellen und Fachkräfte auf Augenhöhe ab.',
+      quote: '„Fachkräftemangel ist oft nur ein Mangel an moderner Ansprache.“',
+      avatarUrl: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80',
+      isFounder: false
+    },
+    {
+      title: 'Foto, Video & Social Ads',
+      tag: 'Social Content & Paid Ads',
       tagColor: '#BE185D',
       tagBg: 'rgba(244, 63, 94, 0.1)',
-      desc: 'Kinoreife Bilder, Social-First Framing und schneller Vor-Ort-Dreh für Kampagnen, die Kunden emotional packen und hängen bleiben.',
+      icon: Video,
+      role: 'Das visuelle Auge & Performance-Storyteller',
+      text: 'Ungeschminkter Social Content und hochkonvertierende Ads direkt von der Werkbank und Baustelle. Scroll-Stopping-Hooks statt austauschbarer Stock-Footage.',
+      quote: '„Kein Kitsch. Echte Menschen, echte Maschinen, messbare Reichweite.“',
       avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
-      badge: 'Kollektiv-Partner'
+      isFounder: false
     },
     {
-      role: 'Fullstack Development & Code',
-      focus: 'Der Code-Pragmatiker',
+      title: 'Fullstack Development & Code',
       tag: 'Web-Apps & APIs',
       tagColor: '#0284C7',
       tagBg: 'rgba(56, 189, 248, 0.12)',
-      desc: 'Moderne Web-Applikationen, hochkonvertierende Landingpages und digitale Werkzeuge, die sich auf der Baustelle in 10 Sekunden bedienen lassen.',
+      icon: Code2,
+      role: 'Der Code-Pragmatiker',
+      text: 'Skalierbare Software, robuste Schnittstellen und Web-Apps. Verwandelt Klick-Dummies in ausfallsichere Systeme.',
+      quote: '„Clean Code ist gut. Code, der dem Kunden Geld einbringt, ist besser.“',
       avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
-      badge: 'Kollektiv-Partner'
+      isFounder: false
     },
     {
-      role: 'UI/UX & Brand Design',
-      focus: 'Die Gestalterin & Interface-Expertin',
+      title: 'UI/UX & Brand Design',
       tag: 'Interface & Identität',
       tagColor: '#6D28D9',
       tagBg: 'rgba(167, 139, 250, 0.14)',
-      desc: 'Hochwertige Markenauftritte und intuitive Nutzerführung. Sorgt dafür, dass komplexe Werkzeuge und Portale mühelos bedienbar sind.',
+      icon: Palette,
+      role: 'Die Gestalterin & Interface-Expertin',
+      text: 'Hochwertige Markenauftritte und intuitive Nutzerführung. Sorgt dafür, dass komplexe Tools mühelos bedienbar sind.',
+      quote: '„Design ist nicht, wie es aussieht - sondern wie intuitiv es funktioniert.“',
       avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
-      badge: 'Kollektiv-Partner'
-    },
-    {
-      role: 'HR-Spezialist & People Strategy',
-      focus: 'Der Talent-Magnet & Team-Builder',
-      tag: 'Fachkräfte & Region',
-      tagColor: '#4338CA',
-      tagBg: 'rgba(129, 140, 248, 0.12)',
-      desc: 'Social-Recruiting-Funnels und gezielte Arbeitgeberpositionierung, um wechselwillige Fachkräfte direkt auf dem Smartphone abzuholen.',
-      avatarUrl: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80',
-      badge: 'Kollektiv-Partner'
+      isFounder: false
     }
   ];
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
       {/* Breadcrumb */}
@@ -214,145 +228,247 @@ export default function UeberUnsPage({ onOpenFunnel }) {
         </div>
       </div>
 
-      {/* 3. Team & Kollektiv-Macher (Platzhalter) */}
+      {/* 3. Team & Kollektiv (Das 7er Bento-Grid) */}
       <section>
-        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 36px auto' }}>
-          <span className="glass-pill" style={{ marginBottom: '14px', color: '#0F172A', borderColor: 'rgba(15, 23, 42, 0.15)' }}>
-            <Users2 size={15} color="#818CF8" />
-            <span>Köpfe &amp; Kollektiv</span>
+        <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 40px auto' }}>
+          <span
+            className="glass-pill"
+            style={{
+              marginBottom: '14px',
+              color: '#4338CA',
+              borderColor: 'rgba(129, 140, 248, 0.35)',
+              background: 'rgba(255, 255, 255, 0.92)'
+            }}
+          >
+            <Users2 size={16} color="#6366F1" />
+            <span>Die Werkbank · Köpfe &amp; Kernkompetenzen</span>
           </span>
-          <h2 style={{ fontSize: 'clamp(1.9rem, 3.8vw, 2.6rem)', marginBottom: '12px', color: '#0F172A' }}>
-            Die Macher an der Werkbank.
+
+          <h2
+            style={{
+              fontSize: 'clamp(2rem, 4.2vw, 3rem)',
+              marginBottom: '16px',
+              color: '#0F172A',
+              lineHeight: 1.2
+            }}
+          >
+            7 Köpfe. Ein Prinzip: Direkte Wege, messbare Resultate.
           </h2>
-          <p style={{ color: 'var(--text-body)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            Keine anonymen Hierarchien, sondern eingespielte Spezialisten, die anpacken statt nur Folien zu präsentieren.
+
+          <p
+            style={{
+              color: '#334155',
+              fontSize: '1.08rem',
+              lineHeight: 1.68,
+              maxWidth: '760px',
+              margin: '0 auto'
+            }}
+          >
+            Keine langen Instanzenzüge, keine endlosen E-Mail-Schleifen. Bei uns sitzen Strategie, Verhandlung, Recruiting, Code, Design und Performance-Content direkt an einem Tisch - schlank aufgestellt und mit voller Umsetzungskraft.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '22px' }}>
-          {teamMembers.map((member, idx) => (
-            <TiltGlassCard
-              key={idx}
-              index={idx}
-              maxTilt={4}
-              shimmerBorder={member.isFounder}
-              style={{
-                padding: '28px',
-                borderRadius: '26px',
-                background: member.isFounder
-                  ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(254, 242, 242, 0.8) 100%)'
-                  : 'rgba(255, 255, 255, 0.82)',
-                border: member.isFounder ? '1.5px solid rgba(244, 63, 94, 0.4)' : '1px solid rgba(255, 255, 255, 0.9)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                gap: '18px'
-              }}
-            >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-                  <div
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '24px'
+          }}
+        >
+          {teamMembers.map((member, idx) => {
+            const IconComponent = member.icon;
+            return (
+              <TiltGlassCard
+                key={idx}
+                index={idx}
+                maxTilt={4}
+                shimmerBorder={member.isFounder}
+                style={{
+                  padding: '28px',
+                  borderRadius: '26px',
+                  background: member.isFounder
+                    ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(254, 242, 242, 0.8) 100%)'
+                    : 'rgba(255, 255, 255, 0.84)',
+                  border: member.isFounder
+                    ? '1.5px solid rgba(244, 63, 94, 0.4)'
+                    : '1px solid rgba(255, 255, 255, 0.95)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: '20px',
+                  boxShadow: '0 16px 36px -10px rgba(15, 23, 42, 0.08)'
+                }}
+              >
+                <div>
+                  {/* Top Row: Avatar & Badge */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '14px', marginBottom: '16px' }}>
+                    <div
+                      style={{
+                        width: '64px',
+                        height: '64px',
+                        borderRadius: '18px',
+                        overflow: 'hidden',
+                        flexShrink: 0,
+                        boxShadow: '0 8px 20px -4px rgba(15, 23, 42, 0.16)',
+                        border: '2px solid rgba(255, 255, 255, 0.95)',
+                        background: 'rgba(226, 232, 240, 0.6)'
+                      }}
+                    >
+                      <img
+                        src={member.avatarUrl}
+                        alt={member.title}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        color: member.tagColor,
+                        background: member.tagBg,
+                        padding: '4px 11px',
+                        borderRadius: '100px',
+                        letterSpacing: '0.02em'
+                      }}
+                    >
+                      <IconComponent size={13} color={member.tagColor} />
+                      <span>{member.tag}</span>
+                    </span>
+                  </div>
+
+                  {/* Card Title & Role */}
+                  <h3
                     style={{
-                      width: '64px',
-                      height: '64px',
-                      borderRadius: '18px',
-                      overflow: 'hidden',
-                      flexShrink: 0,
-                      boxShadow: '0 8px 20px -4px rgba(15, 23, 42, 0.15)',
-                      border: '2px solid rgba(255, 255, 255, 0.95)',
-                      background: 'rgba(226, 232, 240, 0.6)'
+                      fontSize: '1.24rem',
+                      fontWeight: 800,
+                      color: '#0F172A',
+                      marginBottom: '4px',
+                      lineHeight: 1.3
                     }}
                   >
-                    <img
-                      src={member.avatarUrl}
-                      alt={member.role}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                      loading="lazy"
-                    />
+                    {member.title}
+                  </h3>
+
+                  <div
+                    style={{
+                      fontSize: '0.86rem',
+                      fontWeight: 700,
+                      color: member.tagColor,
+                      marginBottom: '12px'
+                    }}
+                  >
+                    {member.role}
                   </div>
 
-                  <div>
-                    <div style={{ fontSize: '1.12rem', fontWeight: 800, color: '#0F172A', lineHeight: 1.3, marginBottom: '4px' }}>
-                      {member.role}
-                    </div>
-                    <div style={{ fontSize: '0.84rem', fontWeight: 700, color: member.tagColor }}>
-                      {member.focus}
-                    </div>
-                  </div>
+                  {/* Description */}
+                  <p
+                    style={{
+                      color: '#334155',
+                      fontSize: '0.92rem',
+                      lineHeight: 1.62,
+                      margin: '0 0 16px 0'
+                    }}
+                  >
+                    {member.text}
+                  </p>
                 </div>
 
-                <p style={{ color: '#334155', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
-                  {member.desc}
-                </p>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '12px', borderTop: '1px solid rgba(226, 232, 240, 0.6)' }}>
-                <span
+                {/* Quote Callout */}
+                <div
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    fontSize: '0.78rem',
-                    fontWeight: 700,
-                    color: member.tagColor,
-                    background: member.tagBg,
-                    padding: '4px 10px',
-                    borderRadius: '100px'
+                    padding: '12px 14px',
+                    borderRadius: '14px',
+                    background: 'rgba(248, 250, 252, 0.85)',
+                    borderLeft: `3px solid ${member.tagColor}`,
+                    fontSize: '0.86rem',
+                    fontStyle: 'italic',
+                    color: '#475569',
+                    lineHeight: 1.5,
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '8px'
                   }}
                 >
-                  <span>{member.tag}</span>
-                </span>
-
-                <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-                  {member.badge}
-                </span>
-              </div>
-            </TiltGlassCard>
-          ))}
-        </div>
-
-        <div style={{ textAlign: 'center', marginTop: '32px' }}>
-          <Link
-            to="/team"
-            className="btn-secondary"
-            style={{ padding: '14px 28px', fontSize: '0.96rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-          >
-            <span>Zur eigenständigen Team- &amp; Kollektiv-Übersicht (/team)</span>
-            <ArrowRight size={16} />
-          </Link>
+                  <Quote size={14} color={member.tagColor} style={{ flexShrink: 0, marginTop: '2px', opacity: 0.7 }} />
+                  <span>{member.quote}</span>
+                </div>
+              </TiltGlassCard>
+            );
+          })}
         </div>
       </section>
 
-      {/* Bottom CTA Banner */}
-      <TiltGlassCard
-        index={1}
-        maxTilt={3}
-        style={{
-          padding: '48px',
-          borderRadius: '32px',
-          textAlign: 'center',
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(254, 242, 242, 0.7) 100%)'
-        }}
-      >
-        <span className="glass-pill" style={{ marginBottom: '16px' }}>
-          <Award size={15} color="#F43F5E" />
-          <span>Handwerk & Digitalität vereint</span>
-        </span>
-        <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', marginBottom: '14px' }}>
-          Lass uns dein nächstes Projekt zimmern.
-        </h2>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '28px', maxWidth: '640px', margin: '0 auto 28px auto', fontSize: '1.05rem' }}>
-          Egal ob du eine vage Idee im Kopf hast oder ein akutes Problem lösen willst: Der erste Schritt ist ein unverbindlicher, kostenloser 15-Minuten-Fokus-Call.
-        </p>
-        <button
-          onClick={onOpenFunnel}
-          className="btn-primary"
-          style={{ padding: '15px 32px', fontSize: '1.05rem' }}
+      {/* 4. CLOSING-STATEMENT */}
+      <section>
+        <TiltGlassCard
+          index={0}
+          maxTilt={2.5}
+          shimmerBorder={true}
+          style={{
+            padding: 'clamp(36px, 5vw, 52px)',
+            borderRadius: '32px',
+            textAlign: 'center',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(240, 249, 255, 0.8) 50%, rgba(254, 242, 242, 0.8) 100%)',
+            maxWidth: '920px',
+            margin: '0 auto',
+            boxShadow: '0 24px 60px -15px rgba(15, 23, 42, 0.12)'
+          }}
         >
-          <span>Idee einreichen & Kickoff buchen</span>
-          <ArrowRight size={18} />
-        </button>
-      </TiltGlassCard>
+          <span
+            className="glass-pill"
+            style={{
+              marginBottom: '16px',
+              color: '#0284C7',
+              borderColor: 'rgba(56, 189, 248, 0.35)',
+              background: 'rgba(255, 255, 255, 0.9)'
+            }}
+          >
+            <Sparkles size={14} color="#0284C7" />
+            <span>Feste Köpfe · Flexible Buchung</span>
+          </span>
+
+          <h2
+            style={{
+              fontSize: 'clamp(1.9rem, 3.8vw, 2.7rem)',
+              marginBottom: '14px',
+              color: '#0F172A',
+              fontWeight: 800
+            }}
+          >
+            Gezielt besetzt. Modular gebucht.
+          </h2>
+
+          <p
+            style={{
+              color: '#334155',
+              fontSize: '1.1rem',
+              lineHeight: 1.68,
+              maxWidth: '680px',
+              margin: '0 auto 30px auto'
+            }}
+          >
+            Je nach Projektgröße greifen wir genau auf die Köpfe zu, die du für deinen nächsten Meilenstein brauchst - vom 500-€-Sprint bis zur kompletten Venture-Begleitung. Volle Flexibilität, direkte Ansprechpartner.
+          </p>
+
+          <button
+            onClick={onOpenFunnel}
+            className="btn-primary"
+            style={{
+              padding: '16px 34px',
+              fontSize: '1.04rem',
+              margin: '0 auto'
+            }}
+          >
+            <span>Projekt anfragen oder Sparring buchen</span>
+            <ArrowRight size={18} />
+          </button>
+        </TiltGlassCard>
+      </section>
     </div>
   );
 }
